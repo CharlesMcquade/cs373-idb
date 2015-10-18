@@ -22,7 +22,7 @@ h6 {
 }
 
 body {
-    background: url(cars_background.jpeg) no-repeat center center;
+    background: url(../img/cars_background.jpeg) no-repeat center center;
 }
 .topnav {
     font-size: 14px; 
