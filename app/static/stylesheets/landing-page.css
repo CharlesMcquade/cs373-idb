@@ -21,11 +21,11 @@ h6 {
     font-weight: 700;
 }
 
-body {
-    background: url(../img/cars_background.jpeg) no-repeat center center;
-}
 .topnav {
-    font-size: 14px; 
+    font-size: 14px;
+    background-image: none; 
+    background-color: #012e34;
+
 }
 
 .lead {
@@ -35,11 +35,11 @@ body {
 
 .intro-header {
     padding-top: px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: px;
+    padding-bottom: 30px;
     text-align: center;
     color: #f8f8f8;
-    
-    background-size: cover;
+    background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
+    background-size: 100% 110%;
 }
 
 .intro-message {
@@ -165,9 +165,35 @@ body {
     }
 }
 
-.footer {
-    padding: 30px 30px;
-    background-color: #f8f8f8;
+.wrapper {
+    width: auto;
+    height: auto; 
+    min-height: 100%;
+    margin-bottom: -40px;
+}
+
+.wrapper:after{
+    content:"";
+    display:block;
+    height: 40px;
+    width: 100%;
+}
+
+.footer{    
+    height: 40px;
+    width: 100%;
+    background-color: #012e34;
+}
+
+
+#image{
+    background: url(../img/300_horizontal_red.png) no-repeat center center;
+    width:300px;
+    height:40px;
+    bottom: 5px;
+    top: 0px;
+    left: 1001px;
+    position: relative;
 }
 
 p.copyright {
