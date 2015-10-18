@@ -12,7 +12,7 @@
 
 from app import db
 
-class Make(Base):
+class Make(db.Model):
   __tablename__ = 'make'
   id = db.Column(Integer, primary_key=True)
   name = db.Column(String(15), nullable=False)
@@ -23,7 +23,7 @@ class Make(Base):
   def __repr__(self):
     return '<Make %r>' % (self.name)
 
-class Model(Base):
+class Model(db.Model):
   __tablename__ = 'model'
   id = db.Column(Integer, primary_key=True)
   name = db.Columnn(String(25), nullable=False)
@@ -38,7 +38,7 @@ class Model(Base):
   def __repr__(self):
     return '<Model %r>' % (self.name)
 
-class Engine(Base):
+class Engine(db.Model):
   __tablename__ = 'engine'
   id = db.Column(Integer, primary_key=True)
   name = db.Column(string(250))
@@ -51,7 +51,7 @@ class Engine(Base):
   def __repr__(self):
     return '<Engine %r>' % (self.name)
 
-class Type(Base):
+class Type(db.Model):
   __tablename__ = 'type'
   id = db.Column(Integer, primary_key=True)
   name = db.Column(String(25))
