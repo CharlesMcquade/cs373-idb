@@ -21,6 +21,9 @@ h6 {
     font-weight: 700;
 }
 
+body {
+    background: url(../img/cars_background.jpeg) no-repeat center center;
+}
 .topnav {
     font-size: 14px; 
 }
@@ -35,7 +38,7 @@ h6 {
     padding-bottom: px;
     text-align: center;
     color: #f8f8f8;
-    background: url(11928-American-Eagle.jpg) no-repeat center center;
+    
     background-size: cover;
 }
 
