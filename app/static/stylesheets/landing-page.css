@@ -187,13 +187,14 @@ h6 {
 
 
 #image{
+    display: block;
     background: url(../img/300_horizontal_red.png) no-repeat center center;
     width:300px;
     height:40px;
     bottom: 5px;
     top: 0px;
-    left: 1001px;
-    position: relative;
+    margin-left: auto;
+    margin-right: 0px;   
 }
 
 p.copyright {
