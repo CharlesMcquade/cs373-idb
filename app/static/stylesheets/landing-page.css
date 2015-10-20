@@ -21,6 +21,13 @@ h6 {
     font-weight: 700;
 }
 
+body{
+    background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat center fixed;
+    background-size: 100%;
+           
+}
+
+
 .topnav {
     font-size: 14px;
     background-image: none; 
@@ -34,12 +41,12 @@ h6 {
 }
 
 .intro-header {
-    padding-top: px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 0px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 30px;
     text-align: center;
-    color: #f8f8f8;
-    background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
-    background-size: 100% 110%;
+    color: transparent;
+    /*background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
+    background-size: 100% 110%;*/
 }
 
 .intro-message {
@@ -186,9 +193,9 @@ h6 {
 }
 
 
-#image{
+.image{
     display: block;
-    background: url(../img/300_horizontal_red.png) no-repeat center center;
+    background: url(../img/300_horizontal_red.png) center;
     width:300px;
     height:40px;
     bottom: 5px;
