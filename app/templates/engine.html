@@ -31,7 +31,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/sortable.js') }}"></script>
 
 </head>
-{% endblock %}
+
 
 
 <body>
@@ -67,7 +67,9 @@
         <!-- /.container -->
     </nav>
 
+{% endblock %}
 
+{% block content %}
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header">
@@ -130,13 +132,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
-
-<div class="footer"> 
-    <div id = "image"></div>
-</div>
-
-
-</body>
-
-</html>
