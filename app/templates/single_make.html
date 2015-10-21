@@ -12,17 +12,18 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>Vehicle Make</h1>
+                    <h1>{{ name }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
                     <a href="#">INSERT EMBEDDED MEDIA HERE</a>
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        <li><h3>Name</h3> <p>something here</p></li>
-                        <li><h3>Headquarters</h3> <p>something here</p></li>
-                        <li><h3>CEO</h3> <p>something</p></li>
-                        <li><h3>Year Established</h3> <p>something</p></li>
+                        {% for k, v in make.items() %}
+                        {% if k != 'id' %}
+                        <li><h3>{{ k }}</h3> <p>{{ v }}</p></li>
+                        {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

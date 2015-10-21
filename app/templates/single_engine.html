@@ -19,11 +19,9 @@
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        <li><h3>Name</h3> <p>something here</p></li>
-                        <li><h3>Number of Cylinders</h3> <p>something here</p></li>
-                        <li><h3>Horsepower</h3> <p>something here</p></li>
-                        <li><h3>Size</h3> <p>something here</p></li>
-                        <li><h3>Fuel</h3> <p>something here</p></li>
+                        {% for key, val in engine.items() %}
+                        <li><h3>{{ key }}</h3> <p>{{ val }}</p></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
