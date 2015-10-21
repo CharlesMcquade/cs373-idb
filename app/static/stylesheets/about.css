@@ -11,7 +11,11 @@ html {
 }
 body{
     background: url(../img/black.jpg) no-repeat fixed;
-    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   /* background-size: 100%; */
 }   
 
 body,
