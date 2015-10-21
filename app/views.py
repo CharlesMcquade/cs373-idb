@@ -67,3 +67,13 @@ def single_engine():
 	return render_template('single_engine.html')
 
 
+# ---------
+#  single_vehicle
+# ---------
+@app.route('/single_vehicle')
+def single_vehicle():
+	return render_template('single_vehicle.html')
+
+
+
+
