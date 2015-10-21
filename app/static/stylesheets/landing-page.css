@@ -23,8 +23,11 @@ h6 {
 
 body{
     background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat center fixed;
-    background-size: 100%;
-           
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-size: 100%; */        
 }
 
 
