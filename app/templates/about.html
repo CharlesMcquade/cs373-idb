@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
+{% block title %}About Us{% endblock %}
 
+
+
+{% block head %}
 <head>
 
     <meta charset="utf-8">
@@ -27,58 +30,32 @@
     <![endif]-->
 
 </head>
+{% endblock %}
 
-<body>
-  <div class="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
-        <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-          
+{% block content %}
+<!-- Header -->
+<a name="about"></a>
+
+<!--The actual team -->
+<!-- Team Section -->
+<section id="team" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Murikin Made</h2>
+                <br>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div>
-               
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#about">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="#services">CONTACT US</a>
-                    </li>
-                    <li>
-                        <a href="#contact">SOMETHING</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
-
-
-    <!-- Header -->
-    <a name="about"></a>
-    
-    <!--The actual team -->
-    <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Murikin Made</h2>
-                    <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/Derek.jpg" class="img-responsive img-circle" alt="">
+                    <h3>Derek Smith</h3>
+                    <p class="text-muted">Database</p>
+                    <p style="color:white">Commits: </p>
+                    <p style="color:white">Issues: </p>
+                    <p style="color:white">Unit Tests:  </p>                 
                 </div>
             </div>
             <div class="row">
@@ -89,8 +66,7 @@
                         <p class="text-muted">Database</p>
                         <p style="color:white">Commits: </p>
                         <p style="color:white">Issues: </p>
-                        <p style="color:white">Unit Tests:  </p>
-                        
+                        <p style="color:white">Unit Tests:  </p>                      
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -104,8 +80,7 @@
                         <p class="text-muted">Frontend</p>
                         <p style="color:white">Commits: </p>
                         <p style="color:white">Issues: </p>
-                        <p style="color:white">Unit Tests:  </p>
-                        
+                        <p style="color:white">Unit Tests:  </p>                       
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -115,11 +90,11 @@
                         <p class="text-muted">Rackspace Admin, Backend</p>
                         <p style="color:white">Commits: </p>
                         <p style="color:white">Issues: </p>
-                        <p style="color:white">Unit Tests:  </p>
-                       
+                        <p style="color:white">Unit Tests:  </p>                     
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-sm-6">
                     <div class="team-member">
@@ -139,34 +114,66 @@
                         <p style="color:white">Commits: </p>
                         <p style="color:white">Issues: </p>
                         <p style="color:white">Unit Tests:  </p>
-                        
                     </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                <!--Wanna experiment with mouseover effects using only css -->
+                    <!-- <div id="wrap"> -->
+                        <img src="img/Animesh.jpg" class="img-responsive img-circle" alt="">
+                        <!-- <p class="text">Bio</p> -->
+                    <!-- </div> -->
+                    <h3>Animesh Gandhi</h3>
+                    <p class="text-muted">Frontend</p>
+                    <p style="color:white">Commits: </p>
+                    <p style="color:white">Issues: </p>
+                    <p style="color:white">Unit Tests:  </p>                  
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/Charles.jpg" class="img-responsive img-circle" alt="">
+                    <h3>Charles Inglis</h3>
+                    <p class="text-muted">Rackspace Admin, Backend</p>
+                    <p style="color:white">Commits: </p>
+                    <p style="color:white">Issues: </p>
+                    <p style="color:white">Unit Tests:  </p>                 
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="stats">
-        <ul>
-            <li>Total commits: </li>
-            <li>Total issues: </li>
-            <li>Total unit tests: </li>
-            <li><a href="https://github.com/CharlesMcquade/cs373-IDB1/issues">Github Issue tracker</a></li>
-            <li><a href="https://github.com/CharlesMcquade/cs373-IDB1">Github repo</a></li>
-            <li><a href="https://github.com/CharlesMcquade/cs373-IDB1/wiki">Github Wiki</a></li>
-
-        </ul>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="team-member">
+                    <img src="img/Andy.jpg" class="img-responsive img-circle" alt="">
+                    <h3>Andy Ehlert</h3>
+                    <p class="text-muted">Frontend, Database</p>
+                    <p style="color:white">Commits: </p>
+                    <p style="color:white">Issues: </p>
+                    <p style="color:white">Unit Tests:  </p>           
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="team-member">
+                    <img src="img/Kevin.jpg" class="img-responsive img-circle" alt="">
+                    <h3>Kevin Nguyen</h3>
+                    <p class="text-muted">Frontend, UML</p>
+                    <p style="color:white">Commits: </p>
+                    <p style="color:white">Issues: </p>
+                    <p style="color:white">Unit Tests:  </p>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-</div> 
+<div class="stats">
+    <ul>
+        <li>Total commits: </li>
+        <li>Total issues: </li>
+        <li>Total unit tests: </li>
+        <li><a href="https://github.com/CharlesMcquade/cs373-IDB1/issues">Github Issue tracker</a></li>
+        <li><a href="https://github.com/CharlesMcquade/cs373-IDB1">Github repo</a></li>
+        <li><a href="https://github.com/CharlesMcquade/cs373-IDB1/wiki">Github Wiki</a></li>
 
-    <div class="footer"> 
-        <div class = "image"></div>
-    </div>
-
-
-
-
-</body>
-
-</html>
+    </ul>
+</div>
+{% endblock %}
