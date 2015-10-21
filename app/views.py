@@ -23,6 +23,12 @@ def index():
 def models():
 	return render_template('models.html', models=models_dict)
 
+@app.route('/models/<make>/<model>')
+def single_model(make, model):
+	try :
+		return render_template('single_model.html', make_name=make, model_name=model, model=models_dict[make][model])
+	except TemplateNotFound:
+		abort(404)
 
 # ---------
 #  makes
