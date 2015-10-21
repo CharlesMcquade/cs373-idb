@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- BEGIN HEAD -->
+{% block head %}
 <head>
 
     <meta charset="utf-8">
@@ -29,11 +31,15 @@
     <![endif]-->
 
 </head>
+{% endblock %}
+<!-- END HEAD -->
+
 
 <body>
-  <div class="wrapper">
+  <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
 
-    <!-- Navigation -->
+    <!-- BEGIN NAVIGATION -->
+    {% block nav %}
     <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -49,28 +55,22 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div>   
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index">HOME</a>
-                    </li>
-                    <li>
-                        <a href="about">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="#services">SOMETHING</a>
-                    </li>
-                    <li>
-                        <a href="#contact">SOMETHING</a>
-                    </li>
+                    <li><a href="index">HOME</a></li>
+                    <li><a href="about">ABOUT</a></li>
+                    <li><a>="/index">HOME</a></li>
+                    <li><a href="/about">ABOUT</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    <!-- END NAVIGATION -->
+    {% endblock %}
 
 
-    <!-- Header -->
-    <!-- <a name="about"></a> -->
+    <!-- BEGIN CONTENT -->
+    {%block content %}
     <div class="intro-header">
         <div class="container">
             <div class="row">
@@ -83,16 +83,19 @@
                         
                         <ul class="list-inline intro-social-buttons">
                             <li>
+
                                 <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-car fa-fw"></i> <span class="network-name">Type</span></a>
+
+                                <a href="/types" class="btn btn-primary btn-lg"><i class="fa fa-car fa-fw"></i> <span class="network-name">Types</span></a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/SBootstrap" class="btn btn-primary btn-lg" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Make</span></a>
+                                <a href="/makes" class="btn btn-primary btn-lg" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
                             </li>
                             <li>
-                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-primary btn-lg"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engine</span></a>
+                                <a href="/engines" class="btn btn-primary btn-lg"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engines</span></a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-car fa-fw"></i> <span class="network-name">Model</span></a>
+                                <a href="/models" class="btn btn-primary btn-lg"><i class="fa fa-car fa-fw"></i> <span class="network-name">Models</span></a>
                             </li>
                         </ul>
                     </div>
@@ -100,8 +103,9 @@
             </div>
         </div>
     </div>
-  
-</div>
+    {% endblock %}
+    <!-- END CONTENT -->
+  </div> <!-- END WRAPPER DIV -->
 
 <div class="footer"> 
     <div class = "image"></div>
