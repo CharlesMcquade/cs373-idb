@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- BEGIN HEAD -->
+{% block head %}
 <head>
 
     <meta charset="utf-8">
@@ -29,11 +31,15 @@
     <![endif]-->
 
 </head>
+{% endblock %}
+<!-- END HEAD -->
+
 
 <body>
-  <div class="wrapper">
+  <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
 
-    <!-- Navigation -->
+    <!-- BEGIN NAVIGATION -->
+    {% block nav %}
     <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,16 +56,10 @@
             <div>   
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href=".">HOME</a>
+                        <a href="/index">HOME</a>
                     </li>
                     <li>
-                        <a href="about.html">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="#services">SOMETHING</a>
-                    </li>
-                    <li>
-                        <a href="#contact">SOMETHING</a>
+                        <a href="/about">ABOUT</a>
                     </li>
                 </ul>
             </div>
@@ -67,10 +67,12 @@
         </div>
         <!-- /.container -->
     </nav>
+    <!-- END NAVIGATION -->
+    {% endblock %}
 
 
-    <!-- Header -->
-    <!-- <a name="about"></a> -->
+    <!-- BEGIN CONTENT -->
+    {%block content %}
     <div class="intro-header">
         <div class="container">
             <div class="row">
@@ -100,8 +102,9 @@
             </div>
         </div>
     </div>
-  
-</div>
+    {% endblock %}
+    <!-- END CONTENT -->
+  </div> <!-- END WRAPPER DIV -->
 
 <div class="footer"> 
     <div class = "image"></div>
