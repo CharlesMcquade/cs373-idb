@@ -1,0 +1,107 @@
+FORMAT: 1A
+HOST: http://murikinmade.us/
+
+# Murikin Made API
+
+Murikin Made API is an API that can be used to pull information and statistics relating to vehicles, makes, 
+models and engines made by American manufacturers. All of the API calls were built with a goal to be 
+both flexible and powerful so that the caller is not limited by too rigid of a structure. All of the API 
+calls are GET requests because we aim to be information providers and therefore cannot allow just anyone to 
+write to and change the information that has been accumulated and provided to all. 
+
+## Vehicle Make Collection [/make_api]
+
+The Vehicle Make Collection provides API calls to retrieve data about one or more makers of American made 
+vehicles. What vehicle makes the API call returns in the response will be dependent on the parameters specified 
+by the user in the request.
+
+### Search Vehicle Makes [GET]
+
+Finds all vehicle makes that match the user-specified search criteria. The API call defaults to listing all instances 
+of vehicle makes and can be refined by providing parameters named after the response fields with values that the user 
+is searching for.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "dodge",
+                "hq_location": "auburn hills, michigan",
+                "ceo": "sergio marchionne",
+                "established": 1900
+            }
+        ]
+
+## Vehicle Model Collection [/model_api]
+
+The Vehicle Model Collection provides API calls to retrieve data about one or more vehicle models of American made 
+vehicles. What vehicle models the API call returns in the response will be dependent on the parameters specified by 
+the user in the request.
+
+### Search Vehicle Models [GET]
+
+Finds all vehicle models that match the user-specified search criteria. The API call defaults to listing all instances 
+of vehicle models and can be refined by providing parameters named after the response fields with values that the user 
+is searching for.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "challenger",
+                "make_id": "dodge",
+                "year": "2016", 
+                "price": 62495.00,
+                "engine_id": 200782570,
+                "type_id": 3860,
+                "transmission_id": 200782182
+            }
+        ]
+
+## Vehicle Type Collection [/type_api]
+
+The Vehicle Type Collection provides API calls to retrieve data about one or more type of American made 
+vehicles. Vehicle types include trucks, sedans, etc. What vehicle types the API call returns in the response 
+will be dependent on the parameters specified by the user in the request.
+
+### Search Vehicle Types [GET]
+
+Finds all vehicle types that match the user-specified search criteria. The API call defaults to listing all instances 
+of vehicle types and can be refined by providing parameters named after the response fields with values that the user 
+is searching for.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "type_id": 5, 
+                "type_name": "truck", 
+                "doors": 4
+            }
+        ]
+
+## Vehicle Engine Collection [/engine_api]
+
+The Vehicle Engine Collection provides API calls to retrieve data about one or more engines built for American made 
+vehicles. What engines the API call returns in the response will be dependent on the parameters specified by the user 
+in the request.
+
+### Search Vehicle Engines [GET]
+
+Finds all vehicle engines that match the user-specified search criteria. The API call defaults to listing all instances 
+of vehicle engines and can be refined by providing parameters named after the response fields with values that the user 
+is searching for.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "6.2L Engine (ESD)",
+                "size": 6.2, 
+                "cylinders": 8, 
+                "horsepower": 707, 
+                "fuel_type": "gas", 
+                "torque": 650
+            }
+        ]
+
