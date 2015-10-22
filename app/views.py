@@ -6,6 +6,9 @@ import json
 with open('dat/engines.json') as i : engine_dict = json.load(i)
 with open('dat/makes.json') as i : makes_dict = json.load(i)
 with open('dat/models.json') as i : models_dict = json.load(i)
+with open('dat/types.json') as i : types_dict = json.load(i)
+with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
+
 # ---------
 #  index
 # ---------
@@ -61,6 +64,23 @@ def single_engine(engine_id):
 		return render_template('single_engine.html', engine=engine_dict[engine_id])
 	except TemplateNotFound:
 		abort(404)
+
+
+@app.route('/types/<type_id>')
+def single_type(type_id):
+	try :
+		return render_template('single_type.html', name=type_id, type=types_dict[type_id])
+	except TemplateNotFound:
+		abort(404)
+
+@app.route('/transmissions/<tran_id>')
+def single_transmission(tran_id):
+	try :
+		return render_template('single_transmission.html', name=tran_id, tran=tranny_dict[tran_id])
+	except TemplateNotFound:
+		abort(404)
+
+
 
 # ---------
 #  about

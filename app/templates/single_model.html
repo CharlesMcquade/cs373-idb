@@ -11,20 +11,24 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ make_name }} {{ model_name }}</h1>
+                    <h1>{{ make_name.title() }} {{ model_name.title() }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
-                    <a href="#">INSERT EMBEDDED MEDIA HERE</a>
+                    <img src="/static/img/temp_vehicle_models/{{make_name.title()}}_{{model_name.title()}}.jpg" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
                         {% for k, v in model.items() %} 
                         {% if k == 'engine_id' %}
-                        <li><h3>{{ k }}</h3> <p><a href="/engines/{{ v }}">{{ v }}</a></p></li>
+                        <li><h3>{{ k.title() }}</h3> <p><a href="/engines/{{ v }}">{{ v }}</a></p></li>
                         {% elif k == 'make_id' %}
                         <li><h3>Make</h3> <p><a href="/makes/{{ make_name }}">{{ make_name }}</a></p></li>
+                        {% elif k == 'type_id' %}
+                        <li><h3>{{ k.title() }}</h3> <p><a href="/types/{{ v }}">{{ v }}</a></p></li>
+                        {% elif k == 'transmission_id' %}
+                        <li><h3>{{ k.title() }}</h3> <p><a href="/transmissions/{{ v }}">{{ v }}</a></p></li>
                          {% elif k != 'id' %}
-                        <li><h3>{{ k }}</h3> <p>{{ v }}</p></li>
+                        <li><h3>{{ k.title() }}</h3> <p>{{ v }}</p></li>
                         {% endif %}
                         {% endfor %}
                     </ul>

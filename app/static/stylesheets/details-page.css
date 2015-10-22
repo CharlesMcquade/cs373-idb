@@ -26,7 +26,6 @@ h6 {
     font-size: 14px;
     background-image: none; 
     background-color: #012e34;
-
 }
 
 .lead {
@@ -39,8 +38,8 @@ h6 {
     padding-bottom: 30px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
-    background-size: 100% 110%;
+   /* background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
+    background-size: 100% 110%;*/
 }
 
 .intro-message {
@@ -167,7 +166,7 @@ h6 {
 }
 
 .wrapper {
-    background-color: #012e34;
+    /*background-color: #012e34;*/
     width: auto;
     height: auto; 
     min-height: 100%;
