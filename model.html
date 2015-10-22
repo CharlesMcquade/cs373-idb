@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app package &mdash; MurikinMade 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MurikinMade 1 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="app-package">
+<h1>app package<a class="headerlink" href="#app-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.models">
+<span id="app-models-module"></span><h2>app.models module<a class="headerlink" href="#module-app.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.models.Engine">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Engine</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>cyl</em>, <em>hp</em>, <em>tor</em>, <em>size</em>, <em>fuel</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>Table to store engine details. 
+The Engine model is a many to many relationship with the Model class. A vehicle model can have numberous engines and a single engine can belong to multiple vehicles. 
+An Engine object has a models attribute that is not explicitly declared, but is established through the relationship that exists within the Model class. 
+An Engine object can retrieve a query object of the models it pertains to by using engine.models.</p>
+<dl class="attribute">
+<dt id="app.models.Engine.cylinders">
+<code class="descname">cylinders</code><a class="headerlink" href="#app.models.Engine.cylinders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.engine_name">
+<code class="descname">engine_name</code><a class="headerlink" href="#app.models.Engine.engine_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.fuel">
+<code class="descname">fuel</code><a class="headerlink" href="#app.models.Engine.fuel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.hp">
+<code class="descname">hp</code><a class="headerlink" href="#app.models.Engine.hp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Engine.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.size">
+<code class="descname">size</code><a class="headerlink" href="#app.models.Engine.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Engine.torque">
+<code class="descname">torque</code><a class="headerlink" href="#app.models.Engine.torque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.Make">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Make</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>hqlocation</em>, <em>ceo</em>, <em>established</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Make" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>Table to store vehicle make (manufacturer) details.
+id: an external Primary Key. Used in model.make_id as a Foreign Key.
+models: a relationship to the Model class. This allows each model instance to have a field model.make that points back to the Make class. 
+A model then can find its make with model.make.name although no make attribute exists in the model schema. 
+The lazy parameter of the relationship causes make.models to return a query object which can then be used to select from.</p>
+<dl class="attribute">
+<dt id="app.models.Make.ceo">
+<code class="descname">ceo</code><a class="headerlink" href="#app.models.Make.ceo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Make.established">
+<code class="descname">established</code><a class="headerlink" href="#app.models.Make.established" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Make.hqlocation">
+<code class="descname">hqlocation</code><a class="headerlink" href="#app.models.Make.hqlocation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Make.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Make.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Make.models">
+<code class="descname">models</code><a class="headerlink" href="#app.models.Make.models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Make.name">
+<code class="descname">name</code><a class="headerlink" href="#app.models.Make.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.Model">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>year</em>, <em>price</em>, <em>trans</em>, <em>make_id</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>Table to store vehicle model details.
+Each model can reference its make using model.make since a relationship backreference is established in the Make class.
+The association tables model_engine and model_class declared as metadata to the database are used to link the many to many relationships to models and engines, and models and types. 
+id: an external Primary Key. Used in model_engine and  model_type association tables.
+make_id: a Foreign Key linked to Make.id.</p>
+<dl class="attribute">
+<dt id="app.models.Model.engines">
+<code class="descname">engines</code><a class="headerlink" href="#app.models.Model.engines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Model.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.make_id">
+<code class="descname">make_id</code><a class="headerlink" href="#app.models.Model.make_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.model_name">
+<code class="descname">model_name</code><a class="headerlink" href="#app.models.Model.model_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.price">
+<code class="descname">price</code><a class="headerlink" href="#app.models.Model.price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.transmission">
+<code class="descname">transmission</code><a class="headerlink" href="#app.models.Model.transmission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.types">
+<code class="descname">types</code><a class="headerlink" href="#app.models.Model.types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Model.year">
+<code class="descname">year</code><a class="headerlink" href="#app.models.Model.year" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.Type">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Type</code><span class="sig-paren">(</span><em>name</em>, <em>doors</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>Table to store type of vehicle. 
+Vehicle type referes to the class or style of vehicle. For example: SUV, Truck, Coupe, etc.
+id: an auto incrementing Primary Key, linked to ModelType.type_id as a Foreign Key.
+type_name: type of vehicle (SUV, Truck Convertible, etc)
+The Type class shares a many to many relationship to the Model class and is able to reference a query object of its models using type.model.</p>
+<dl class="attribute">
+<dt id="app.models.Type.doors">
+<code class="descname">doors</code><a class="headerlink" href="#app.models.Type.doors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Type.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Type.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Type.type_name">
+<code class="descname">type_name</code><a class="headerlink" href="#app.models.Type.type_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Derek Smith.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
