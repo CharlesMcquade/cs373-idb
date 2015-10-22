@@ -31,9 +31,6 @@ class Make(db.Model):
   hqlocation = db.Column(String(250))
   ceo = db.Column(String(250))
   established = db.Column(Integer)
-  # with a relationship each model instance will have a field
-  # model.make that points back to he Make class. So from a 
-  # model instance we can say model.make.name
   models = db.relationship('Model', backref='make', lazy='dynamic')
 
   def __init__(self, id, name, hqlocation, ceo, established):
@@ -62,11 +59,11 @@ class Model(db.Model):
   price = db.Column(Integer)
   transmission = (String(250))
   make_id = db.Column(Integer, ForeignKey('make.id'))
-# add a relationship to engine
-#should these be FK's or relationships with backrefs?
-#  engine_id = db.Column(Integer, ForeignKey('engine.key')) 
-#  type_id = db.Column(Integer, ForeignKey('type.id'))
-#removed since using junction tables
+  
+  # models <-> engines relationship
+  engines = relationship("Engine", secondary=model_engine, backref="models", lazy="dynamic")
+  # models <-> types relationship
+  types = relationship("Type", secondary=model_type, backref="models", lazy="dynamic")
 
   def __init__(self, id, name, year, price, trans, make_id):
     self.id = id
@@ -106,6 +103,34 @@ class Engine(db.Model):
   def __repr__(self):
     return '<Engine %r>' % (self.name)
 
+
+class Type(db.Model):
+  """
+  Table to store type of vehicle and number of doors
+  id: auto increment PK, linked to ModelType.type_id as FK
+  type_name: type of vehicle (SUV, Truck Convertible, etc)
+  """
+  __tablename__ = 'type'
+  id = db.Column(Integer, primary_key=True)
+  type_name = db.Column(String(25))
+  doors = db.Column(Integer)
+
+  def __init__(self, name, doors):
+    self.type_name = name
+    self.doors = doors
+
+  def __repr__(self):
+    return '<Type %r>' % (self.name)
+
+
+# association tables for model<>engine, and model<>type
+model_engine = Table('model_engine', db.metadata, Colummn('model_id', Integer, ForeignKey('model.id')), Column('engine_id', Integer, ForeignKey('engine.id')))
+
+model_type = Table('model_type', db.metadata, Column('model_id', Integer, ForeignKey('model.id')), Column('type_id', Integer, ForeignKey('type.id')))
+
+# |
+# V These may not be if the metadata association tables above work
+
 class ModelEngine(db.Model):
   """
   Junction table used to map the many to many relationship 
@@ -127,25 +152,6 @@ class ModelEngine(db.Model):
     self.engine_id = eid
  
 
-class Type(db.Model):
-  """
-  Table to store type of vehicle and number of doors
-  id: auto increment PK, linked to ModelType.type_id as FK
-  type_name: type of vehicle (SUV, Truck Convertible, etc)
-  """
-  __tablename__ = 'type'
-  id = db.Column(Integer, primary_key=True)
-  type_name = db.Column(String(25))
-  doors = db.Column(Integer)
-
-  def __init__(self, name, doors):
-    self.type_name = name
-    self.doors = doors
-
-  def __repr__(self):
-    return '<Type %r>' % (self.name)
-
-
 class ModelType(db.Model):
   """
   Junction table used to map the many to many relationship
@@ -165,9 +171,3 @@ class ModelType(db.Model):
   def __init__(self, mid, tid):
     self.model_id = mid
     self.type_id = tid
-
-# Create engine that stores data in murikinmade.db
-#engine = create_engine('mysql:///murikinmade.db')
-
-# Create all tables in the engine
-#Base.metadata.create_all(engine)
