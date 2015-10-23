@@ -18,7 +18,7 @@ class Make(db.Model):
   """
   __tablename__ = 'make'
   id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(15), nullable=False)
+  make_name = db.Column(db.String(15), nullable=False)
   hqlocation = db.Column(db.String(250))
   ceo = db.Column(db.String(250))
   established = db.Column(db.Integer)
