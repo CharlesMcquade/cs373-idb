@@ -36,7 +36,10 @@ class Make(db.Model):
   
   @property
   def json(self):
-    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': self.models.all()}
+    model_list = list()
+    for mobj in self.models.all():
+      model_list.append(mobj.model_name)
+    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': model_list}
 
 class Model(db.Model):
   """
@@ -81,7 +84,7 @@ class Model(db.Model):
 
   @property
   def json(self):
-    return {'id':self.id, 'name':self.model_name, 'year':self.year, 'price':self.price, 'transmission': self.transmission, 'make':self.make}
+    return {'id':self.id, 'name':self.model_name, 'year':self.year, 'price':self.price, 'transmission': self.transmission, 'make':self.make.name, 'engines':self.engines.first().engine_name, 'types':self.types.first().type_name}
 
 class Engine(db.Model):
   """
@@ -114,7 +117,10 @@ class Engine(db.Model):
 
   @property
   def json(self):
-    return {'id':self.id, 'name':self.engine_name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':self.models.all()}
+    models_list = list()
+    for mobj in self.models.all():
+      models_list.append(mobj.model_name)
+    return {'id':self.id, 'name':self.engine_name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':models_list}
 
 
 class Type(db.Model):
@@ -141,6 +147,9 @@ class Type(db.Model):
 
   @property 
   def json(self):
-    return {'id':self.id, 'name':self.type_name, 'doors':self.doors, 'models':self.models.all()}
+    models_list = list()
+    for mobj in self.models.all():
+      models_list.append(mobj.model_name)
+    return {'id':self.id, 'name':self.type_name, 'doors':self.doors, 'models':models_list}
 
 
