@@ -1,4 +1,4 @@
-# cs373-idb-website
+# cs373-idb
 
 
 python3 -m venv flask

@@ -1,4 +1,4 @@
-from flask import render_template, redirect, abort
+from flask import render_template, redirect, abort, request, jsonify
 from jinja2 import TemplateNotFound
 from app import app
 import json
@@ -9,18 +9,18 @@ with open('dat/models.json') as i : models_dict = json.load(i)
 with open('dat/types.json') as i : types_dict = json.load(i)
 with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
 
-# ---------
+# -------
 #  index
-# ---------
+# -------
 @app.route('/index')
 @app.route('/')
 def index():
 	return render_template('index.html')
 
 
-# ---------
+# --------
 #  models
-# ---------
+# --------
 @app.route('/models')
 @app.route('/models/')
 def models():
@@ -33,9 +33,9 @@ def single_model(make, model):
 	except TemplateNotFound:
 		abort(404)
 
-# ---------
+# -------
 #  makes
-# ---------
+# -------
 @app.route('/makes')
 @app.route('/makes/')
 def makes():
@@ -82,11 +82,78 @@ def single_transmission(tran_id):
 
 
 
-# ---------
+# -------
 #  about
-# ---------
+# -------
 @app.route('/about')
 def about():
 	return render_template('about.html')
 
 
+
+# -----------
+#  API Calls
+# -----------
+@app.route('/make_api', methods=['GET'])
+def make_api():
+	if len(request.args) == 0:
+		return jsonify(**makes_dict)
+	result = {}
+	for make in makes_dict:
+		flag = True
+		for param in request.args:
+			if str(makes_dict[make][param]) != request.args.get(param):
+				flag = False
+				break
+		if flag:
+			result.update({make: makes_dict[make]})
+	return jsonify(**result)
+
+
+@app.route('/model_api', methods=['GET'])
+def model_api():
+	if len(request.args) == 0:
+		return jsonify(**models_dict)
+	result = {}
+	for model in models_dict:
+		flag = True
+		for param in request.args:
+			if str(models_dict[model][param]) != request.args.get(param):
+				flag = False
+				break
+		if flag:
+			result.update({model: models_dict[model]})
+	return jsonify(**result)
+
+
+@app.route('/engine_api', methods=['GET'])
+def engine_api():
+	if len(request.args) == 0:
+		return jsonify(**engine_dict)
+	result = {}
+	for engine in engine_dict:
+		flag = True
+		for param in request.args:
+			if str(engine_dict[engine][param]) != request.args.get(param):
+				flag = False
+				break
+		if flag:
+			result.update({engine: engine_dict[engine]})
+	return jsonify(**result)
+			
+
+
+@app.route('/type_api', methods=['GET'])
+def type_api():
+	if len(request.args) == 0:
+		return jsonify(**types_dict)
+	result = {}
+	for t in types_dict:
+		flag = True
+		for param in request.args:
+			if str(types_dict[t][param]) != request.args.get(param):
+				flag = False
+				break
+		if flag:
+			result.update({t: types_dict[t]})
+	return jsonify(**result)
