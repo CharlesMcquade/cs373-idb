@@ -4,8 +4,8 @@ Models.py defines the database models using Python classes. These classes will b
 """
 
 # association tables for model<>engine, and model<>type
-model_engine = db.Table('model_engine', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('engine_id', db.Integer, db.ForeignKey('engine.id')))
-model_type = db.Table('model_type', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('type_id', db.Integer, db.ForeignKey('type.id')))
+model_engine = db.Table('model_engine', db.Column('model_id', db.String(50), db.ForeignKey('model.id')),db.Column('engine_id', db.Integer, db.ForeignKey('engine.id')))
+model_type = db.Table('model_type', db.Column('model_id', db.String(50), db.ForeignKey('model.id')), db.Column('type_id', db.Integer, db.ForeignKey('type.id')))
 
 
 class Make(db.Model):
@@ -32,7 +32,11 @@ class Make(db.Model):
     self.established = established
 
   def __repr__(self):
-    return '<Make %r>' % (self.name)
+    return '%r' % (self.name)
+  
+  @property
+  def json(self):
+    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': self.models.all()}
 
 class Model(db.Model):
   """
@@ -43,17 +47,26 @@ class Model(db.Model):
   make_id: a Foreign Key linked to Make.id.
   """
   __tablename__ = 'model'
-  id = db.Column(db.String, primary_key=True)
+  id = db.Column(db.String(50), primary_key=True)
   model_name = db.Column(db.String(25), nullable=False)
   year = db.Column(db.Integer)
   price = db.Column(db.Integer)
   transmission = db.Column(db.String(250))
   make_id = db.Column(db.Integer, db.ForeignKey('make.id'))
   
+# association tables for model<>engine, and model<>type
+#model_engine = db.Table('model_engine', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('engine_id', db.Integer, db.ForeignKey('engine.id')))
+#model_type = db.Table('model_type', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('type_id', db.Integer, db.ForeignKey('type.id')))
+  '''
   # models <-> engines relationship
-  engines = db.relationship("Engine", secondary=model_engine, backref="models", lazy="dynamic")
+  engines = db.relationship("Engine", secondary=model_engine, primaryjoin=(model_engine.c.model_id == id), secondaryjoin=(model_engine.c.engine_id == db.ForeignKey('engine.id')), backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
   # models <-> types relationship
-  types = db.relationship("Type", secondary=model_type, backref="models", lazy="dynamic")
+  types = db.relationship("Type", secondary=model_type, primaryjoin=(model_type.c.model_id == id), secondaryjoin=(model_type.c.type_id == id), backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
+  '''
+  engines = db.relationship("Engine", secondary=model_engine, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
+
+  types = db.relationship("Type", secondary=model_type, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
+
 
   def __init__(self, id, name, year, price, trans, make_id):
     self.id = id
@@ -64,7 +77,11 @@ class Model(db.Model):
     self.make_id = make_id
 
   def __repr__(self):
-    return '<Model %r>' % (self.name)
+    return '%r' % (self.model_name)
+
+  @property
+  def json(self):
+    return {'id':self.id, 'name':self.model_name, 'year':self.year, 'price':self.price, 'transmission': self.transmission, 'make':self.make}
 
 class Engine(db.Model):
   """
@@ -81,6 +98,7 @@ class Engine(db.Model):
   torque = db.Column(db.Integer)
   size = db.Column(db.Integer)
   fuel = db.Column(db.String(50))
+  __table_args__ = (db.UniqueConstraint('engine_name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
 
   def __init__(self, id, name, cyl, hp, tor, size, fuel):
     self.id = id
@@ -92,7 +110,11 @@ class Engine(db.Model):
     self.fuel = fuel
 
   def __repr__(self):
-    return '<Engine %r>' % (self.name)
+    return '%r' % (self.engine_name)
+
+  @property
+  def json(self):
+    return {'id':self.id, 'name':self.engine_name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':self.models.all()}
 
 
 class Type(db.Model):
@@ -107,12 +129,18 @@ class Type(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   type_name = db.Column(db.String(25))
   doors = db.Column(db.Integer)
+  __table_args__ = (db.UniqueConstraint('type_name', 'doors', name='type_uc'),)
 
-  def __init__(self, name, doors):
+  def __init__(self, tid, name, doors):
+    self.type_id = tid
     self.type_name = name
     self.doors = doors
 
   def __repr__(self):
-    return '<Type %r>' % (self.name)
+    return '%r' % (self.type_name)
+
+  @property 
+  def json(self):
+    return {'id':self.id, 'name':self.type_name, 'doors':self.doors, 'models':self.models.all()}
 
 
