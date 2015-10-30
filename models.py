@@ -37,9 +37,11 @@ class Make(db.Model):
   @property
   def json(self):
     model_list = list()
+    model_ids = list()
     for mobj in self.models.all():
-      model_list.append(mobj.model_name)
-    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': model_list}
+      model_list.append(mobj.name)
+      model_ids.append(mobj.id)
+    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': model_list, 'model_ids':model_ids}
 
 class Model(db.Model):
   """
@@ -51,21 +53,12 @@ class Model(db.Model):
   """
   __tablename__ = 'model'
   id = db.Column(db.String(50), primary_key=True)
-  model_name = db.Column(db.String(25), nullable=False)
+  name = db.Column(db.String(25), nullable=False)
   year = db.Column(db.Integer)
   price = db.Column(db.Integer)
   transmission = db.Column(db.String(250))
   make_id = db.Column(db.Integer, db.ForeignKey('make.id'))
   
-# association tables for model<>engine, and model<>type
-#model_engine = db.Table('model_engine', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('engine_id', db.Integer, db.ForeignKey('engine.id')))
-#model_type = db.Table('model_type', db.metadata, db.Column('model_id', db.Integer, db.ForeignKey('model.id')), db.Column('type_id', db.Integer, db.ForeignKey('type.id')))
-  '''
-  # models <-> engines relationship
-  engines = db.relationship("Engine", secondary=model_engine, primaryjoin=(model_engine.c.model_id == id), secondaryjoin=(model_engine.c.engine_id == db.ForeignKey('engine.id')), backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
-  # models <-> types relationship
-  types = db.relationship("Type", secondary=model_type, primaryjoin=(model_type.c.model_id == id), secondaryjoin=(model_type.c.type_id == id), backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
-  '''
   engines = db.relationship("Engine", secondary=model_engine, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
 
   types = db.relationship("Type", secondary=model_type, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
@@ -73,18 +66,24 @@ class Model(db.Model):
 
   def __init__(self, id, name, year, price, trans, make_id):
     self.id = id
-    self.model_name = name
+    self.name = name
     self.year = year
     self.price = price
     self.transmission = trans
     self.make_id = make_id
 
   def __repr__(self):
-    return '%r' % (self.model_name)
+    return '%r' % (self.name)
 
   @property
   def json(self):
-    return {'id':self.id, 'name':self.model_name, 'year':self.year, 'price':self.price, 'transmission': self.transmission, 'make':self.make.name, 'engines':self.engines.first().engine_name, 'types':self.types.first().type_name}
+    engine_dict = dict()
+    type_dict = dict()
+    for eobj in self.engines.all():
+      engine_dict[eobj.id] = eobj.name
+    for tobj in self.types.all():
+      type_dict[tobj.id] = tobj.name
+    return {'id':self.id, 'name':self.name, 'year':self.year, 'price':self.price, 'transmission': self.transmission, 'make':self.make.name, 'engines':engine_dict, 'types':type_dict}
 
 class Engine(db.Model):
   """
@@ -95,17 +94,17 @@ class Engine(db.Model):
   """
   __tablename__ = 'engine'
   id = db.Column(db.Integer, primary_key=True)
-  engine_name = db.Column(db.String(250))
+  name = db.Column(db.String(250))
   cylinders = db.Column(db.Integer)
   hp = db.Column(db.Integer)
   torque = db.Column(db.Integer)
   size = db.Column(db.Integer)
   fuel = db.Column(db.String(50))
-  __table_args__ = (db.UniqueConstraint('engine_name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
+  __table_args__ = (db.UniqueConstraint('name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
 
   def __init__(self, id, name, cyl, hp, tor, size, fuel):
     self.id = id
-    self.engine_name = name
+    self.name = name
     self.cylinders = cyl
     self.hp = hp
     self.torque = tor
@@ -113,14 +112,16 @@ class Engine(db.Model):
     self.fuel = fuel
 
   def __repr__(self):
-    return '%r' % (self.engine_name)
+    return '%r' % (self.name)
 
   @property
   def json(self):
-    models_list = list()
+    model_list = list()
+    model_ids = list()
     for mobj in self.models.all():
-      models_list.append(mobj.model_name)
-    return {'id':self.id, 'name':self.engine_name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':models_list}
+      model_list.append(mobj.name)
+      model_ids.append(mobj.id)
+    return {'id':self.id, 'name':self.name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':model_list, 'model_ids':model_ids}
 
 
 class Type(db.Model):
@@ -128,28 +129,30 @@ class Type(db.Model):
   Table to store type of vehicle. 
   Vehicle type referes to the class or style of vehicle. For example: SUV, Truck, Coupe, etc.
   id: an auto incrementing Primary Key, linked to ModelType.type_id as a Foreign Key.
-  type_name: type of vehicle (SUV, Truck Convertible, etc)
+  name: type of vehicle (SUV, Truck Convertible, etc)
   The Type class shares a many to many relationship to the Model class and is able to reference a query object of its models using type.model.
   """
   __tablename__ = 'type'
   id = db.Column(db.Integer, primary_key=True)
-  type_name = db.Column(db.String(25))
+  name = db.Column(db.String(25))
   doors = db.Column(db.Integer)
-  __table_args__ = (db.UniqueConstraint('type_name', 'doors', name='type_uc'),)
+  __table_args__ = (db.UniqueConstraint('name', 'doors', name='type_uc'),)
 
   def __init__(self, tid, name, doors):
     self.type_id = tid
-    self.type_name = name
+    self.name = name
     self.doors = doors
 
   def __repr__(self):
-    return '%r' % (self.type_name)
+    return '%r' % (self.name)
 
   @property 
   def json(self):
-    models_list = list()
+    model_list = list()
+    model_ids = list()
     for mobj in self.models.all():
-      models_list.append(mobj.model_name)
-    return {'id':self.id, 'name':self.type_name, 'doors':self.doors, 'models':models_list}
+      model_list.append(mobj.name)
+      model_ids.append(mobj.id)
+    return {'id':self.id, 'name':self.name, 'doors':self.doors, 'models':model_list, 'model_ids':model_ids}
 
 

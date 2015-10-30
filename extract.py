@@ -9,7 +9,7 @@ from models import Make, Model, Engine, Type
 def pop_makes():
   usmakes = ['ford','dodge','chevrolet','pontiac','chrysler','tesla','jeep','lincoln','gmc','buick','cadillac','hummer','saturn','mercury']
   
-  with open('makes.json') as f:
+  with open('json/v2_all_with_data/makes.json') as f:
     data = json.load(f)
 
   for k in data.keys():
@@ -53,9 +53,7 @@ def pop_models_engines_types():
         # Now add engine for this vehicle to Engine table since we already have engine_id, 
         # and we know this will be in out 'American' list
         eid = mdata[k][k2]['engine_id']
-        e = Engine.query.filter_by(engine_name=edata[eid]['name'], cylinders=edata[eid]['cylinders'], hp=edata[eid]['hp'], torque=edata[eid]['torque'], size=edata[eid]['size'], fuel=edata[eid]['type']).first()
-        print('e:', e)
-        print()
+        e = Engine.query.filter_by(name=edata[eid]['name'], cylinders=edata[eid]['cylinders'], hp=edata[eid]['hp'], torque=edata[eid]['torque'], size=edata[eid]['size'], fuel=edata[eid]['type']).first()
         if not e:
           e = Engine(eid, edata[eid]['name'], edata[eid]['cylinders'], edata[eid]['hp'], edata[eid]['torque'], edata[eid]['size'], edata[eid]['type'])
         
@@ -63,7 +61,7 @@ def pop_models_engines_types():
 
 	# Do the same for type since we have the type_id
         tid = mdata[k][k2]['type_id']
-        t = Type.query.filter_by(type_name=tdata[tid]['submodel'], doors=mdata[k][k2]['num_doors']).first()
+        t = Type.query.filter_by(name=tdata[tid]['submodel'], doors=mdata[k][k2]['num_doors']).first()
         if not t:
           t = Type(tid, tdata[tid]['submodel'], mdata[k][k2]['num_doors'])
           #db.session.add(t)
