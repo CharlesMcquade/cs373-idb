@@ -2,6 +2,8 @@ from flask import render_template, redirect, abort, request, jsonify
 from jinja2 import TemplateNotFound
 from app import app
 import json
+from app import db
+from models import Make, Model, Engine, Type
 
 with open('dat/engines.json') as i : engine_dict = json.load(i)
 with open('dat/makes.json') as i : makes_dict = json.load(i)
@@ -96,64 +98,96 @@ def about():
 # -----------
 @app.route('/make_api', methods=['GET'])
 def make_api():
-	if len(request.args) == 0:
-		return jsonify(**makes_dict)
-	result = {}
-	for make in makes_dict:
-		flag = True
-		for param in request.args:
-			if str(makes_dict[make][param]) != request.args.get(param):
-				flag = False
-				break
-		if flag:
-			result.update({make: makes_dict[make]})
+	query_dict = dict()
+	for arg in request.args:
+		query_dict[arg] = request.args.get(arg)
+	search = Make.query.filter_by(**query_dict)
+	result = dict()
+	for m in search:
+		result[str(m.id)] = m.json
 	return jsonify(**result)
+	# if len(request.args) == 0:
+	# 	return jsonify(**makes_dict)
+	# result = {}
+	# for make in makes_dict:
+	# 	flag = True
+	# 	for param in request.args:
+	# 		if str(makes_dict[make][param]) != request.args.get(param):
+	# 			flag = False
+	# 			break
+	# 	if flag:
+	# 		result.update({make: makes_dict[make]})
+	# return jsonify(**result)
 
 
 @app.route('/model_api', methods=['GET'])
 def model_api():
-	if len(request.args) == 0:
-		return jsonify(**models_dict)
-	result = {}
-	for model in models_dict:
-		flag = True
-		for param in request.args:
-			if str(models_dict[model][param]) != request.args.get(param):
-				flag = False
-				break
-		if flag:
-			result.update({model: models_dict[model]})
+	query_dict = dict()
+	for arg in request.args:
+		query_dict[arg] = request.args.get(arg)
+	search = Model.query.filter_by(**query_dict)
+	result = dict()
+	for m in search:
+		result[m.id] = m.json
 	return jsonify(**result)
+	# if len(request.args) == 0:
+	# 	return jsonify(**models_dict)
+	# result = {}
+	# for model in models_dict:
+	# 	flag = True
+	# 	for param in request.args:
+	# 		if str(models_dict[model][param]) != request.args.get(param):
+	# 			flag = False
+	# 			break
+	# 	if flag:
+	# 		result.update({model: models_dict[model]})
+	# return jsonify(**result)
 
 
 @app.route('/engine_api', methods=['GET'])
 def engine_api():
-	if len(request.args) == 0:
-		return jsonify(**engine_dict)
-	result = {}
-	for engine in engine_dict:
-		flag = True
-		for param in request.args:
-			if str(engine_dict[engine][param]) != request.args.get(param):
-				flag = False
-				break
-		if flag:
-			result.update({engine: engine_dict[engine]})
+	query_dict = dict()
+	for arg in request.args:
+		query_dict[arg] = request.args.get(arg)
+	search = Engine.query.filter_by(**query_dict)
+	result = dict()
+	for m in search:
+		result[str(m.id)] = m.json
 	return jsonify(**result)
+	# if len(request.args) == 0:
+	# 	return jsonify(**engine_dict)
+	# result = {}
+	# for engine in engine_dict:
+	# 	flag = True
+	# 	for param in request.args:
+	# 		if str(engine_dict[engine][param]) != request.args.get(param):
+	# 			flag = False
+	# 			break
+	# 	if flag:
+	# 		result.update({engine: engine_dict[engine]})
+	# return jsonify(**result)
 			
 
 
 @app.route('/type_api', methods=['GET'])
 def type_api():
-	if len(request.args) == 0:
-		return jsonify(**types_dict)
-	result = {}
-	for t in types_dict:
-		flag = True
-		for param in request.args:
-			if str(types_dict[t][param]) != request.args.get(param):
-				flag = False
-				break
-		if flag:
-			result.update({t: types_dict[t]})
+	query_dict = dict()
+	for arg in request.args:
+		query_dict[arg] = request.args.get(arg)
+	search = Type.query.filter_by(**query_dict)
+	result = dict()
+	for m in search:
+		result[str(m.id)] = m.json
 	return jsonify(**result)
+	# if len(request.args) == 0:
+	# 	return jsonify(**types_dict)
+	# result = {}
+	# for t in types_dict:
+	# 	flag = True
+	# 	for param in request.args:
+	# 		if str(types_dict[t][param]) != request.args.get(param):
+	# 			flag = False
+	# 			break
+	# 	if flag:
+	# 		result.update({t: types_dict[t]})
+	# return jsonify(**result)
