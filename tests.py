@@ -51,8 +51,8 @@ class TestModels (TestCase):
     m = Model(1, 'ram', 2015, 50000, 'manual', 1234)
     db.session.add(m)
     db.session.commit()
-    r = Model.query.filter_by(model_name='ram').first()
-    self.assertEqual('ram', r.model_name)
+    r = Model.query.filter_by(name='ram').first()
+    self.assertEqual('ram', r.name)
     db.session.delete(m)
     db.session.commit()
  
@@ -60,8 +60,8 @@ class TestModels (TestCase):
     m = Model(2, 'neon', 2009, 8000, 'automatic', 1234)
     db.session.add(m)
     db.session.commit()
-    r = Model.query.filter_by(model_name='neon').first()
-    self.assertEqual('neon', r.model_name)
+    r = Model.query.filter_by(name='neon').first()
+    self.assertEqual('neon', r.name)
     db.session.delete(m)
     db.session.commit()
  
@@ -85,8 +85,8 @@ class TestModels (TestCase):
     e = Engine(1, '4cyl', 300, 50, 2.5, 'gasoline')
     db.session.add(e)
     db.session.commit()
-    r = Engine.query.filter_by(engine_name='4cl').first()
-    self.assertEqual('4cl', r.engine_name)
+    r = Engine.query.filter_by(name='4cl').first()
+    self.assertEqual('4cl', r.name)
     db.session.delete(e)
     db.session.commit()
 
@@ -125,7 +125,7 @@ class TestModels (TestCase):
     a = Type('sedan', 4)
     db.session.add(a)
     r = Type.query.get(1)
-    self.assertequal('sedan', r.type_name)
+    self.assertequal('sedan', r.name)
     db.sessin.delete(a)
 
   def test_type_3 (self) :
