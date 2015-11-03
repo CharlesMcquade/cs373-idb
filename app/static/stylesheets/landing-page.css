@@ -209,3 +209,17 @@ body{
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+
+.atitle {
+    font-family: 'Atomic Age';
+    font-size: 50px;
+    padding-bottom: -8px;
+}
+
+.subtitle {
+    padding-top: -10px;
+    font-family: 'Atomic Age';
+    font-size: 30px;
+}
