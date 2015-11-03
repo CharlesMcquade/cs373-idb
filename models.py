@@ -100,7 +100,7 @@ class Engine(db.Model):
   torque = db.Column(db.Integer)
   size = db.Column(db.Integer)
   fuel = db.Column(db.String(50))
-  __table_args__ = (db.UniqueConstraint('name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
+  #__table_args__ = (db.UniqueConstraint('name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
 
   def __init__(self, id, name, cyl, hp, tor, size, fuel):
     self.id = id
