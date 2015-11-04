@@ -135,7 +135,7 @@ class Type(db.Model):
   __table_args__ = (db.UniqueConstraint('name', 'doors', name='type_uc'),)
 
   def __init__(self, tid, name, doors):
-    self.type_id = tid
+    self.id = tid
     self.name = name
     self.doors = doors
 
@@ -144,7 +144,7 @@ class Type(db.Model):
 
   @property 
   def json(self):
-    model_dict = list()
+    model_dict = dict()
     for mobj in self.models.all():
       model_dict[mobj.id] = mobj.name
     return {'id':self.id, 'name':self.name, 'doors':self.doors, 'models':model_dict}
