@@ -210,16 +210,19 @@ p.copyright {
     margin: 15px 0 0;
 }
 
-
+@font-face {
+    font-family: 'hyperspeed';
+    src: url(font-awesome/fonts/hyperspd.ttf);
+}
 
 .atitle {
-    font-family: 'Atomic Age';
-    font-size: 50px;
+    font-family: 'hyperspeed';
+    font-size: 70px;
     padding-bottom: -8px;
 }
 
 .subtitle {
     padding-top: -10px;
-    font-family: 'Atomic Age';
+    font-family: 'hyperspeed';
     font-size: 30px;
 }
