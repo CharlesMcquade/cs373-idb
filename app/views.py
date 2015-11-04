@@ -2,6 +2,7 @@ from flask import render_template, redirect, abort, request, jsonify
 from jinja2 import TemplateNotFound
 from app import app
 import json
+import subprocess
 from app import db
 from models import Make, Model, Engine, Type
 
@@ -92,6 +93,15 @@ def about():
 	return render_template('about.html')
 
 
+# -------
+#  tests
+# -------
+@app.route('/tests')
+def tests():
+	cmd = ["make","test"]
+	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+	out, err = p.communicate()
+	return (out)
 
 # -----------
 #  API Calls
