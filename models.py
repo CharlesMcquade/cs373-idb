@@ -36,12 +36,10 @@ class Make(db.Model):
   
   @property
   def json(self):
-    model_list = list()
-    model_ids = list()
+    model_dict = dict()
     for mobj in self.models.all():
-      model_list.append(mobj.name)
-      model_ids.append(mobj.id)
-    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': model_list, 'model_ids':model_ids}
+      model_dict[mobj.id] = mobj.name
+    return {'id':self.id, 'name':self.name, 'hq':self.hqlocation, 'ceo': self.ceo, 'established':self.established, 'models': model_dict}
 
 class Model(db.Model):
   """
@@ -100,7 +98,7 @@ class Engine(db.Model):
   torque = db.Column(db.Integer)
   size = db.Column(db.Integer)
   fuel = db.Column(db.String(50))
-  #__table_args__ = (db.UniqueConstraint('name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
+  __table_args__ = (db.UniqueConstraint('name', 'cylinders', 'hp', 'torque', 'size', 'fuel', name='engine_uc'),)
 
   def __init__(self, id, name, cyl, hp, tor, size, fuel):
     self.id = id
@@ -116,12 +114,10 @@ class Engine(db.Model):
 
   @property
   def json(self):
-    model_list = list()
-    model_ids = list()
+    model_dict = dict()
     for mobj in self.models.all():
-      model_list.append(mobj.name)
-      model_ids.append(mobj.id)
-    return {'id':self.id, 'name':self.name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':model_list, 'model_ids':model_ids}
+      model_dict[mobj.id] = mobj.name
+    return {'id':self.id, 'name':self.name, 'cylinders':self.cylinders, 'hp':self.hp, 'torque':self.torque, 'size':self.size, 'fuel':self.fuel, 'models':model_dict}
 
 
 class Type(db.Model):
@@ -148,11 +144,9 @@ class Type(db.Model):
 
   @property 
   def json(self):
-    model_list = list()
-    model_ids = list()
+    model_dict = list()
     for mobj in self.models.all():
-      model_list.append(mobj.name)
-      model_ids.append(mobj.id)
-    return {'id':self.id, 'name':self.name, 'doors':self.doors, 'models':model_list, 'model_ids':model_ids}
+      model_dict[mobj.id] = mobj.name
+    return {'id':self.id, 'name':self.name, 'doors':self.doors, 'models':model_dict}
 
 
