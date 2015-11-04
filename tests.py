@@ -93,6 +93,8 @@ class TestModels (TestCase):
     db.session.add(m)
     db.session.add(mod)
     self.assertEqual(mod.json, {'year': 2015, 'make': 'cadillac', 'transmission': 'manual', 'price': 55000, 'id': 'model_5', 'engines': {99: 'V8'}, 'name': 'ram', 'types': {}})
+    db.session.delete(m)
+    db.session.delete(mod)
     
     
 
@@ -129,6 +131,12 @@ class TestModels (TestCase):
     db.session.delete(d)
     r = Model.query.all()
     self.assertEqual([], r)
+
+  def test_engine_4 (self) :
+    e = Engine(7, '4cyl', 4, 30, 50, 2, 'gasoline')
+    m = Model('model_7', 'ram', 2015, 55000, 'manual', 6)
+    m.engines.append(e)
+    self.assertEqual(e.json, {'hp': 30, 'models': ['ram'], 'fuel': 'gasoline', 'cylinders': 4, 'model_ids': ['model_7'], 'size': 2, 'name': '4cyl', 'id': 7, 'torque': 50})
  
   # -------
   # Type
@@ -158,6 +166,13 @@ class TestModels (TestCase):
     db.session.delete(d)
     r = Type.query.all()
     self.assertEqual([], r)
- 
+
+  def test_type_4 (self) :
+    m = Model('model_8', 'ram', 2015, 55000, 'manual', 6)
+    t = Type(8, 'truck', 5)
+    m.types.append(t)
+    self.assertEqual(t.json, {'name': 'truck', 'models': ['ram'], 'doors': 5, 'id': None, 'model_ids': ['model_8']})
+
+
 if __name__ == "__main__" :
   main()

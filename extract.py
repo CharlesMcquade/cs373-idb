@@ -9,7 +9,7 @@ from models import Make, Model, Engine, Type
 def pop_makes():
   usmakes = ['ford','dodge','chevrolet','pontiac','chrysler','tesla','jeep','lincoln','gmc','buick','cadillac','hummer','saturn','mercury']
   
-  with open('json/v2_all_with_data/makes.json') as f:
+  with open('json/v2_all_with_data/makes_2.json') as f:
     data = json.load(f)
 
   for k in data.keys():
