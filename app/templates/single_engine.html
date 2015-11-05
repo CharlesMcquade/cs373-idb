@@ -12,17 +12,16 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ "{}L V{} {} Engine".format(engine['size'], engine['cylinders'], engine['fuel']).title() }}</h1>
+                    <h1>{{ obj.name }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
                     <img src="/static/img/engine_template.jpg" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        {% for k, v in engine.items() %}
-                        {% if k != 'models' %}
-                        <li><h3>{{ k.title() }}</h3> <p>{{ v }}</p></li>
-                        {% endif %}
+                        {% set obj_dict = obj.json %}
+                        {% for h, k in hk %}
+                        <li><h3>{{ h }}</h3> <p>{{ obj_dict[k] }}</p></li>
                         {% endfor %}
                     </ul>
                 </div>

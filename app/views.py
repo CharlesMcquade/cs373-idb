@@ -53,32 +53,9 @@ def tables(path_val):
 		t = db.query.filter_by(**queries)
 
 		return render_template('table.html', keys=keys, path=path_val, headers=headers, t=t)
+	except TemplateNotFound:
+		abort(404)
 	except KeyError:
-		return path_val
-		#abort(404)
-
-@app.route('/models/<make>/<model>')
-def single_model(make, model):
-	try :
-		
-		m = Model.query.filter_by(name = model).first()
-		if m is None : raise TypeError
-
-		return render_template('single_model.html', m=m)
-	except TemplateNotFound:
-		abort(404)
-	except TypeError:
-		abort(404)
-
-# -------
-#  makes
-# -------
-
-@app.route('/makes/<make_name>')
-def single_make(make_name):
-	try :
-		return render_template('single_make.html', make=Make.query.filter_by(name=make_name).first().json)
-	except TemplateNotFound:
 		abort(404)
 
 # ---------
@@ -86,26 +63,18 @@ def single_make(make_name):
 # ---------
 
 
-@app.route('/engines/<engine_id>')
-def single_engine(engine_id):
+@app.route('/<path:path_val>/<obj_id>')
+def single_engine(path_val, obj_id):
 	try :
-		return render_template('single_engine.html', engine=Engine.query.filter_by(id = engine_id).first().json)
+		db, headers, keys = query_dict[path_val]
+
+		obj = db.query.filter_by(id = obj_id).first()
+		if obj == None: raise KeyError
+
+		return render_template('single_engine.html', hk= zip(headers, keys), path=path_val, obj=obj)
 	except TemplateNotFound:
 		abort(404)
-
-
-@app.route('/types/<type_id>')
-def single_type(type_id):
-	try :
-		return render_template('single_type.html', t=Type.query.filter_by(id = type_id).first())
-	except TemplateNotFound:
-		abort(404)
-
-@app.route('/transmissions/<tran_id>')
-def single_transmission(tran_id):
-	try :
-		return render_template('single_transmission.html', name=tran_id, tran=tranny_dict[tran_id])
-	except TemplateNotFound:
+	except KeyError:
 		abort(404)
 
 
