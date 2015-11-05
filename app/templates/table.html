@@ -60,10 +60,10 @@
                                 </thead>
                                 <tbody>
                                 {% for v in t %}
-                                {% set val = v.json %}
                                 <tr>
-                                {% for k in keys %}
-                                	<td>{{ val[k] }}</td>
+                                {% for k, f in z(keys, functions) %}
+                                {% set header_val, key_val = f(k, v) %}
+                                	<td>{{ key_val|safe }}</td>
                                 {% endfor %}
                                 </tr>
                                 {% endfor %}

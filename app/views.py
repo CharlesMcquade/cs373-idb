@@ -6,12 +6,6 @@ import subprocess
 from app import db
 from models import Make, Model, Engine, Type, Transmission
 
-#with open('dat/engines.json') as i : engine_dict = json.load(i)
-#with open('dat/makes.json') as i : makes_dict = json.load(i)
-#with open('dat/models.json') as i : models_dict = json.load(i)
-#with open('dat/types.json') as i : types_dict = json.load(i)
-#with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
-
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
@@ -98,7 +92,7 @@ def tables(path_val):
 
 		t = db.query.filter_by(**queries)
 
-		return render_template('table.html', keys=keys, path=path_val, headers=headers, t=t)
+		return render_template('table.html', z=zip, keys=keys, functions=functions, path=path_val, headers=headers, t=t)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
@@ -110,14 +104,14 @@ def tables(path_val):
 
 
 @app.route('/<path:path_val>/<obj_id>')
-def single_engine(path_val, obj_id):
+def single_item(path_val, obj_id):
 	try :
 		db, headers, keys, functions = query_dict[path_val]
 
 		obj = db.query.filter_by(id = obj_id).first()
 		if obj == None: raise KeyError
 
-		return render_template('single_engine.html', hkf= zip(headers, keys, functions), path=path_val, obj=obj)
+		return render_template('single_item.html', hkf= zip(headers, keys, functions), path=path_val, obj=obj)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
