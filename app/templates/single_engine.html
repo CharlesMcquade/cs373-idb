@@ -19,9 +19,9 @@
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        {% set obj_dict = obj.json %}
-                        {% for h, k in hk %}
-                        <li><h3>{{ h }}</h3> <p>{{ obj_dict[k] }}</p></li>
+                        {% for h, k, f in hkf %}
+                        {% set header_val, key_val = f(h, obj) %}
+                        <li><h3>{{ header_val|safe }}</h3> <p>{{ key_val|safe }}</p></li>
                         {% endfor %}
                     </ul>
                 </div>

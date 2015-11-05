@@ -12,21 +12,67 @@ from models import Make, Model, Engine, Type, Transmission
 #with open('dat/types.json') as i : types_dict = json.load(i)
 #with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
 
+
+def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
+def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
+
+
 query_dict = {'engines' : (Engine, 
 							["Name", "Size (Liters)", "Cylinders", "Horsepower", "Fuel Type", "Torque", "Models"],
-			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"]),
+			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"], 
+			  				[(lambda h, d: 
+			  					(h, make_anchor("/engines/{}".format(d.id), make_engine_name(d)))),
+			  				 (lambda h, d: 
+			  					(h, make_anchor("/engines?size={}".format(d.size), d.size))),
+		  					 (lambda h, d: 
+			  					(h, make_anchor("/engines?cylinders={}".format(d.cylinders), d.cylinders))),
+		  					 (lambda h, d: 
+			  					(h, make_anchor("/engines?hp={}".format(d.hp), d.hp))),
+			  				 (lambda h, d: 
+			  					(h, make_anchor("/engines?fuel={}".format(d.fuel), d.fuel))),
+			  				 (lambda h, d: 
+			  					(h, make_anchor("/engines?torque={}".format(d.torque), d.torque))),
+			  				 (lambda h, d: 
+			  					(h, make_anchor("/index", "All Models with this Engine")))]),
 			  'models' : (Model, 
 			  				["Name", "Make", "Year", "Price", "Engine ID", "Type", "Transmission ID"],
-			  				["name", "make", "year", "price", "engines", "types", "transmissions"]),
+			  				["name", "make", "year", "price", "engines", "types", "transmissions"],
+			  				[(lambda h, d: 
+			  					(h, make_anchor("/models/{}".format(d.id), d.name))),
+			  				(lambda h, d: 
+			  					(h, make_anchor("/makes/{}".format(d.make.id), d.make.name))),
+			  				(lambda h, d: 
+			  					(h, d.year)),
+			  				(lambda h, d: 
+			  					(h, d.price)),
+			  				(lambda h, d: 
+			  					(h, make_anchor("/engines/{}".format(d.engines.first().id), make_engine_name(d.engines.first())))),
+			  				(lambda h, d: 
+			  					(h, make_anchor("/types/{}".format(d.types.first().id), d.types.first().name))),
+			  				(lambda h, d: 
+			  					(h, make_anchor("/transmissions/{}".format(d.transmissions.first().id), d.transmissions.first().name)))]),
 			  'types' : (Type, 
 			  				["Name", "Number of Doors", "Models"],
-			  				["name", "doors", "models"]),
+			  				["name", "doors", "models"],
+			  				[(lambda h, d: (h, make_anchor("/types/{}".format(d.id), d.name))),
+			  				 (lambda h, d: (h, make_anchor("/types?doors={}".format(d.doors), d.doors))),
+			  				 (lambda h, d: (h, make_anchor("/index", "All Models of this Type")))]),
 			  'transmissions' : (Transmission, 
 			  				["Name", "Transmission Type", "Automatic Type", "Number of Speeds", "Models"],
-			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"]),
+			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"],
+			  				[(lambda h, d: (h, make_anchor("/transmissions/{}".format(d.id), d.name))),
+			  				 (lambda h, d: (h, make_anchor("/transmissions?transmission_type={}".format(d.transmission_type), d.transmission_type))),
+			  				 (lambda h, d: (h, make_anchor("/transmissions?automatic_type={}".format(d.automatic_type), d.automatic_type))),
+			  				 (lambda h, d: (h, make_anchor("/transmissions?num_speeds={}".format(d.num_speeds), d.num_speeds))),
+			  				 (lambda h, d: (h, make_anchor("/index", "All Models with this Transmission")))]),
 			  'makes' : (Make, 
 			  				["Name", "Headquarters Location", "CEO", "Date Established", "Models"],
-			  				["name", "hq", "ceo", "established", "models"])}
+			  				["name", "hqlocation", "ceo", "established", "models"],
+			  				[(lambda h, d: (h, make_anchor("/makes/{}".format(d.id), d.name))),
+			  				 (lambda h, d: (h, d.hqlocation)),
+			  				 (lambda h, d: (h, d.ceo)),
+			  				 (lambda h, d: (h, d.established)),
+			  				 (lambda h, d: (h, make_anchor("/index", "All Models of this Make")))])}
 
 # -------
 #  index
@@ -44,7 +90,7 @@ def index():
 @app.route('/<path:path_val>/', methods=['GET'])
 def tables(path_val):
 	try: 
-		db, headers, keys = query_dict[path_val]
+		db, headers, keys, functions = query_dict[path_val]
 
 		queries = dict()
 		for arg in request.args:
@@ -66,12 +112,12 @@ def tables(path_val):
 @app.route('/<path:path_val>/<obj_id>')
 def single_engine(path_val, obj_id):
 	try :
-		db, headers, keys = query_dict[path_val]
+		db, headers, keys, functions = query_dict[path_val]
 
 		obj = db.query.filter_by(id = obj_id).first()
 		if obj == None: raise KeyError
 
-		return render_template('single_engine.html', hk= zip(headers, keys), path=path_val, obj=obj)
+		return render_template('single_engine.html', hkf= zip(headers, keys, functions), path=path_val, obj=obj)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
