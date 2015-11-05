@@ -220,14 +220,22 @@ p.copyright {
     src: url(fonts/TrueType/SFSportsNight.ttf);
 }
 
+@font-face {
+    font-family: 'masque';
+    src: url(fonts/MASQUE__.ttf);
+}
+
 .atitle {
-    font-family: 'sf';
+    font-family: 'masque';
     font-size: 70px;
-    padding-bottom: -8px;
 }
 
 .subtitle {
     padding-top: -10px;
-    font-family: 'sf';
+    font-family: 'masque';
     font-size: 40px;
+}
+
+.menu{
+    font-family: 'masque';
 }
