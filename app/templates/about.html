@@ -20,6 +20,7 @@
 <!--The actual team -->
 <!-- Team Section -->
 <section id="team" class="bg-light-gray">
+  <h1 style="text-align:center;font-family:terminator;font-size:50px;color:#7887ab">MURIKINZ</h1><br>
    <div id="demo">
         <div class="container">
           <div class="row">
@@ -27,11 +28,11 @@
               <div id="owl-demo" class="owl-carousel">
                 <!--Begin Derek-->
                 <div class="wrap">
-                   <div class="item"><img src="{{ url_for('static', filename='img/Derek.jpg') }}" style="height:320px;width:350px" ></div>
+                   <div class="item"><img src="{{ url_for('static', filename='img/Derek.jpg') }}" style="height:350px;width:350px" ></div>
                      <div class="bio">
-                        <h4>Derek Smith</h4>
-                        <p>Responsibility: Database</p>
-                        <p>Derek is completing his last semester at UT. He is an officer in the Information System Security Society organization, and he likes pineapple on his pizza.</p>
+                        <h4 style="font-family:terminator">Derek Smith</h4>
+                        <p>Database</p>
+                        <p id="bio">Derek is completing his last semester at UT. He is an officer in the Information System Security Society organization, and he likes pineapple on his pizza.</p><br>
                         <ul class="list">
                             <li>Commits: </li>
                             <li>Issues: </li>
@@ -42,11 +43,11 @@
                 <!--End Derek -->
                 <!--Begin Animesh-->
                 <div class="wrap">
-                   <div class="item"><img src="{{ url_for('static', filename='img/Animesh.jpg') }}" style="height:320px;width:350px"></div>
+                   <div class="item"><img src="{{ url_for('static', filename='img/Animesh.jpg') }}" style="height:350px;width:350px"></div>
                      <div class="bio">
-                        <h4>Animesh Gandhi</h4>
-                        <p>Responsibility: Frontend Development</p>
-                        <p>Animesh loves racquetball, frisbee, running and reading. He is currently hooked onto Game of Thrones</p>
+                        <h4 style="font-family:terminator">Animesh Gandhi</h4>
+                        <p>Frontend</p>
+                        <p id="bio">Animesh loves racquetball, frisbee, running and reading. He is currently hooked onto Game of Thrones</p><br>
                         <ul class="list">
                             <li>Commits: </li>
                             <li>Issues: </li>
@@ -57,11 +58,11 @@
                 <!--End Animesh-->
                 <!-- Begin Andy-->
                 <div class="wrap">
-                   <div class="item"><img src="{{ url_for('static', filename='img/Andy.jpg') }}" style="height:320px; width: 350px"></div>
+                   <div class="item"><img src="{{ url_for('static', filename='img/Andy.jpg') }}" style="height:350px; width: 350px"></div>
                       <div class="bio">
-                        <h4>Andy Ehlert</h4>
-                        <p>Responsibility: Database, API</p>
-                        <p>Computer Science, Business Foundations, 3x Intramural Premier League Soccer Champion</p>
+                        <h4 style="font-family:terminator">Andy Ehlert</h4>
+                        <p>Database, API</p>
+                        <p id="bio">Computer Science, Business Foundations, 3x Intramural Premier League Soccer Champion</p><br>
                         <ul class="list">
                             <li>Commits: </li>
                             <li>Issues: </li>
@@ -72,11 +73,11 @@
                 <!--End Anydy-->
                 <!--Begin Charles-->
                 <div class="wrap">
-                   <div class="item"><img src="{{ url_for('static', filename='img/Charles.jpg') }}" style="height:320px;width:350px"></div>
+                   <div class="item"><img src="{{ url_for('static', filename='img/Charles.jpg') }}" style="height:350px;width:350px"></div>
                       <div class="bio">
-                        <h4>Charles Inglis</h4>
-                        <p>Responsibility: Backend</p>
-                        <p>Computer Science, Business Foundations, Information Security Certificate, 3x World of Warcraft Arena Champion, lvl 99 Ret Paladin</p>
+                        <h4 style="font-family:terminator">Charles Inglis</h4>
+                        <p>Backend</p>
+                        <p id="bio">Computer Science, Business Foundations, Information Security Certificate, 3 x World of Warcraft Arena Champion</p><br>
                         <ul class="list">
                             <li>Commits: </li>
                             <li>Issues: </li>
@@ -87,11 +88,11 @@
                 <!--End Charles-->
                 <!--Begin Kevin-->
                 <div class="wrap">
-                   <div class="item"><img src="{{ url_for('static', filename='img/Kevin.jpg') }}" style="height:320px;width:350px"></div>
+                   <div class="item"><img src="{{ url_for('static', filename='img/Kevin.jpg') }}" style="height:350px;width:350px"></div>
                       <div class="bio">
-                        <h4>Kevin Nguyen</h4>
-                        <p>Responsibility: Frontend, UML</p>
-                        <p>Computer Science, PLUR Raver, graduate in 3 1/2 years, likes Pepe the Frog</p>
+                        <h4 style="font-family:terminator">Kevin Nguyen</h4>
+                        <p>Frontend, UML</p>
+                        <p id="bio">Computer Science, PLUR Raver, graduate in 3 1/2 years, likes Pepe the Frog</p><br>
                         <ul class="list">
                             <li>Commits: </li>
                             <li>Issues: </li>
@@ -121,23 +122,30 @@
 
     });
     </script>
-
-<div class="stats">
-    	<p style="text-align:center;font-size:35px; color:white">STATS</p>
+<div class="row">
+  <div class="col-lg-12 stats">
+    <h1 class="s_header"> Stats </h1>
     <ul>
         <li>Total commits: 61</li>
         <li>Total issues: 19</li>
         <li>Total unit tests: 12</li>
+    </ul>
+
+    <h1 class="s_header">Links</h1>
+    <ul>
         <li><a target="_blank" href="https://github.com/CharlesMcquade/cs373-idb/issues">Github Issue tracker</a></li>
         <li><a target="_blank" href="https://github.com/CharlesMcquade/cs373-idb">Github repo</a></li>
         <li><a target="_blank" href="https://github.com/CharlesMcquade/cs373-idb/wiki">Github Wiki</a></li>
-
+        <li><a target="_blank" href="http://docs.murikinmadeapi.apiary.io/#">Apiary</a></li>
+        
     </ul>
 
-    	<p style="text-align:center;font-size:35px; color:white">DATA</p>
-    	<ul>
-        <li><a target="_blank" href="http://docs.murikinmadeapi.apiary.io/#">Apiary</a></li>
+    <h1 class="s_header">Data</h1>
+    <ul>
         <li><a target="_blank" href="http://developer.edmunds.com/api-documentation/overview/">Edmunds API</a></li>
-        <p style="text-align:center;font-size:15px; color:white">For this project, we are looking at American-made vehicles, so we chose three models for the first iteration of the project from three different makes and found their newest year. We then made a request to the API asking for their styles. The request returns a json which contains a list of the numerous styles available</p></ul>
+        <p style="text-align:center;font-size:15px; color:white">For this project, we are looking at American-made vehicles, so we chose three models for the first iteration of the project from three different makes and found their newest year. We then made a request to the API asking for their styles. The request returns a json which contains a list of the numerous styles available</p>
+    </ul>
+
+</div>
 </div>
 {% endblock %}
