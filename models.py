@@ -6,6 +6,7 @@ Models.py defines the database models using Python classes. These classes will b
 # association tables for model<>engine, and model<>type
 model_engine = db.Table('model_engine', db.Column('model_id', db.String(50), db.ForeignKey('model.id')),db.Column('engine_id', db.Integer, db.ForeignKey('engine.id')))
 model_type = db.Table('model_type', db.Column('model_id', db.String(50), db.ForeignKey('model.id')), db.Column('type_id', db.Integer, db.ForeignKey('type.id')))
+model_transmission = db.Table('model_transmission', db.Column('model_id', db.String(50), db.ForeignKey('model.id')),db.Column('transmission_id', db.Integer, db.ForeignKey('transmission.id')))
 
 
 class Make(db.Model):
@@ -61,6 +62,7 @@ class Model(db.Model):
 
   types = db.relationship("Type", secondary=model_type, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
 
+  transmissions = db.relationship("Transmission", secondary=model_transmission, backref=db.backref("models", lazy="dynamic"), lazy="dynamic")
 
   def __init__(self, id, name, year, price, trans, make_id):
     self.id = id
@@ -86,8 +88,8 @@ class Model(db.Model):
 class Engine(db.Model):
   """
   Table to store engine details. 
-  The Engine model is a many to many relationship with the Model class. A vehicle model can have numberous engines and a single engine can belong to multiple vehicles. 
-  An Engine object has a models attribute that is not explicitly declared, but is established through the relationship that exists within the Model class. 
+	The Engine model is a many to many relationship with the Model class. A vehicle model can have numberous engines and a single engine can belong to multiple vehicles. 
+	 An Engine object has a models attribute that is not explicitly declared, but is established through the relationship that exists within the Model class. 
   An Engine object can retrieve a query object of the models it pertains to by using engine.models.
   """
   __tablename__ = 'engine'
@@ -148,5 +150,33 @@ class Type(db.Model):
     for mobj in self.models.all():
       model_dict[mobj.id] = mobj.name
     return {'id':self.id, 'name':self.name, 'doors':self.doors, 'models':model_dict}
+
+class Transmission(db.Model):
+  """
+  """
+  __tablename__ = 'transmission'
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(250))
+  transmission_type = db.Column(db.String(50))
+  automatic_type = db.Column(db.String(50))
+  num_speeds = db.Column(db.Integer)
+  __table_args__ = (db.UniqueConstraint('name', 'transmission_type', 'automatic_type', 'num_speeds', name='transmission_uc'),)
+
+  def __init__(self, id, name, transmission_type, automatic_type, num_speeds):
+    self.id = id
+    self.name = name
+    self.transmission_type = transmission_type
+    self.automatic_type = automatic_type
+    self.num_speeds = num_speeds
+
+  def __repr__(self):
+    return '%r' % (self.name)
+
+  @property
+  def json(self):
+    model_dict = dict()
+    for mobj in self.models.all():
+      model_dict[mobj.id] = mobj.name
+    return {'id':self.id, 'name':self.name, 'transmission_type':self.transmission_type, 'automatic_type':self.automatic_type, 'num_speeds':self.num_speeds, 'models':model_dict}
 
 
