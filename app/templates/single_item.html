@@ -12,13 +12,14 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ obj.name }}</h1>
+                    <h1>{{ functions[0](None, obj)[1]|safe }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
                     <img src="/static/img/engine_template.jpg" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
+                        {% set hkf = z(headers, keys, functions) %}
                         {% for h, k, f in hkf %}
                         {% set header_val, key_val = f(h, obj) %}
                         <li><h3>{{ header_val|safe }}</h3> <p>{{ key_val|safe }}</p></li>

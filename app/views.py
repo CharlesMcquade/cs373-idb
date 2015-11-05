@@ -9,6 +9,10 @@ from models import Make, Model, Engine, Type, Transmission
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
+def make_tran_name(d) : 
+	if d.num_speeds == "continuously variable" : 
+		return "Variable Transmission"
+	return "{}-Speed {}".format(d.num_speeds, d.transmission_type.lower())
 
 #dictionary for queries. 
 # key = path, 
@@ -46,7 +50,7 @@ query_dict = {'engines' : (Engine,
 			  				(lambda h, d: 
 			  					(h, make_anchor("/types/{}".format(d.types.first().id), d.types.first().name))),
 			  				(lambda h, d: 
-			  					(h, make_anchor("/transmissions/{}".format(d.transmissions.first().id), d.transmissions.first().name)))]),
+			  					(h, make_anchor("/transmissions/{}".format(d.transmissions.first().id), make_tran_name(d.transmissions.first()))))]),
 			  'types' : (Type, 
 			  				["Name", "Number of Doors", "Models"],
 			  				["name", "doors", "models"],
@@ -56,7 +60,7 @@ query_dict = {'engines' : (Engine,
 			  'transmissions' : (Transmission, 
 			  				["Name", "Transmission Type", "Automatic Type", "Number of Speeds", "Models"],
 			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"],
-			  				[(lambda h, d: (h, make_anchor("/transmissions/{}".format(d.id), d.name))),
+			  				[(lambda h, d: (h, make_anchor("/transmissions/{}".format(d.id), make_tran_name(d)))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?transmission_type={}".format(d.transmission_type), d.transmission_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?automatic_type={}".format(d.automatic_type), d.automatic_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?num_speeds={}".format(d.num_speeds), d.num_speeds))),
@@ -111,7 +115,13 @@ def single_item(path_val, obj_id):
 		obj = db.query.filter_by(id = obj_id).first()
 		if obj == None: raise KeyError
 
-		return render_template('single_item.html', hkf= zip(headers, keys, functions), path=path_val, obj=obj)
+		return render_template('single_item.html', 
+			                        z=zip, 
+			                        headers=headers,
+			                        keys=keys,
+			                        functions=functions,
+			                        path=path_val,
+			                        obj=obj)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
