@@ -10,7 +10,9 @@ from models import Make, Model, Engine, Type, Transmission
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
 
-
+#dictionary for queries. 
+# key = path, 
+# value= tuple(Database, Proper Titles for Data values, Data index values, functions to apply to titles/values)
 query_dict = {'engines' : (Engine, 
 							["Name", "Size (Liters)", "Cylinders", "Horsepower", "Fuel Type", "Torque", "Models"],
 			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"], 
@@ -77,9 +79,9 @@ def index():
 	return render_template('index.html')
 
 
-# ------------
-#  all tables
-# ------------
+# ---------------------
+#  view for all tables
+# ---------------------
 @app.route('/<path:path_val>', methods=['GET'])
 @app.route('/<path:path_val>/', methods=['GET'])
 def tables(path_val):
@@ -98,11 +100,9 @@ def tables(path_val):
 	except KeyError:
 		abort(404)
 
-# ---------
-#  engines
-# ---------
-
-
+# -------------------
+#  view for all items
+# -------------------
 @app.route('/<path:path_val>/<obj_id>')
 def single_item(path_val, obj_id):
 	try :
