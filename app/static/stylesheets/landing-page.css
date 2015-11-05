@@ -211,18 +211,23 @@ p.copyright {
 }
 
 @font-face {
-    font-family: 'hyperspeed';
-    src: url(font-awesome/fonts/hyperspd.ttf);
+    font-family: 'rs';
+    src: url(fonts/RocketScript/RocketScript.ttf);
+}
+
+@font-face {
+    font-family: 'sf';
+    src: url(fonts/TrueType/SFSportsNight.ttf);
 }
 
 .atitle {
-    font-family: 'hyperspeed';
+    font-family: 'sf';
     font-size: 70px;
     padding-bottom: -8px;
 }
 
 .subtitle {
     padding-top: -10px;
-    font-family: 'hyperspeed';
-    font-size: 30px;
+    font-family: 'sf';
+    font-size: 40px;
 }
