@@ -12,16 +12,16 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ name.title() }}</h1>
+                    <h1>{{ make['name'].title() }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
-                    <img src="/static/img/temp_make_logos/{{name.title()}}_logo.jpg" class="img-responsive">
+                    <img src="/static/img/temp_make_logos/{{ make['name'].title() }}_logo.jpg" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
                         {% for k, v in make.items() %}
                         {% if k != 'id' %}
-                        <li><h3>{{ k }}</h3> <p>{{ v }}</p></li>
+                        <li><h3>{{ k.title() }}</h3> <p>{{ v }}</p></li>
                         {% endif %}
                         {% endfor %}
                     </ul>

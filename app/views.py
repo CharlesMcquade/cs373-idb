@@ -27,13 +27,19 @@ def index():
 @app.route('/models')
 @app.route('/models/')
 def models():
-	return render_template('models.html', models=models_dict)
+	return render_template('models.html', models=Model.query.all())
 
 @app.route('/models/<make>/<model>')
 def single_model(make, model):
 	try :
-		return render_template('single_model.html', make_name=make, model_name=model, model=models_dict[make][model])
+		
+		m = Model.query.filter_by(name = model).first()
+		if m is None : raise TypeError
+
+		return render_template('single_model.html', m=m)
 	except TemplateNotFound:
+		abort(404)
+	except TypeError:
 		abort(404)
 
 # -------
@@ -42,12 +48,12 @@ def single_model(make, model):
 @app.route('/makes')
 @app.route('/makes/')
 def makes():
-	return render_template('makes.html', makes=makes_dict)
+	return render_template('makes.html', makes=Make.query.all())
 
-@app.route('/makes/<make_id>')
-def single_make(make_id):
+@app.route('/makes/<make_name>')
+def single_make(make_name):
 	try :
-		return render_template('single_make.html', name=make_id, make=makes_dict[make_id])
+		return render_template('single_make.html', make=Make.query.filter_by(name=make_name).first().json)
 	except TemplateNotFound:
 		abort(404)
 
@@ -57,14 +63,14 @@ def single_make(make_id):
 @app.route('/engines')
 @app.route('/engines/')
 def engines():
-	return render_template('engines.html', engines=engine_dict)
+	return render_template('engines.html', engines=Engine.query.all())
 
 
 
 @app.route('/engines/<engine_id>')
 def single_engine(engine_id):
 	try :
-		return render_template('single_engine.html', engine=engine_dict[engine_id])
+		return render_template('single_engine.html', engine=Engine.query.filter_by(id = engine_id).first().json)
 	except TemplateNotFound:
 		abort(404)
 
@@ -72,7 +78,7 @@ def single_engine(engine_id):
 @app.route('/types/<type_id>')
 def single_type(type_id):
 	try :
-		return render_template('single_type.html', name=type_id, type=types_dict[type_id])
+		return render_template('single_type.html', name=type_id, type=Type.query.filter_by(id = type_id).first())
 	except TemplateNotFound:
 		abort(404)
 

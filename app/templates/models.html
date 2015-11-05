@@ -62,23 +62,21 @@
                                     <th>Year</th>
                                     <th>Price</th>
                                     <th>Engine ID</th>
-                                    <th>Type ID</th>
+                                    <th>Type</th>
                                     <th>Transmission ID</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for make, model in models.items() %}
-                                    {% for name, vals in model.items() %}
+                                {% for m in models %}
                                         <tr>
-                                        <td class="user-photo"><a href="/models/{{make}}/{{name}}">{{ name.title() }}</a></th>
-                                        <td><a href="/makes/{{ make }}">{{ make.title() }}</a></td>
-                                        <td>{{ vals['year'] }}</td>
-                                        <td>${{ vals['price'] }}</td>
-                                        <td><a href="/engines/{{ vals['engine_id'] }}">{{ vals['engine_id'] }}</a></td>
-                                        <td><a href="/types/{{ vals['type_id'] }}">{{ vals['type_id'] }}</td>
-                                        <td><a href="/transmissions/{{ vals['transmission_id'] }}">{{ vals['transmission_id'] }}</td>
+                                        <td class="user-photo"><a href="/models/{{m.make.name}}/{{m.name}}">{{ m.name.title() }}</a></th>
+                                        <td><a href="/makes/{{ m.make.name }}">{{ m.make.name.title() }}</a></td>
+                                        <td>{{ m.year }}</td>
+                                        <td>${{ m.price }}</td>
+                                        <td><a href="/engines/{{ m.engines.id }}">{{ m.engines.first().name }}</a></td>
+                                        <td><a href="/types/{{ m.types }}">{{ m.types.first().name.title() }}</td>
+                                        <td><a href="/transmissions/{{ m.transmission }}">{{ m.transmission }}</td>
                                         </tr>
-                                    {% endfor %}
                                 {% endfor %}
                                 </tbody>
                             </table>    

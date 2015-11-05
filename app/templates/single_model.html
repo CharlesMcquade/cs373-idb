@@ -11,26 +11,19 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ make_name.title() }} {{ model_name.title() }}</h1>
+                    <h1>{{ m.make.name.title()}} {{ m.name.title() }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
-                    <img src="/static/img/temp_vehicle_models/{{make_name.title()}}_{{model_name.title()}}.jpg" class="img-responsive">
+                    <img src="/static/img/temp_vehicle_models/{{m.make.name.title()}}_{{m.name.title()}}.jpg" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
-                        {% for k, v in model.items() %} 
-                        {% if k == 'engine_id' %}
-                        <li><h3>{{ k.title() }}</h3> <p><a href="/engines/{{ v }}">{{ v }}</a></p></li>
-                        {% elif k == 'make_id' %}
-                        <li><h3>Make</h3> <p><a href="/makes/{{ make_name }}">{{ make_name }}</a></p></li>
-                        {% elif k == 'type_id' %}
-                        <li><h3>{{ k.title() }}</h3> <p><a href="/types/{{ v }}">{{ v }}</a></p></li>
-                        {% elif k == 'transmission_id' %}
-                        <li><h3>{{ k.title() }}</h3> <p><a href="/transmissions/{{ v }}">{{ v }}</a></p></li>
-                         {% elif k != 'id' %}
-                        <li><h3>{{ k.title() }}</h3> <p>{{ v }}</p></li>
-                        {% endif %}
-                        {% endfor %}
+                        <li><h3>Engine:</h3> <p>{{ m.engines.first().name }}</p></li>
+                        <li><h3>Year:</h3> <p>{{ m.year }}</p></li>
+                        <li><h3>Transmission:</h3> <p>{{ m.transmission }}</p></li>
+                        <li><h3>Price:</h3> <p>{{ m.price }}</p></li>
+                        <li><h3>Year:</h3> <p>{{ m.year }}</p></li>
+                        <li><h3>Type:</h3> <p>{{ m.types.name }}</p></li>
                     </ul>
                 </div>
             </div>
