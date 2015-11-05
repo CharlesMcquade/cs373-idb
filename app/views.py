@@ -40,7 +40,7 @@ query_dict = {'engines' : (Engine,
 			  				[(lambda h, d: 
 			  					(h, make_anchor("/models/{}".format(d.id), d.name))),
 			  				(lambda h, d: 
-			  					(h, make_anchor("/makes/{}".format(d.make.id), d.make.name))),
+			  					(h, make_anchor("/makes/?id={}".format(d.make.id), d.make.name))),
 			  				(lambda h, d: 
 			  					(h, d.year)),
 			  				(lambda h, d: 
@@ -98,7 +98,13 @@ def tables(path_val):
 
 		t = db.query.filter_by(**queries)
 
-		return render_template('table.html', z=zip, keys=keys, functions=functions, path=path_val, headers=headers, t=t)
+		return render_template('table.html', 
+									z=zip, 
+									keys=keys, 
+									functions=functions, 
+									path=path_val, 
+									headers=headers, 
+									t=t)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
