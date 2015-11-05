@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ engine['name'] }}</h1>
+                    <h1>{{ "{}L V{} {} Engine".format(engine['size'], engine['cylinders'], engine['fuel']).title() }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
                     <img src="/static/img/engine_template.jpg" class="img-responsive">
                 </div>
@@ -20,8 +20,8 @@
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
                         {% for k, v in engine.items() %}
-                        {% if k != 'vehicles' %}
-                        <li><h3>{{ k }}</h3> <p>{{ v }}</p></li>
+                        {% if k != 'models' %}
+                        <li><h3>{{ k.title() }}</h3> <p>{{ v }}</p></li>
                         {% endif %}
                         {% endfor %}
                     </ul>

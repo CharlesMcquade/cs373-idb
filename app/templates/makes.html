@@ -65,12 +65,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for name, m in makes.items() %}
+                                {% for m in makes %}
                                 <tr>
-                                    <td class="user-photo"><a href="/makes/{{ name }}">{{ name.title() }}</a></th>
-                                    <td>{{ m['hq_loc'].title() }}</td>
-                                    <td>{{ m['ceo'].title() }}</td>
-                                    <td>{{ m['est'] }}</td>
+                                    <td class="user-photo"><a href="/makes/{{ m.name }}">{{ m.name.title() }}</a></th>
+                                    <td>{{ m.hqlocation.title() }}</td>
+                                    <td>{{ m.ceo.title() }}</td>
+                                    <td>{{ m.established }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>

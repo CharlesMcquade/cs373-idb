@@ -62,14 +62,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for id, engine in engines.items() %}
+                                {% for e in engines %}
                                 <tr>
-                                    <td class="user-photo"><a href="/engines/{{id}}">{{engine['name']}}</a></th>
-                                    <td>{{ engine['size'] }}</td>
-                                    <td>{{ engine['cylinders'] }}</td>
-                                    <td>{{ engine['hp'] }}</td>
-                                    <td>{{ engine['type'] }}</td>
-                                    <td>{{ engine['torque'] }}</td>
+                                    <td class="user-photo"><a href="/engines/{{ e.id }}">{{ "{}L V{} {} Engine".format(e.size, e.cylinders, e.fuel).title() }}</a></th>
+                                    <td>{{ e.size }}</td>
+                                    <td>{{ e.cylinders }}</td>
+                                    <td>{{ e.hp}}</td>
+                                    <td>{{ e.fuel.title() }}</td>
+                                    <td>{{ e.torque }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
