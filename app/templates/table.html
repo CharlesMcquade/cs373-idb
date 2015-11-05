@@ -1,34 +1,81 @@
-<!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+{% extends "index.html" %}
+{% block title %}Vehicle Engines{% endblock %} 
+{% block head %}
+<head>
 
-<!-- Description -->
-<h1 class="description">
-  Responsive table with json data.
-</h1>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
-<!-- Table demo -->
-<div class="box-table">
-	<table>
-		<tr>
-			<td>Data 1</td>
-			<td>Data 2</td>
-			<td>Data 3</td>
-			<td>Data 4</td>
-			<td>Data 5</td>
-		</tr>
-		<tr>
-			<td>Data 1</td>
-			<td>Data 2</td>
-			<td>Data 3</td>
-			<td>Data 4</td>
-			<td>Data 5</td>
-		</tr>
-		<tr>
-			<td>Data 1</td>
-			<td>Data 2</td>
-			<td>Data 3</td>
-			<td>Data 4</td>
-			<td>Data 5</td>
-		</tr>
-	</table>    
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
+
+
+    <!-- Table CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/table.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sortable.js') }}"></script>
+
+</head>
+{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                    <br><br><br>
+                        <!-- Description -->
+                        <h1 class="description">
+                          American Vehicle Engines
+                        </h1>
+
+                        <!-- Table demo -->
+                        <div class="box-table">
+                            <table class="sortable">
+                                <thead>
+                                <tr>
+                                    {% for h in headers %}
+                                    <th>{{ h }}</th>
+                     				{% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for v in t %}
+                                {% set val = v.json %}
+                                <tr>
+                                {% for k in keys %}
+                                	<td>{{ val[k] }}</td>
+                                {% endfor %}
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>    
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% endblock %}

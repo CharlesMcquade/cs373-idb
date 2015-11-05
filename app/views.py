@@ -4,13 +4,29 @@ from app import app
 import json
 import subprocess
 from app import db
-from models import Make, Model, Engine, Type
+from models import Make, Model, Engine, Type, Transmission
 
-with open('dat/engines.json') as i : engine_dict = json.load(i)
-with open('dat/makes.json') as i : makes_dict = json.load(i)
-with open('dat/models.json') as i : models_dict = json.load(i)
-with open('dat/types.json') as i : types_dict = json.load(i)
-with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
+#with open('dat/engines.json') as i : engine_dict = json.load(i)
+#with open('dat/makes.json') as i : makes_dict = json.load(i)
+#with open('dat/models.json') as i : models_dict = json.load(i)
+#with open('dat/types.json') as i : types_dict = json.load(i)
+#with open('dat/transmissions.json') as i : tranny_dict = json.load(i)
+
+query_dict = {'engines' : (Engine, 
+							["Name", "Size (Liters)", "Cylinders", "Horsepower", "Fuel Type", "Torque", "Models"],
+			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"]),
+			  'models' : (Model, 
+			  				["Name", "Make", "Year", "Price", "Engine ID", "Type", "Transmission ID"],
+			  				["name", "make", "year", "price", "engines", "types", "transmissions"]),
+			  'types' : (Type, 
+			  				["Name", "Number of Doors", "Models"],
+			  				["name", "doors", "models"]),
+			  'transmissions' : (Transmission, 
+			  				["Name", "Transmission Type", "Automatic Type", "Number of Speeds", "Models"],
+			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"]),
+			  'makes' : (Make, 
+			  				["Name", "Headquarters Location", "CEO", "Date Established", "Models"],
+			  				["name", "hq", "ceo", "established", "models"])}
 
 # -------
 #  index
@@ -21,13 +37,25 @@ def index():
 	return render_template('index.html')
 
 
-# --------
-#  models
-# --------
-@app.route('/models')
-@app.route('/models/')
-def models():
-	return render_template('models.html', models=Model.query.all())
+# ------------
+#  all tables
+# ------------
+@app.route('/<path:path_val>', methods=['GET'])
+@app.route('/<path:path_val>/', methods=['GET'])
+def tables(path_val):
+	try: 
+		db, headers, keys = query_dict[path_val]
+
+		queries = dict()
+		for arg in request.args:
+			queries[arg] = request.args.get(arg)
+
+		t = db.query.filter_by(**queries)
+
+		return render_template('table.html', keys=keys, path=path_val, headers=headers, t=t)
+	except KeyError:
+		return path_val
+		#abort(404)
 
 @app.route('/models/<make>/<model>')
 def single_model(make, model):
@@ -45,10 +73,6 @@ def single_model(make, model):
 # -------
 #  makes
 # -------
-@app.route('/makes')
-@app.route('/makes/')
-def makes():
-	return render_template('makes.html', makes=Make.query.all())
 
 @app.route('/makes/<make_name>')
 def single_make(make_name):
@@ -60,11 +84,6 @@ def single_make(make_name):
 # ---------
 #  engines
 # ---------
-@app.route('/engines')
-@app.route('/engines/')
-def engines():
-	return render_template('engines.html', engines=Engine.query.all())
-
 
 
 @app.route('/engines/<engine_id>')
@@ -78,7 +97,7 @@ def single_engine(engine_id):
 @app.route('/types/<type_id>')
 def single_type(type_id):
 	try :
-		return render_template('single_type.html', name=type_id, type=Type.query.filter_by(id = type_id).first())
+		return render_template('single_type.html', t=Type.query.filter_by(id = type_id).first())
 	except TemplateNotFound:
 		abort(404)
 

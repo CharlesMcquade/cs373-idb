@@ -73,9 +73,9 @@
                                         <td><a href="/makes/{{ m.make.name }}">{{ m.make.name.title() }}</a></td>
                                         <td>{{ m.year }}</td>
                                         <td>${{ m.price }}</td>
-                                        <td><a href="/engines/{{ m.engines.id }}">{{ m.engines.first().name }}</a></td>
-                                        <td><a href="/types/{{ m.types }}">{{ m.types.first().name.title() }}</td>
-                                        <td><a href="/transmissions/{{ m.transmission }}">{{ m.transmission }}</td>
+                                        <td><a href="/engines/{{ m.engines.first().id }}">{{ m.engines.first().name }}</a></td>
+                                        <td><a href="/types/{{ m.types.first().id }}">{{ m.types.first().name.title() }}</td>
+                                        <td><a href="/transmissions/{{ m.transmissions.first().id }}">{{ m.transmissions.first().name }}</td>
                                         </tr>
                                 {% endfor %}
                                 </tbody>
