@@ -99,9 +99,14 @@ def about():
 @app.route('/tests')
 def tests():
 	cmd = ["make","test"]
-	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+	p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 	out, err = p.communicate()
-	return (out)
+	with open('tests.tmp') as f:
+		result = f.readlines()
+	try :
+		return render_template('tests.html', results=result)
+	except TemplateNotFound:
+		about(404)
 
 # -----------
 #  API Calls
