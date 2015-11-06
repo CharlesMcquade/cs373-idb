@@ -7,7 +7,7 @@
 import sys
 from app import db
 from unittest import main, TestCase
-from models import Make, Model, Engine, Type
+from models import Make, Model, Engine, Type, Transmission
 
 
 class TestModels (TestCase):
@@ -111,6 +111,32 @@ class TestModels (TestCase):
     m.types.append(t)
     self.assertEqual(t.json, {'id': 88888, 'name': 'truck', 'models': {'model_8': 'ram'}, 'doors': 55})
 
+  # -------
+  # Transmission
+  # -------
+  def test_transmission_1 (self) :
+    a = Transmission(11111, 'fake_transmission', 'Manual', 'FASE', 99)
+    db.session.add(a)
+    r = Transmission.query.filter_by(name='fake_transmission').first()
+    self.assertEqual(99, r.num_speeds)
+    db.session.delete(a)
 
+  def test_transmission_2 (self) :
+    a = Transmission(22222, 'fake_transmission', 'Automatic', 'Shiftable', 9)
+    db.session.add(a)
+    r = Transmission.query.get(22222)
+    self.assertEqual('Automatic', r.transmission_type)
+
+  def test_transmission_3 (self) :
+    a = Transmission(33333, 'fake_transmission', 'Automatic', 'Normal', 6)
+    m = Model('model_9', 'focus', 2015, 55000, 'automatic', 6)
+    m.transmissions.append(a)
+    self.assertEqual({'transmission_type': 'Automatic', 'name': 'fake_transmission', 'models': {'model_9': 'focus'}, 'automatic_type': 'Normal', 'id': 33333, 'num_speeds': 6}, a.json)
+
+
+
+# -------
+# Main
+# -------
 if __name__ == "__main__" :
   main()
