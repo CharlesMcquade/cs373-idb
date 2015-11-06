@@ -33,7 +33,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: 
 			  					(h, make_anchor("/engines?torque={}".format(d.torque), d.torque))),
 			  				 (lambda h, d: 
-			  					(h, make_anchor("/index", "All Models with this Engine")))]),
+			  					(h, make_anchor("/models/engines?id={}".format(d.id), "All Models with this Engine")))]),
 			  'models' : (Model, 
 			  				["Name", "Make", "Year", "Price", "Engine ID", "Type", "Transmission ID"],
 			  				["name", "make", "year", "price", "engines", "types", "transmissions"],
@@ -42,9 +42,9 @@ query_dict = {'engines' : (Engine,
 			  				(lambda h, d: 
 			  					(h, make_anchor("/makes/?id={}".format(d.make.id), d.make.name))),
 			  				(lambda h, d: 
-			  					(h, d.year)),
+			  					(h, make_anchor("/models/?year={}".format(d.year), d.year))),
 			  				(lambda h, d: 
-			  					(h, d.price)),
+			  					(h, "${:.2f}".format(float(d.price)))),
 			  				(lambda h, d: 
 			  					(h, make_anchor("/engines/{}".format(d.engines.first().id), make_engine_name(d.engines.first())))),
 			  				(lambda h, d: 
@@ -56,7 +56,7 @@ query_dict = {'engines' : (Engine,
 			  				["name", "doors", "models"],
 			  				[(lambda h, d: (h, make_anchor("/types/{}".format(d.id), d.name))),
 			  				 (lambda h, d: (h, make_anchor("/types?doors={}".format(d.doors), d.doors))),
-			  				 (lambda h, d: (h, make_anchor("/index", "All Models of this Type")))]),
+			  				 (lambda h, d: (h, make_anchor("/models/types?id={}".format(d.id), "All Models of this Type")))]),
 			  'transmissions' : (Transmission, 
 			  				["Name", "Transmission Type", "Automatic Type", "Number of Speeds", "Models"],
 			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"],
@@ -64,7 +64,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: (h, make_anchor("/transmissions?transmission_type={}".format(d.transmission_type), d.transmission_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?automatic_type={}".format(d.automatic_type), d.automatic_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?num_speeds={}".format(d.num_speeds), d.num_speeds))),
-			  				 (lambda h, d: (h, make_anchor("/index", "All Models with this Transmission")))]),
+			  				 (lambda h, d: (h, make_anchor("/models/transmissions?id={}".format(d.id), "All Models with this Transmission")))]),
 			  'makes' : (Make, 
 			  				["Name", "Headquarters Location", "CEO", "Date Established", "Models"],
 			  				["name", "hqlocation", "ceo", "established", "models"],
@@ -72,7 +72,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: (h, d.hqlocation)),
 			  				 (lambda h, d: (h, d.ceo)),
 			  				 (lambda h, d: (h, d.established)),
-			  				 (lambda h, d: (h, make_anchor("/index", "All Models of this Make")))])}
+			  				 (lambda h, d: (h, make_anchor("/models/makes?id={}".format(d.id), "All Models of this Make")))])}
 
 # -------
 #  index
@@ -113,21 +113,39 @@ def tables(path_val):
 # -------------------
 #  view for all items
 # -------------------
-@app.route('/<path:path_val>/<obj_id>')
+@app.route('/<path:path_val>/<obj_id>', methods=['GET'])
 def single_item(path_val, obj_id):
 	try :
-		db, headers, keys, functions = query_dict[path_val]
-
-		obj = db.query.filter_by(id = obj_id).first()
-		if obj == None: raise KeyError
-
-		return render_template('single_item.html', 
+		queries = dict()
+		for arg in request.args:
+			queries[arg] = request.args.get(arg)
+		
+		if len(queries) < 1 : 
+			db, headers, keys, functions = query_dict[path_val]
+			obj = db.query.filter_by(id = obj_id).first()
+			if obj == None: raise KeyError
+			return render_template('single_item.html', 
 			                        z=zip, 
 			                        headers=headers,
 			                        keys=keys,
 			                        functions=functions,
 			                        path=path_val,
 			                        obj=obj)
+
+		#if there are args, query object's db
+		db, headers_null, keys_null, functions_null = query_dict[obj_id]
+		t = db.query.filter_by(**queries)
+		if t == None: raise KeyError
+		t = t.first().models.all()
+
+		db, headers, keys, functions = query_dict[path_val]
+		return render_template('table.html', 
+									z=zip, 
+									keys=keys, 
+									functions=functions, 
+									path=path_val, 
+									headers=headers, 
+									t=t)
 	except TemplateNotFound:
 		abort(404)
 	except KeyError:
