@@ -88,8 +88,8 @@ class Model(db.Model):
 class Engine(db.Model):
   """
   Table to store engine details. 
-	The Engine model is a many to many relationship with the Model class. A vehicle model can have numberous engines and a single engine can belong to multiple vehicles. 
-	 An Engine object has a models attribute that is not explicitly declared, but is established through the relationship that exists within the Model class. 
+  The Engine model is a many to many relationship with the Model class. A vehicle model can have numberous engines and a single engine can belong to multiple vehicles. 
+   An Engine object has a models attribute that is not explicitly declared, but is established through the relationship that exists within the Model class. 
   An Engine object can retrieve a query object of the models it pertains to by using engine.models.
   """
   __tablename__ = 'engine'
@@ -153,6 +153,10 @@ class Type(db.Model):
 
 class Transmission(db.Model):
   """
+  Table to store transmission details.
+  The Transmission model is designed very similarly to the Engine and Type classes. It shares a many to many relationship with the Model class. A vehicle model might have multiple transmissions, such as a manual and automatic version, and many vehicles share common transmissions. 
+  The Transmission class does not have a declared models attribute, but the models it it pertains to can be accessed via the 'tranmissions' relationship in the Models class. 
+  The query tranmission_object.models would return a list of models. 
   """
   __tablename__ = 'transmission'
   id = db.Column(db.Integer, primary_key=True)
