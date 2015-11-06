@@ -38,7 +38,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: 
 			  					(h, make_anchor("/models/engines?id={}".format(d.id), "All Models with this Engine")))]),
 			  'models' : (Model, 
-			  				["Name", "Make", "Year", "Price", "Engine ID", "Type", "Transmission ID"],
+			  				["Name", "Make", "Year", "Price", "Engine", "Type", "Transmission"],
 			  				["name", "make", "year", "price", "engines", "types", "transmissions"],
 			  				[(lambda h, d: 
 			  					(h, make_anchor("/models/{}".format(d.id), d.name.title()))),
