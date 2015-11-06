@@ -16,7 +16,7 @@
 <!-- DYNAMIC CHANGE NAME HERE -->
                     <h1>{{ functions[0](None, obj)[1]|safe }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
-                    <img src="/static/img/engine_template.jpg" class="img-responsive">
+                    <img src="{{ url_for('static', filename='img/{}.png'.format(obj.name)) }}" class="img-responsive">
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
