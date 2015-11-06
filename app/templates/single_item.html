@@ -16,7 +16,12 @@
 <!-- DYNAMIC CHANGE NAME HERE -->
                     <h1>{{ functions[0](None, obj)[1]|safe }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
+                    {% if path == 'models' or path == 'makes' %}
                     <img src="{{ url_for('static', filename='img/{}.png'.format(obj.name)) }}" class="img-responsive">
+                    {% elif path == 'engines' %}
+                    <img src="{{ url_for('static', filename='img/engine.png') }}" class="img-responsive">
+                    {% endif %}
+
                 </div>
 <!-- DETAILS HERE -->
                 <div class="col-lg-6">
