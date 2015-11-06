@@ -2,10 +2,6 @@
 {% block title %}Vehicle {{ path }}{% endblock %} 
 {% block head %}
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
@@ -13,7 +9,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
@@ -29,6 +24,21 @@
     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/sortable.js') }}"></script>
+
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 </head>
 {% endblock %}
