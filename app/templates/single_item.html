@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block title %}{{ obj.name.title() }} - Murikin Made{% endblock %}
+{% block extra_head %}
+<link href="{{ url_for('static', filename='stylesheets/details-page.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Header -->
+    <!-- <a name="about"></a> -->
+    <!-- <div class="container"> -->
+        <div class="jumbotron content-section-a">
+            <div class="container">
+                <div class="col-lg-6">
+<!-- DYNAMIC CHANGE NAME HERE -->
+                    <h1>{% if path == 'models' %}{{ functions[1](None, obj)[1]|safe }} {% endif %}{{ functions[0](None, obj)[1]|safe }}</h1>
+<!-- PUT MEDIA STUFF HERE -->
+                    {% if path == 'models' or path == 'makes' %}
+                    <img src="{{ url_for('static', filename='img/{}.png'.format(obj.name)) }}" class="img-responsive">
+                    {% elif path == 'engines' %}
+                    <img src="{{ url_for('static', filename='img/engine.png') }}" class="img-responsive">
+                    {% endif %}
+
+                </div>
+<!-- DETAILS HERE -->
+                <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                        {% set hkf = z(headers, keys, functions) %}
+                        {% for h, k, f in hkf %}
+                        {% set header_val, key_val = f(h, obj) %}
+                        <li><h3>{{ header_val|safe }}</h3> <p>{{ key_val|safe }}</p></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    <!-- </div> -->
+{% endblock %}
