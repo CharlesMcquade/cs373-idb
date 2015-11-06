@@ -1,4 +1,6 @@
 {% extends "index.html" %}
+
+{% block title %}{{ obj.name.title() }} - Murikin Made{% endblock %}
 {% block extra_head %}
 <link href="{{ url_for('static', filename='stylesheets/details-page.css') }}" rel="stylesheet">
 {% endblock %}
