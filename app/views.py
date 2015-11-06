@@ -43,7 +43,7 @@ query_dict = {'engines' : (Engine,
 			  				[(lambda h, d: 
 			  					(h, make_anchor("/models/{}".format(d.id), d.name.title()))),
 			  				(lambda h, d: 
-			  					(h, make_anchor("/makes/?id={}".format(d.make.id), d.make.name.title()))),
+			  					(h, make_anchor("/makes/{}".format(d.make.id), d.make.name.title()))),
 			  				(lambda h, d: 
 			  					(h, make_anchor("/models/?year={}".format(d.year), d.year))),
 			  				(lambda h, d: 
