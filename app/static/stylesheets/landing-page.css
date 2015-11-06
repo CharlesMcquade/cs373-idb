@@ -209,3 +209,27 @@ body{
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+@font-face {
+    font-family: 'transformer';
+    src: url(fonts/Transformers.ttf);
+}
+
+.atitle {
+    font-family: 'transformer';
+    font-size: 70px;
+    margin-left: -35px;
+}
+
+.subtitle {
+    padding-top: -10px;
+    font-family: 'transformer';
+    font-size: 40px;
+    margin-left: -20px;
+}
+
+.menu{
+    font-family: 'transformer';
+    font-size: 20px;
+}
