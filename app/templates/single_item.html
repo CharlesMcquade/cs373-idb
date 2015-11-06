@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
-                    <h1>{{ functions[0](None, obj)[1]|safe }}</h1>
+                    <h1>{% if path == 'models' %}{{ functions[1](None, obj)[1]|safe }} {% endif %}{{ functions[0](None, obj)[1]|safe }}</h1>
 <!-- PUT MEDIA STUFF HERE -->
                     {% if path == 'models' or path == 'makes' %}
                     <img src="{{ url_for('static', filename='img/{}.png'.format(obj.name)) }}" class="img-responsive">
