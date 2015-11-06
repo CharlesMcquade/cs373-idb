@@ -13,6 +13,9 @@ def make_tran_name(d) :
 	if d.num_speeds == "continuously variable" : 
 		return "Variable Transmission"
 	return "{}-Speed {}".format(d.num_speeds, d.transmission_type.lower())
+def make_tran_auto_type(s) : 
+	if str(s).lower() == 'false' : return "Not applicable"
+	else : return make_anchor("/transmissions?automatic_type={}".format(s), s)
 
 #dictionary for queries. 
 # key = path, 
@@ -62,7 +65,7 @@ query_dict = {'engines' : (Engine,
 			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"],
 			  				[(lambda h, d: (h, make_anchor("/transmissions/{}".format(d.id), make_tran_name(d)))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?transmission_type={}".format(d.transmission_type), d.transmission_type))),
-			  				 (lambda h, d: (h, make_anchor("/transmissions?automatic_type={}".format(d.automatic_type), d.automatic_type))),
+			  				 (lambda h, d: (h, make_tran_auto_type(d.automatic_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?num_speeds={}".format(d.num_speeds), d.num_speeds))),
 			  				 (lambda h, d: (h, make_anchor("/models/transmissions?id={}".format(d.id), "All Models with this Transmission")))]),
 			  'makes' : (Make, 
