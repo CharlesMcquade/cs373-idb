@@ -22,7 +22,7 @@ h6 {
 }
 
 body{
-    background: url(../img/bg.jpg) no-repeat center fixed;
+    background: url(../img/bg.png) no-repeat center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,8 +43,8 @@ body{
 }
 
 .intro-header {
-    padding-top: 0px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 30px;
+    padding-top: 0; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 0;
     text-align: center;
     color: transparent;
     /*background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
@@ -53,8 +53,8 @@ body{
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 14%;
+    padding-bottom: 13%;
 }
 
 .intro-message > h1 {
@@ -73,7 +73,9 @@ body{
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
-/*@media(max-width:767px) {*/
+/*SHOULD I KEEP THIS OR IS IT PLAIN EVIL??????? ???*/
+
+/*@media(max-width:767px) {
     .intro-message {
         padding-bottom: 7.1%;
     }
@@ -95,83 +97,13 @@ body{
     .intro-divider {
         width: 50%;
     }
-/*}*/
+}*/
 
 .network-name {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
-}
-
-.content-section-a {
-    padding: 50px 0;
-    background-color: #000000;
-}
-
-.content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
-}
-
-.banner {
-    padding: 100px 0;
-    color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
-    background-size: cover;
-}
-
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-}
-
-.banner ul {
-    margin-bottom: 0;
-}
-
-.banner-social-buttons {
-    float: right;
-    margin-top: 0;
-}
-
-
-
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
-    }
-
-    ul.banner-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
 }
 
 .wrapper {
@@ -194,7 +126,6 @@ body{
     background-color: #012e34;
 }
 
-
 .image{
     display: block;
     background: url(../img/300_horizontal_red.png) center;
@@ -204,20 +135,6 @@ body{
     top: 0px;
     margin-left: auto;
     margin-right: 0px;   
-}
-
-p.copyright {
-    margin: 15px 0 0;
-}
-
-@font-face {
-    font-family: 'rs';
-    src: url(fonts/RocketScript/RocketScript.ttf);
-}
-
-@font-face {
-    font-family: 'sf';
-    src: url(fonts/TrueType/SFSportsNight.ttf);
 }
 
 @font-face {
@@ -232,13 +149,72 @@ p.copyright {
 }
 
 .subtitle {
-    padding-top: -10px;
     font-family: 'transformer';
     font-size: 40px;
     margin-left: -20px;
 }
 
-.menu{
+.menu {
     font-family: 'transformer';
-    font-size: 20px;
+    font-size: 17px;
+}
+
+
+.buttons:link, .buttons:visited {
+    color: white;
+    border-radius: 7px;
+    padding: 13px 20px;
+    background-color: #337ab7;
+    transition: background-color .3s ease-in    ;
+}
+
+.buttons:hover {
+    color: #337ab7;
+    background-color: white;
+    transition: background-color .3s ease-in;
+}
+
+#tfheader {
+    padding-top: 10px;
+    position: relative;
+    padding-right: 6px;
+}
+
+.tftextinput {
+    height: 27px
+}
+
+.tfbutton {
+        margin: 0;
+        padding: 4px 14px;
+        font-family: 'transformer';
+        font-size:13px;
+        outline: none;
+        cursor: default;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        border: solid 1px #0076a3; border-right:0px;
+        background: #0095cd;
+        background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+        background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+        border-top-right-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+}
+
+.homepage > a:link, a:visited{
+    position: absolute;
+    color: #7887ab;
+    padding-top: 5px;
+    text-align: center;
+    line-height: 40px;
+    font-family: 'transformer';
+    font-size: 40px;
+    width: 100px;
+    padding-left: 30px;
+}
+
+.homepage > a:hover {
+    text-decoration: none;
+    color:white;
 }

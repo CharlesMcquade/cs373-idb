@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block extra_head %}
+<link href="{{ url_for('static', filename='stylesheets/detailes-page.css') }}" rel="stylesheet">
+{% endblock %}
+
+    {% block content %}
+    <!-- Header -->
+    <!-- <a name="about"></a> -->
+    <!-- <div class="container"> -->
+        <div class="jumbotron content-section-a">
+            <div class="container">
+<!-- DYNAMIC CHANGE NAME HERE -->
+                    <h1>Coverage Results:</h1>
+		    <pre>
+                    {% for line in results %}
+                    {{ line }}<br>
+                    {% endfor %}
+		    </pre>
+            </div>
+        </div>
+    <!-- </div> -->
+  {% endblock %}

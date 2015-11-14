@@ -24,6 +24,19 @@
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+     <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,16 +54,16 @@
 <!-- END HEAD -->
 
 
-<body>
+<body onLoad="javascript:init();">
   <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
 
     <!-- BEGIN NAVIGATION -->
     {% block nav %}
-    <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
+    <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -58,13 +71,28 @@
                 </button>  
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div>   
+                
+            <div class="homepage">
+                <a href="/index">murikinmade</a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">   
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="menu"><a href="/index">HOME</a></li>
                     <li class="menu"><a href="/about">ABOUT</a></li>
                     <li class="menu"><a href="/makes">MAKES</a></li>
                     <li class="menu"><a href="/engines">ENGINES</a></li>
                     <li class="menu"><a href="/models">MODELS</a></li>
+                    <li class="menu"><a href="/transmissions">TRANSMISSIONS</a></li>
+                    <li class="menu"><a href="/types">TYPES</a></li>
+                    <li class="menu">
+                        <div id="tfheader">
+                <form id="tfsearch" method="get">
+                    <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
+                    <input type="submit" value="SEARCH" class="tfbutton">
+                </form>
+            </div>
+
+                    </a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -83,18 +111,16 @@
                 <div class="col-lg-12">
                     <div class="intro-message">                    
                         <p class="atitle"><font color="#7887ab">MURIKIN MADE</font></p>
-                        <h3 class="subtitle"><font color="#7887ab">American-Made Cars</font></h3>
-                        <!-- <hr class="intro-divider"><br> -->
-                        
+                        <h3 class="subtitle"><font color="#7887ab">American-Made Cars</font></h3>                        
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="/makes" class="btn btn-primary btn-lg" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
+                                <a href="/makes" class="btn buttons" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
                             </li>
                             <li>
-                                <a href="/engines" class="btn btn-primary btn-lg"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engines</span></a>
+                                <a href="/engines" class="btn buttons"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engines</span></a>
                             </li>
                             <li>
-                                <a href="/models" class="btn btn-primary btn-lg"><i class="fa fa-car fa-fw"></i> <span class="network-name">Models</span></a>
+                                <a href="/models" class="btn buttons"><i class="fa fa-car fa-fw"></i> <span class="network-name">Models</span></a>
                             </li>
                         </ul>
                     </div>
