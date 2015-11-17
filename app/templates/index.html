@@ -23,12 +23,14 @@
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
+    <!-- jQuery for background video -->
+    <script src="{{ url_for('static', filename='js/jquery.mb.YTPlayer.js') }}"></script>
      <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
@@ -43,7 +45,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
     <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
     {% block extra_head %}
     {% endblock %}
@@ -56,8 +58,10 @@
 
 <body onLoad="javascript:init();">
   <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
-
     <!-- BEGIN NAVIGATION -->
+    <section class="big-background">
+      <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=YCPBXbG4-vY',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:0.5}"></a>
+    </section>
     {% block nav %}
     <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
@@ -68,15 +72,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>  
+                </button>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-                
+
             <div class="homepage">
-                <a href="/index">murikinmade</a>
+                <a href="/index">MurikinMade</a>
             </div>
-    
-            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">   
+
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="menu"><a href="/about">ABOUT</a></li>
                     <li class="menu"><a href="/makes">MAKES</a></li>
@@ -109,9 +113,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="intro-message">                    
+                    <div class="intro-message">
                         <p class="atitle"><font color="#7887ab">MURIKIN MADE</font></p>
-                        <h3 class="subtitle"><font color="#7887ab">American-Made Cars</font></h3>                        
+                        <h3 class="subtitle"><font color="#7887ab">American-Made Cars</font></h3>
                         <ul class="list-inline intro-social-buttons">
                             <li>
                                 <a href="/makes" class="btn buttons" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
@@ -132,11 +136,14 @@
     <!-- END CONTENT -->
   </div> <!-- END WRAPPER DIV -->
 
-<div class="footer"> 
-    <div class = "image"></div>
-</div>
-
-
+  <div class="footer">
+      <div class = "image"></div>
+  </div>
+  <script>
+    $(function(){
+      $(".player").mb_YTPlayer();
+    });
+  </script>
 </body>
 
 </html>
