@@ -4,12 +4,14 @@ from fuzzywuzzy import fuzz
 from models import Make, Model, Engine, Type, Transmission
 
 # Take in input concat into single string
-inputs = ''
+inputs = list()
+throw_away = ['and','or']
 for x in range(1, len(sys.argv)):
-  inputs += (' '+sys.argv[x].lower())
+  if sys.argv[x].lower() not in throw_away:
+    inputs.append(' '+sys.argv[x].lower())
 
-results = list() # of dictionaries with entry id, type, matched elements, and rank. 
-
+and_results = list() # of dictionaries with type, matched elements, and rank. 
+or_results = list()
 
 # Function to actually calculate similarity of strings and add to results list. 
 # May have to call in two rounds, one for AND and another for OR, where I would either
@@ -19,19 +21,31 @@ results = list() # of dictionaries with entry id, type, matched elements, and ra
 # To the resulting list I am appending the json of a matching row, the ratio number, the 
 # name of the column that caused a match, and the database model type
 def check_match(row, class_type):
-  accepted = False
-  result = dict()
-  match = ''
+  and_accepted = True
+  or_accepted = False
+  columns = list()
   ratio = 0
-  for entry in row:
-    ratio = fuzz.token_set_ratio(inputs, row[entry])
-    if (ratio > 50):
-      column = entry # to be hilighted later
-      accepted = True
-      break
-  if accepted:
-    results.append({'type':class_type, 'ratio':ratio, 'column': column, 'row':row})
+  max_ratio = 0
+  total_ratio = 0
+  count = 0
 
+  for entry in row:
+    for word in inputs:
+      ratio = fuzz.token_set_ratio(word, row[entry])
+      if (ratio > 50):
+        columns.append(entry) # to be hilighted later
+        or_accepted = True
+        total_ratio += ratio
+        count += 1
+        if ratio > max_ratio:
+          max_ratio = ratio 
+  if count != len(inputs):
+    and_accepted = False
+       
+  if and_accepted:
+    and_results.append({'type':class_type, 'ratio':total_ratio//count, 'columns': columns, 'row':row})
+  elif or_accepted:
+    or_results.append({'type':class_type, 'ratio':max_ratio, 'columns': columns, 'row':row})
 
 # Iterate over everything in every model of Models.py
 for x in Make.query.all():
@@ -56,8 +70,17 @@ for x in Transmission.query.all():
 
 
 # Sort results
-final_results = sorted(results, key = lambda k: k['ratio'], reverse=True)
-for r in final_results:
+and_results = sorted(and_results, key = lambda k: k['ratio'], reverse=True)
+or_results = sorted(or_results, key = lambda k: k['ratio'], reverse=True)
+
+print('AND RESULTS')
+for r in and_results:
+  print('>>> :', r)
+  print()
+
+print('--------------------')
+print('OR RESULTS')
+for r in or_results:
   print('>>> :', r)
   print()
 
