@@ -8,6 +8,8 @@ body,
 html {
     width: 100%;
     height: 100%;
+    background:  url(../img/black.png) no-repeat center fixed;
+    background-size: cover;
 }
 
 body,
@@ -112,7 +114,9 @@ img {
 
 .content-section-a {
     padding: 50px 0;
-    background-color: #000000;
+    /*background-color: #000000;*/
+    background: transparent;
+    font-family: 'transformer';
 }
 
 .content-section-b {
@@ -213,6 +217,17 @@ img {
     margin-right: 0px;   
 }
 
-p.copyright {
-    margin: 15px 0 0;
+@font-face {
+    font-family: 'transformer';
+    src: url(fonts/Transformers.ttf);
+}
+
+.list-unstyled {
+    font-family: 'transformer';
+
+}
+
+.list-unstyled > li {
+    padding-left: 180px;
+    text-align: left;
 }

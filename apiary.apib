@@ -80,13 +80,13 @@ is searching for.
             }
         ]
 
-## Vehicle Engine Collection [/engine_api]
+## Engine Collection [/engine_api]
 
 The Vehicle Engine Collection provides API calls to retrieve data about one or more engines built for American made 
 vehicles. What engines the API call returns in the response will be dependent on the parameters specified by the user 
 in the request.
 
-### Search Vehicle Engines [GET]
+### Search Engines [GET]
 
 Finds all vehicle engines that match the user-specified search criteria. The API call defaults to listing all instances 
 of vehicle engines and can be refined by providing parameters named after the response fields with values that the user 
@@ -104,4 +104,30 @@ is searching for.
                 "torque": 650
             }
         ]
+
+## Transmission Collection [/transmission_api]
+
+The Transmission Collection provides API calls to retrieve data about one or more transmissions built for American made 
+vehicles. What transmissions the API call returns in the response will be dependent on the parameters specified by the user 
+in the request.
+
+### Search Transmissions [GET]
+
+Finds all transmissions that match the user-specified search criteria. The API call defaults to listing all instances 
+of vehicle transmissions and can be refined by providing parameters named after the response fields with values that the user 
+is searching for.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "6A", 
+                "transmission_type": "AUTOMATIC",
+                "vehicles": ["Chevrolet_Tahoe"], 
+                "automatic_type": "Shiftable automatic", 
+                "num_speeds": 6
+            }
+        ]
+
+
 

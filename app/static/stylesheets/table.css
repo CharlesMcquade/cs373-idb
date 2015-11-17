@@ -4,7 +4,7 @@
   background:#1abc9c;
 }*/
 .description{
-  font-family: 'Vollkorn', serif;
+  font-family: 'transformer', serif;
   text-align:center;
   color:#ecf0f1;
   text-shadow:0 0.1em 0.2em #008c8d;
@@ -12,7 +12,7 @@
 /* = Scroll body
 ------------------------*/
 ::-webkit-scrollbar{
-  width:0.2em;
+  width: 0.8em;
 }
 ::-webkit-scrollbar-track{
   background-color:#bdc3c7;
@@ -23,49 +23,51 @@
 /* = table
 ------------------------*/
 .box-table table{
-  border-collapse:collapse;
-  text-align:left;
+  border-collapse:border-collapse;
   width:100%;
   margin:0;
   padding:0;
   background:#7f8c8d;
-  animation: responsive 5s infinite ease-in-out;
+  
 }
 .box-table{
   font:normal 12px/150% Arial, Helvetica, sans-serif;
   overflow:hidden;
   margin:0 auto;
   display:block;
-  width:95%;
+  width:100%;
   padding:2.5%;
 }
 .box-table table thead th{
-  background-color:#7f8c8d;
+  background-color:#486e88;
   color:#bdc3c7;
   text-align:center;
   padding: 0.75em;
-  font-family: 'Vollkorn', serif;
+  font-family: 'transformer', serif;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
   height: 1.5em;
   vertical-align: top;
-  border-left:0.25em double #95a5a6;
-
+ 	
+  border-left:0.15em double #95a5a6;
 }
+
 .box-table table tbody td,
 .box-table table tbody tr{
-  font-family: 'Vollkorn', serif;
-  font-size:1em;
+  font-family: 'transformer';
+  font-size:18px;
   border:none;
   padding:1em;
 }
 .box-table table tbody tr:nth-child(odd){
   background:#ecf0f1;
   color:#95a5a6;
+ 
 }
 .box-table table tbody tr:nth-child(even){
-  background:#bdc3c7;
+  background:#cdd3d7;
   color:#7f8c8d;
+ 
 }
 .box-table table tbody tr a{
   text-decoration:none;
@@ -177,6 +179,14 @@
   padding:0.5em;
   animation: table_loader 10s infinite ease;
 }
+
+@font-face {
+    font-family: 'transformer';
+    src: url(fonts/Transformers.ttf);
+}
+
+
+
 @keyframes table_loader{50%{width:100%}}
 @-webkit-keyframes table_loader{50%{width:100%}}
 @-moz-keyframes table_loader{50%{width:100%}}

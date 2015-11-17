@@ -14,7 +14,11 @@
             <div class="container">
                 <div class="col-lg-6">
 <!-- DYNAMIC CHANGE NAME HERE -->
+<<<<<<< HEAD
                     <h1>{% if path == 'models' %}{{ functions[1](None, obj)[1]|safe }} {% endif %}{{ functions[0](None, obj)[1]|safe }}</h1>
+=======
+                    <h1 style="font-family:transformer">{% if path == 'models' %}{{ functions[1](None, obj)[1]|safe }} {% endif %}{{ functions[0](None, obj)[1]|safe }}</h1>
+>>>>>>> animesh-branch
 <!-- PUT MEDIA STUFF HERE -->
                     {% if path == 'models' or path == 'makes' %}
                     <img src="{{ url_for('static', filename='img/{}.png'.format(obj.name)) }}" class="img-responsive">
@@ -29,7 +33,11 @@
                         {% set hkf = z(headers, keys, functions) %}
                         {% for h, k, f in hkf %}
                         {% set header_val, key_val = f(h, obj) %}
+<<<<<<< HEAD
                         <li><h3>{{ header_val|safe }}</h3> <p>{{ key_val|safe }}</p></li>
+=======
+                        <li><h2 style="font-family:transformer">{{ header_val|safe }}</h2><p style="font-size:22px; color:#d49a6a">{{ key_val|safe }}</p></li>
+>>>>>>> animesh-branch
                         {% endfor %}
                     </ul>
                 </div>

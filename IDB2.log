@@ -1,0 +1,732 @@
+commit 400fb63e37eee5697e878d88d47c02d553f1c16e
+Merge: acd9cb2 1f1056d
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:55:07 2015 -0600
+
+    test
+
+commit acd9cb2419cf22ac3ae210412732c4862b0b44e5
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:54:40 2015 -0600
+
+    update
+
+commit 1f1056d771dde34e215809dbb1a8c1804e631c01
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:53:48 2015 -0600
+
+    test
+
+commit 8f7fb7ce8bb2593dd1bda119b8d13ed50ee584eb
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:48:14 2015 -0600
+
+    change model headers so it doesnt say ID for transmission and engine
+
+commit a3c3c988305db593acf943c9c707d8859b621ac6
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Nov 5 21:44:08 2015 -0600
+
+    Merged everything
+
+commit 882ac1e3ed225bb457d66f9645270413d89e449e
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:29:40 2015 -0600
+
+    change make href in model to go straight to make rather than table query
+
+commit 133ce8b4a5d296608cf7df15908cefb92df0099f
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:25:23 2015 -0600
+
+    fix slight syntax error in views
+
+commit 411ab2e1478e5ebfe39f7246558605caa77f0245
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:24:28 2015 -0600
+
+    removed outside landing page
+
+commit 422f47d7bb76cdfce3064ed5eda68bbe0d664e68
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:23:43 2015 -0600
+
+    add make name to single_item when model is being viewed, capitalize names
+
+commit 0b77f986f8dceae937e97de40c8a62e8657d3b85
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:15:37 2015 -0600
+
+    fix css
+
+commit 9d2b49b5866d14d753e1b15df7df9c28483911ae
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:14:38 2015 -0600
+
+    remove unused templates, convert all images to png
+
+commit 6f4114fe69701ebc3e022b2668302fd96cba09fc
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 21:10:58 2015 -0600
+
+    added logos for all makes, need to find a way to make all images uniform in size
+
+commit 45f04cc9aca864ece2d9565fa7b6156d35999b19
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 20:50:58 2015 -0600
+
+    if transmission is not automatic, automatic type says not applicable and theres no href
+
+commit 99f9c62a3e4041db306eb8c7bc4ded7a4aff07db
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 20:43:24 2015 -0600
+
+    fix navbar on table pages
+
+commit f541aacd10131e7b91c299eccb063290e144bb8e
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 20:37:07 2015 -0600
+
+    added vehicle images
+
+commit 34e6d04b2da8ffe3388ec851e93626471eb1cc3c
+Author: root user <root@idb373.website>
+Date:   Fri Nov 6 02:17:29 2015 +0000
+
+    new extraction to fix up engines
+
+commit d5cc816680cd499bfec08a14f0ba72c05bebf4a8
+Author: root user <root@idb373.website>
+Date:   Fri Nov 6 02:16:49 2015 +0000
+
+    actually updated db. Last one was incorrect
+
+commit 8b31f1f4c49b8f6152c2651bac36bf76ee2b34a3
+Author: Andy Ehlert <andyehlert@sbcglobal.net>
+Date:   Thu Nov 5 20:06:28 2015 -0600
+
+    Transferring blueprint from apiary.io
+
+commit 546b95f11778b1a0ac81fd501c24501e8547c205
+Author: root user <root@idb373.website>
+Date:   Fri Nov 6 01:51:00 2015 +0000
+
+    updated database for better engine relationship
+
+commit d9c6c7e1f77c778faae21f69b70ad045244f6722
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 19:02:12 2015 -0600
+
+    add navbar transmissions, types
+
+commit 2dc33fad6eb052dec1254e9e1d0b1f4b36089c54
+Merge: b6b0572 c5cebf3
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 19:01:31 2015 -0600
+
+    Merge branch 'dev' of https://github.com/CharlesMcquade/cs373-idb into dev
+
+commit b6b05727b89be827288744a157de8f3bc5ced702
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 19:01:14 2015 -0600
+
+    added links for transmissions and types in navbar
+
+commit c5cebf336f9d662764c5be0a63431fde4f4f8dd0
+Merge: 1ab2fc6 5ac78fc
+Author: root user <root@idb373.website>
+Date:   Fri Nov 6 00:27:03 2015 +0000
+
+    Merge branch 'dev' of https://github.com/CharlesMcquade/cs373-idb into dev
+
+commit 5ac78fc8eb25718fbdd2daa3f60f3859fff95387
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 18:26:09 2015 -0600
+
+    tab titles and table titles change according to what you're searching/viewing
+
+commit 1ab2fc6aabbd9617f034cb4466c42c4370e868ea
+Author: root user <root@idb373.website>
+Date:   Fri Nov 6 00:24:42 2015 +0000
+
+    new tests and UML pdf for the transmission class, closes #29
+
+commit a44a3c1a493524cfabbb7334a491be4a1d156450
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 18:18:05 2015 -0600
+
+    added year query in tables, added ability to check models of transmission, engine, make
+
+commit f32a0d0b738b1457d33339a6d78fa1731aa85e10
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 17:42:51 2015 -0600
+
+    merge with charles-dev, collapsible navbar
+
+commit 7214b0e1725abcc2122a0217c45e4bd385cd8c3e
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 17:42:07 2015 -0600
+
+    collapsible navbar
+
+commit 22db1539110b6105b03eaca2de13cf50c3c81881
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 04:06:17 2015 -0600
+
+    add transmission name func
+
+commit 35bf0361d25512b44008681667a4061c12d40dce
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 04:05:54 2015 -0600
+
+    add transmission name func
+
+commit cc86c38e182b7ae1f3e8ac0d1804a620fd49a48c
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 03:44:58 2015 -0600
+
+    added a little bit of comments
+
+commit 772fc92cceecc0f660ac7341296c78b09cc6ca3a
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 03:38:53 2015 -0600
+
+    added single item template
+
+commit d6afc301e5b1bf23ac935b5e6f9434996a92b376
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 03:37:12 2015 -0600
+
+    Tables all linked, now just need to fix make as query for model, and find a way to query for type
+
+commit ddd6d37f9d58b38203edcace3cdd78362748300d
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 03:16:32 2015 -0600
+
+    Mostly finished single items, need to add refs to tables
+
+commit a5d8d1da9041dce4360aa61b10a155e0beeaaa52
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 01:53:48 2015 -0600
+
+    Updated backend to only use two templates, one for table and one for single item
+
+commit 450306b41ecf6ad134f1273476256cbaec94c3de
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Thu Nov 5 01:35:54 2015 -0600
+
+    new way of rendering tables and single views
+
+commit 5605b4094cdc88847efccbdce84e218f8a4dbbeb
+Merge: 8cf3873 9395cfc
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Nov 4 23:54:11 2015 -0600
+
+    Merge branch 'charles-dev' into dev
+
+commit 9395cfcdc68bceacb68d531213b899326608320c
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Nov 4 23:53:12 2015 -0600
+
+    update backend for most parts
+
+commit 8cf3873e8644a02d761a3ad0f1448d43c87abb9e
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Wed Nov 4 20:45:22 2015 -0800
+
+    adding transmission model to database, closes #28
+
+commit 28fd05d391e5491f24fce075b2d4deeea8f83db7
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Wed Nov 4 19:41:08 2015 -0800
+
+    fresh db comming up
+
+commit 66f9a5680dd1ca58296d148789da5ab06be898b1
+Author: root user <root@idb373.website>
+Date:   Thu Nov 5 01:02:34 2015 +0000
+
+    working unit test button in about page
+
+commit 600aaaa82a7e13a5d58ff3f25e9272889f6246cd
+Author: derek <dksmith89@gmail.com>
+Date:   Wed Nov 4 22:14:35 2015 +0000
+
+    tests passing again, closes #27
+
+commit 25d1e9a40224e54ffb156410942a87a7319e239d
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Tue Nov 3 20:25:41 2015 -0800
+
+    trying out a Run Tests button
+
+commit 0de1f0b3119e8617674f321e16d837cd068827fb
+Author: derek <dksmith89@gmail.com>
+Date:   Wed Nov 4 03:51:12 2015 +0000
+
+    updated db with make information, closes #23, closes #24
+
+commit 3899b6c7aa1706fbe875328e038978dbd7ba817f
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Tue Nov 3 18:54:03 2015 -0800
+
+    re-adding models.py
+
+commit 65d68db2642bc4bc091f77dd7a007a7ad8467ec0
+Author: derek <dksmith89@gmail.com>
+Date:   Wed Nov 4 00:14:57 2015 +0000
+
+    adding new json file and database
+
+commit c3e4c36e3391ea30524f4008893eca2cfbd47f0e
+Author: derek <dksmith89@gmail.com>
+Date:   Tue Nov 3 23:11:38 2015 +0000
+
+    closes #25, closes #26, tests are passing and added json tests. Makefile is up to date.
+
+commit 35f52db4456049a93b8b713f3151b1cc14647866
+Merge: c7d9765 2a64dd5
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Thu Oct 29 20:35:38 2015 -0500
+
+    API calls now fetching from database.
+
+commit c7d9765c5464afb8820f574df3a7a472f29900be
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Thu Oct 29 20:33:50 2015 -0500
+
+    API calls now fetching from database.
+
+commit 2a64dd53d0beb8bc14f6734e81dab89032842ab3
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 29 18:29:52 2015 -0700
+
+     renaming model _names
+
+commit 986ce756fc7c66d6bafc6d16027ff57b9d62663f
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 29 15:43:14 2015 -0700
+
+    updated init file
+
+commit 6f17ca86861139342f346a2f92bdfa9eee6a9de1
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 29 15:41:05 2015 -0700
+
+    updated api
+
+commit 185178ef6f490f29367b7f67d3d99690e8432f44
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 29 15:39:40 2015 -0700
+
+    re-adding api.py
+
+commit 67dad63b37658096851d92a7ad15d37c9b5881ef
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 29 15:37:27 2015 -0700
+
+    adding new models.py and config
+
+commit 119cc8b317db1b717a78f70faf98806c468e8bc1
+Merge: 6eb3820 1822d9d
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Wed Oct 28 23:15:35 2015 -0500
+
+    Merge branch 'dev' of https://github.com/CharlesMcquade/cs373-idb into dev
+
+commit 6eb382094b744da0b89e39c42d3c6b4e643a6f0b
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Wed Oct 28 23:14:28 2015 -0500
+
+    Initial implementation of RESTful API. closes #22.
+
+commit 1822d9d6378fd56e2fd244c8dd8bc59ef7b161ee
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Wed Oct 28 17:51:43 2015 -0700
+
+    added unique constraints and json methods to models. Created extract.py to populate database from json files
+
+commit 2eb532e80d5f370a0da071a5447927f8946fc81c
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 21:24:03 2015 -0500
+
+    Added the log
+
+commit 2856af994039bc20f8b72b75838d2cba339e84fb
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 21:21:19 2015 -0500
+
+    Now it is the last commit
+
+commit d051a5c0521b9ab69df531ac16c69e6d4756e16a
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 20:54:49 2015 -0500
+
+    Last commit for Phase 1
+
+commit d413fcc543aadeee3c3e81f83dac6ee94a7963f8
+Merge: 398cbc5 32e3c68
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 20:33:41 2015 -0500
+
+    Merge branch 'master' of https://github.com/CharlesMcquade/cs373-idb-website
+
+commit 398cbc564f736a6248c342c30b0652518c2fc5a2
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 20:33:28 2015 -0500
+
+    Modified tha Navigation Bar
+
+commit 32e3c686cefee3ede9c84dd2af19104c546dd408
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 22 18:29:15 2015 -0700
+
+    Adding the updated UML.pdf
+
+commit f218ff5a7f8e4c5816214872050d76cd19a50a5c
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 20:27:21 2015 -0500
+
+    Changed the formatting of the stats
+
+commit 273c3abb46f9d3093d2e838183e9faca4169d7b2
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 22 17:12:06 2015 -0700
+
+    closes #11, closes #12, copied models and tests to main directory to be within submission guidelines
+
+commit acc1b727d1a5f73066ede991a1293ac4311e86ca
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 22 17:07:44 2015 -0700
+
+    closes #13 adding makefile
+
+commit d3184af210e9e369300dfcc266989f5fff3766db
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 22 16:56:03 2015 -0700
+
+    grabbing files from other repo and pushing to this one
+
+commit 5808d3191c34c43ba3e244bb195e9cbe9f7cb89a
+Author: Andy Ehlert <andyehlert@sbcglobal.net>
+Date:   Thu Oct 22 18:44:59 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit c34043f6da12d23fbe7d0c753fa0731b8ee943fc
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Thu Oct 22 18:39:46 2015 -0500
+
+    embed temporary pictures to website for submission purposes
+
+commit 1adb170693cd29ff41492b53ecdf400d6d247c44
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Thu Oct 22 15:37:20 2015 -0700
+
+    made model.html with sphinx.
+
+commit c040ddc1aabc2ddff9aa655bd9e99092bc489a2d
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 14:41:22 2015 -0500
+
+    Modified details-page.css so that all the other derived html files have a uniform format
+
+commit 4d27e6ea6486377a437c72fc1567bc8cf5ed7a81
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 14:28:41 2015 -0500
+
+    Added bio. Also fixed links on the About page so that they open up new tabs when clicked
+
+commit 449aaf3aa54e206a3fa0bfb4ab358553b661ee5a
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Thu Oct 22 12:09:02 2015 -0500
+
+    The navbar on all the pages has now a single, uniform color. This was due to the fact that a relevant .css file was not pushed to the server.
+
+commit 9cffcca5988ed2c7590988972f0b227578806e2a
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Wed Oct 21 18:10:12 2015 -0700
+
+    closes #6, added meta-association tables and unit tests for models
+
+commit e02c8aa93424fcedb7f76586271382e35d9a5fe8
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Oct 21 17:56:11 2015 -0500
+
+    added change in html file name
+
+commit 3a527497ec21ce209a0ec50bccada04a3972b087
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Oct 21 00:48:41 2015 -0500
+
+    modified more things, made it look a little prettier
+
+commit 3d4fd30b3b54c0ce2589ea5fa45a1efd2c27e351
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Oct 21 00:30:27 2015 -0500
+
+    Fixed a few jinja2 erros and added some hyperlinks
+
+commit 2cd522ab1b127ac621baed001fbcab141db13e87
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Oct 21 00:22:38 2015 -0500
+
+    I believe all basic stuff has been generated
+
+commit cd9d6fc8f96c82f229b7386656cf867c12534e03
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Wed Oct 21 00:12:32 2015 -0500
+
+    jinja update to populate most tables, almost done
+
+commit 072bad22e613e96f560130158209abf170f95154
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 22:32:58 2015 -0500
+
+    fix header/footer errors
+
+commit 62ddf48e1977e12af01e849f319fb0b2012c9ad9
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 22:29:34 2015 -0500
+
+    add jinja formatting for single model templates
+
+commit c1a4dcb673ff78963b96781b0642196610baa684
+Merge: adf74f2 812512b
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 22:10:53 2015 -0500
+
+    Merge branch 'master' of https://github.com/CharlesMcquade/cs373-idb-website
+    
+    Pulling because I didn't know other people were pushing..
+
+commit 812512b6bc968c004364b0bb92c74d65e79ce78e
+Merge: f8c1e1e 18e6d0d
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 22:10:47 2015 -0500
+
+    Merge branch 'kevin-dev'
+
+commit 18e6d0db0d1affe5ed25948141f1bfd0f9ca35d6
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 22:10:34 2015 -0500
+
+    correct jinja syntax error
+
+commit adf74f2eb3ab6e210491f00106cd5e21d3d8bbe6
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 22:10:22 2015 -0500
+
+    Changed background slightly, did more jinja stuff
+
+commit f8c1e1e07a49bee74d453acf41a5d9b253763b3f
+Merge: 041e79d aaacdd9
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 21:53:22 2015 -0500
+
+    Merge branch 'kevin-dev'
+
+commit aaacdd9fbee6cde48bf5383d7bb8a6c908b3204e
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 21:52:47 2015 -0500
+
+    add single instance pages to flask
+
+commit 667070ece8b2d90839d821bfd776a02261905380
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 21:51:23 2015 -0500
+
+    changed backgrounds slightly to stretch whole page
+
+commit 041e79d78fcc4aedd5ca98ec2eb160b4f72d0048
+Merge: 33d1ca6 12f6b0f
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 21:50:30 2015 -0500
+
+    Merge branch 'kevin-dev'
+
+commit 12f6b0f02077d2246afa451f6061168f4230ae99
+Merge: 9b56ce7 33d1ca6
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 21:49:54 2015 -0500
+
+    Merge branch 'master' into kevin-dev
+
+commit 9b56ce7774acd392d88a7ef96701a1e3846f6e95
+Author: KevinNguyenn <KevinNguyenn@utexas.edu>
+Date:   Tue Oct 20 21:48:55 2015 -0500
+
+    created single instance pages and linked to tables
+
+commit 33d1ca613d45f77bc6c1ee18c19882997d1468af
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 21:31:18 2015 -0500
+
+    Now everything is spick and span
+
+commit 28762473b8546b19024068979bc1adf9f4596723
+Merge: 66c0ec3 2e23e78
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 21:19:47 2015 -0500
+
+    Images are showing up now
+
+commit 2e23e78a4cc19cbf8e86f14c074da3cb70ca2dfa
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 21:18:02 2015 -0500
+
+    Update about to use jinja2
+
+commit 66c0ec3eb7c05adec20a132a8f288aeaf66a72dc
+Merge: 812db8b b2d160d
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 21:17:22 2015 -0500
+
+    Images are showing up now
+
+commit 7f53b6329e8fd86f41cb5a83bc6aa5d41c950553
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 21:15:43 2015 -0500
+
+    Update engines,makes to use jinja2
+
+commit 812db8b23316d708c297cf0654540f55d03e4b85
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 21:10:52 2015 -0500
+
+    Images are now displaying on the about page
+
+commit b2d160ddf0f82857047928c080bceda87f62d86d
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 21:08:04 2015 -0500
+
+    Updated splash page to go to the actual tables
+
+commit 87b02f9ddc8fe42fc175f8ef271fa493e34e464e
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 21:04:38 2015 -0500
+
+    update index, models to use jinja2 templating.
+
+commit 046ddad98324453eac98a52162974aea666e45b6
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Tue Oct 20 20:11:31 2015 -0500
+
+    updated views, now working on template for all pages
+
+commit 2d257712879fdaa57a87efb841b8e657f5860836
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Tue Oct 20 19:23:53 2015 -0500
+
+    Implemented sortable tables and made three copies of the template model html page.
+
+commit 48fb25bda591853b407c55dc949f6ae850101319
+Author: andyehlert <andyehlert@sbcglobal.net>
+Date:   Tue Oct 20 19:01:42 2015 -0500
+
+    Added a template for the model pages. Still need to fill in table information.
+
+commit 42516aa40824e99f18cd2af789ab676cc767d186
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 18:48:13 2015 -0500
+
+    Splash page works good, except for scalability on other devices
+
+commit c5d01035c195b80558d5c8def5f9b08b0520004b
+Merge: 5c8c86e 39cd288
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 17:53:16 2015 -0500
+
+    Merge branch 'master' of https://github.com/CharlesMcquade/cs373-idb-website
+    
+    Cos
+
+commit 5c8c86e510f5f376f95a335b6b89f86035ca01c6
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Tue Oct 20 17:52:25 2015 -0500
+
+    Pushed necessary files
+
+commit 39cd288e9da990733deb05fe83fe7bfd749960aa
+Author: Derek Smith <dksmith89@gmail.com>
+Date:   Tue Oct 20 15:17:03 2015 -0700
+
+    adding constructors to models.py. Closes #2
+
+commit 51b842886a20cd5cd7eaf9f2cb63aee1b93bf2d2
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Sun Oct 18 14:34:41 2015 -0500
+
+    Added the relevant images
+
+commit fe667cd91a8ed4166cff1bb6ee2c289ee88008cc
+Author: animeshg93 <animeshg93@utexas.edu>
+Date:   Sun Oct 18 14:30:17 2015 -0500
+
+    Updated the .html files and added more .css files
+
+commit c86536327fb4e535eb957ab6f539e0ad77478a8c
+Author: gitdksmith <dksmith89@gmail.com>
+Date:   Sun Oct 18 12:51:54 2015 -0500
+
+    adding db scripts
+
+commit b94702b4a9a4b3f50c5d8407f718fe87887027ea
+Author: Charles <CharlesMcquade@github.com>
+Date:   Sun Oct 18 06:32:24 2015 +0000
+
+    Update background
+
+commit 9ea559b993e870ffcb168fdcbaa7ec0eb87750ab
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sun Oct 18 01:27:22 2015 -0500
+
+    add stuff
+
+commit 2f70b7776b7507740fc74ac4416765c19b32e6ca
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sun Oct 18 00:52:08 2015 -0500
+
+    changes to webpages
+
+commit edbcfe5ae4cdbc92b67169227a26b60ab90c03f2
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 19:39:25 2015 -0500
+
+    update
+
+commit 6fced55151a668c865d8c09b01006caac56e4c0f
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 19:38:23 2015 -0500
+
+    add app
+
+commit 1bd0f358de9fa6d0ce387c7858e76d41e8d09773
+Author: gitdksmith <dksmith89@gmail.com>
+Date:   Sat Oct 17 17:14:58 2015 -0500
+
+    closes #1, now following flask mega tutorial on how to do sqlalchemy
+
+commit 0f91f456d52836b32ab1e5cce62b74d7918d0bde
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 16:28:29 2015 -0500
+
+    assets set up
+
+commit 7df902b3bb3394d3691a4c361c0cf220d9438eb1
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 16:04:11 2015 -0500
+
+    update readme
+
+commit f889c4b90b12957a91cf28cdfad9f1992a36668c
+Author: Charles Inglis <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 15:27:35 2015 -0500
+
+    hehe haha
+
+commit e8eef31590c3e9ec85319abe2d52ef90f2d44ef2
+Author: Charles <dylanmcquade@gmail.com>
+Date:   Sat Oct 17 15:18:48 2015 -0500
+
+    Initial commit
