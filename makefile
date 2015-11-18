@@ -31,6 +31,7 @@ clean:
 	rm -f .coverage
 	rm -f *.pyc
 	rm -rf __pycache__
+	rm -f tests.tmp
 
 config:
 	git config -l
