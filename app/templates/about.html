@@ -18,7 +18,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
@@ -76,7 +76,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="homepage">
-                <a href="/index">murikinmade</a>
+                <a href="/index">MurikinMade</a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
@@ -89,13 +89,12 @@
                     <li class="menu"><a href="/types">TYPES</a></li>
                     <li class="menu">
                         <div id="tfheader">
-                <form id="tfsearch" method="get">
-                    <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
-                    <input type="submit" value="SEARCH" class="tfbutton">
-                </form>
-            </div>
-
-                    </a></li>
+                			<form id="tfsearch" method="get">
+                   				 <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
+                   				 <input type="submit" value="SEARCH" class="tfbutton">
+               				</form>
+           				</div>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -237,7 +236,12 @@
         <p style="text-align:left;font-size:20px; color:white; margin-right:10px">For this project, we are looking at American-made vehicles, so we chose three models for the first iteration of the project from three different makes and found their newest year. We then made a request to the API asking for their styles. The request returns a json which contains a list of the numerous styles available</p></li>
     </ul>
 
-</div>
-</div>
+  </div>
+ </div>
 {% endblock %}
+</div>
+    <div class="footer">
+      <div class="image"></div>
+  	</div>
+
 </body>

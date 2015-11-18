@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #FFFFFF;
 }
@@ -116,7 +116,7 @@ img {
     padding: 50px 0;
     /*background-color: #000000;*/
     background: transparent;
-    font-family: 'transformer';
+    font-family: 'Raleway';
 }
 
 .content-section-b {
@@ -223,7 +223,7 @@ img {
 }
 
 .list-unstyled {
-    font-family: 'transformer';
+    font-family: 'Raleway';
 
 }
 

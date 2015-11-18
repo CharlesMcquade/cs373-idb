@@ -36,8 +36,12 @@ background-size: cover;
 
 
 .topnav {
-font-size: 14px;
-background-color : transparent;
+background-color : #012e34;
+}
+
+.menu{
+    font-family: 'Raleway';
+    font-size: 14px;
 }
 
 .lead {
@@ -49,7 +53,7 @@ font-weight: 400;
 padding-top: 0; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
 padding-bottom: 0;
 text-align: center;
-color: transparent;
+color: #012e34;
 /*background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
 background-size: 100% 110%;*/
 }
@@ -126,7 +130,7 @@ width: 100%;
 .footer{
 height: 40px;
 width: 100%;
-background-color : transparent;
+background-color : #012e34;
 }
 
 .image{
@@ -139,29 +143,6 @@ top: 0px;
 margin-left: auto;
 margin-right: 0px;
 }
-
-/*@font-face {
-font-family: 'transformer';
-src: url(fonts/Transformers.ttf);
-}
-
-.atitle {
-font-family: 'transformer';
-font-size: 70px;
-margin-left: -35px;
-}
-
-.subtitle {
-font-family: 'transformer';
-font-size: 40px;
-margin-left: -20px;
-}
-
-.menu {
-font-family: 'transformer';
-font-size: 17px;
-}*/
-
 
 .buttons:link, .buttons:visited {
 color: white;
@@ -190,7 +171,7 @@ height: 27px
 .tfbutton {
 margin: 0;
 padding: 4px 14px;
-font-family: 'transformer';
+font-family: 'Raleway';
 font-size:13px;
 outline: none;
 cursor: default;
@@ -222,26 +203,17 @@ text-decoration: none;
 color:white;
 }
 
-
-/*@font-face {
-    font-family: 'transformer';
-    src: url(fonts/Transformers.ttf);
-}
-
 .atitle {
-    font-family: 'transformer';
+    font-family: 'Raleway';
     font-size: 70px;
     margin-left: -35px;
+    margin-bottom: -20px;
 }
 
 .subtitle {
-    padding-top: -10px;
-    font-family: 'transformer';
+    font-family: 'Raleway';
     font-size: 40px;
     margin-left: -20px;
+    margin-bottom: 20px;
 }
 
-.menu{
-    font-family: 'transformer';
-    font-size: 20px;
-}*/

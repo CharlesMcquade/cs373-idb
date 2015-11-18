@@ -24,7 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
 
@@ -260,8 +260,8 @@ p.large{font-size:16px}
 }
 
 .menu{
-    font-family: 'terminator';
-    font-size: 17px;
+    font-family: 'Raleway';
+    font-size: 14px;
 }
 
 #tfheader {
@@ -277,7 +277,7 @@ p.large{font-size:16px}
 .tfbutton {
         margin: 0;
         padding: 4px 14px;
-        font-family: 'transformer';
+        font-family: 'Raleway';
         font-size:13px;
         outline: none;
         cursor: default;
@@ -298,7 +298,7 @@ p.large{font-size:16px}
     padding-top: 5px;
     text-align: center;
     line-height: 40px;
-    font-family: 'transformer';
+    font-family: 'Raleway';
     font-size: 40px;
     width: 100px;
     padding-left: 30px;

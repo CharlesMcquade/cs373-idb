@@ -40,12 +40,14 @@
 }
 .box-table table thead th{
   background-color:#486e88;
-  color:#bdc3c7;
+  color:#000;
   text-align:center;
+  line-height: 20px;
   padding: 0.75em;
-  font-family: 'transformer', serif;
+  text-transform: uppercase;
+  font-family: 'Raleway', serif;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
   height: 1.5em;
   vertical-align: top;
  	
@@ -55,7 +57,7 @@
 .box-table table tbody td,
 .box-table table tbody tr{
   font-family: 'transformer';
-  font-size:18px;
+  font-size:20px;
   border:none;
   padding:1em;
 }
@@ -185,6 +187,30 @@
     src: url(fonts/Transformers.ttf);
 }
 
+#nav {
+  float: right;
+  padding-top: 20px;
+}
+
+#nav a{
+    border-radius: 10px;
+    display: inline-block;
+    width: 2em;
+    height: 1.6em;
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+    color: #e67e22;
+    font-family: 'transformer';
+    font-size: 25px;
+}
+
+#nav a:hover{
+  background-color: #012e34;
+  text-decoration: none;
+  transition: background-color 0.18s ease-in-out;
+}
 
 
 @keyframes table_loader{50%{width:100%}}
