@@ -6,6 +6,9 @@ import subprocess
 from app import db
 from models import Make, Model, Engine, Type, Transmission
 
+with open('app/static/json/coords.json') as i:
+	tweet_coords = json.load(i)
+
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
@@ -160,7 +163,7 @@ def single_item(path_val, obj_id):
 #  about
 # -------
 @app.route('/about')
-def about():
+def about() :
 	return render_template('about.html')
 
 
@@ -168,7 +171,7 @@ def about():
 #  tests
 # -------
 @app.route('/tests')
-def tests():
+def tests() :
 	cmd = ["make","test"]
 	p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 	out, err = p.communicate()
@@ -180,6 +183,18 @@ def tests():
 		about(404)
 
 
+<<<<<<< HEAD
+=======
+
+# ------------------------------------
+# tweetstats
+# ------------------------------------
+@app.route('/tweetstats/')
+def tweet_stats() :
+	return render_template('tweet_stats.html', t=tweet_coords)
+
+
+>>>>>>> charles-dev
 # -----------
 #  API Calls
 # -----------
