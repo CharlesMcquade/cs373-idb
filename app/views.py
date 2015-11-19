@@ -168,6 +168,7 @@ def single_item(path_val, obj_id):
 def search_func():
 	ordering, items = refine_search.optimized_search(request.args.get('q'))
 	return render_template('search.html', 
+									len=len,
 									z=zip,
 									query_dict = query_dict,
 									ordering = ordering,
