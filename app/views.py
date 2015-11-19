@@ -183,8 +183,6 @@ def tests() :
 		about(404)
 
 
-<<<<<<< HEAD
-=======
 
 # ------------------------------------
 # tweetstats
@@ -194,7 +192,6 @@ def tweet_stats() :
 	return render_template('tweet_stats.html', t=tweet_coords)
 
 
->>>>>>> charles-dev
 # -----------
 #  API Calls
 # -----------
