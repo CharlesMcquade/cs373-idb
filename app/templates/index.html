@@ -61,9 +61,9 @@
 <body onLoad="javascript:init();">
   <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
     <!-- BEGIN NAVIGATION -->
-    <section class="big-background">
-      <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=YCPBXbG4-vY',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:0.5}"></a>
-    </section>
+    <video loop muted autoplay class="fullscreen-bg__video">
+        <source src="//www.dropbox.com/s/e4y6d1glujtas49/spedometer.mp4?raw=1" type="video/mp4">
+    </video>
     {% block nav %}
     <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
@@ -142,11 +142,6 @@
   <div class="footer">
       <div class = "image"></div>
   </div>
-  <script>
-    $(function(){
-      $(".player").mb_YTPlayer();
-    });
-  </script>
 </body>
 
 </html>
