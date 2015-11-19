@@ -9,13 +9,16 @@ html {
     height: 100%;
 }
 body{
-    /*background: url(../img/black.png) no-repeat fixed;*/
-    background: linear-gradient(red, blue) no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-   /* background-size: 100%; */
+
+background: url(../img/black_bg.jpg) no-repeat center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+/* background-size: 100%; */
+-webkit-font-smoothing:antialiased;
+-webkit-text-size-adjust:100%
+
 }
 
 body,
@@ -32,7 +35,7 @@ h6 {
 .topnav {
     font-size: 14px;
     background-image: none;
-    background-color: #012e34;
+    background-color: transparent;
 }
 
 .lead {
@@ -161,7 +164,8 @@ h6 {
 
     height: 40px;
     width: 100%;
-    background-color: #012e34;
+    /*background-color: #012e34;*/
+    background-color: transparent;
 }
 
 

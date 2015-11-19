@@ -36,7 +36,7 @@ background-size: cover;
 
 
 .topnav {
-background-color : #012e34;
+background-color : transparent;
 }
 
 .menu{
@@ -130,7 +130,8 @@ width: 100%;
 .footer{
 height: 40px;
 width: 100%;
-background-color : #012e34;
+/*background-color : #012e34;*/
+background-color: transparent
 }
 
 .image{
@@ -148,12 +149,14 @@ margin-right: 0px;
 color: white;
 border-radius: 7px;
 padding: 13px 20px;
-background-color: #337ab7;
+/*background-color: #337ab7;*/
+background-color: black,
 transition: background-color .3s ease-in    ;
 }
 
 .buttons:hover {
-color: #337ab7;
+/*color: #337ab7;*/
+color: black;
 background-color: white;
 transition: background-color .3s ease-in;
 }
