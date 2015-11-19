@@ -160,7 +160,7 @@ def single_item(path_val, obj_id):
 #  about
 # -------
 @app.route('/about')
-def about():
+def about() :
 	return render_template('about.html')
 
 
@@ -168,7 +168,7 @@ def about():
 #  tests
 # -------
 @app.route('/tests')
-def tests():
+def tests() :
 	cmd = ["make","test"]
 	p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 	out, err = p.communicate()
@@ -178,6 +178,16 @@ def tests():
 		return render_template('tests.html', results=result)
 	except TemplateNotFound:
 		about(404)
+
+
+
+# ------------------------------------
+# tweetstats
+# ------------------------------------
+@app.route('/tweetstats')
+def tweet_stats() :
+	return render_template('tweet_stats.html')
+
 
 # -----------
 #  API Calls
