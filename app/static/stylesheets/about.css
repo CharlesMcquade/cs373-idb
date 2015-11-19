@@ -192,22 +192,17 @@ p.large{font-size:16px}
     list-style-type: none;
     color: #798b8b ;
     font-size: 25px;
-    font-family: "terminator";
+    font-family: "Raleway";
 }
 
 .stats li > a:link, .stats li > a:visited{
-    font-family: "terminator";
+    font-family: "Raleway";
     color: #135e73;
     text-decoration:none;
 }
 
 .stats li > a:hover{
     color: #ffac64;
-}
-
-@font-face {
-    font-family: 'terminator';
-    src: url(fonts/Transformers.ttf);
 }
 
 .wrap {
@@ -218,7 +213,7 @@ p.large{font-size:16px}
 
 
 .bio{
-  font-family: 'terminator';
+  font-family: 'Raleway';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -242,7 +237,7 @@ p.large{font-size:16px}
 .list{
     display: block;
     list-style-type: none;
-    font-family: 'terminator';
+    font-family: 'Raleway';
     text-align: left;
     font-size: 15px;
 }
@@ -256,7 +251,7 @@ p.large{font-size:16px}
     margin-left: 40px;
     margin-right: 10px;
     text-transform: uppercase;
-    font-family: "terminator";
+    font-family: "Raleway";
     border-bottom: 1px solid white;
 }
 
