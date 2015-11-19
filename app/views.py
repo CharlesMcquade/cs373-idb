@@ -179,6 +179,7 @@ def tests():
 	except TemplateNotFound:
 		about(404)
 
+
 # -----------
 #  API Calls
 # -----------
@@ -192,18 +193,6 @@ def make_api():
 	for m in search:
 		result[str(m.id)] = m.json
 	return jsonify(**result)
-	# if len(request.args) == 0:
-	# 	return jsonify(**makes_dict)
-	# result = {}
-	# for make in makes_dict:
-	# 	flag = True
-	# 	for param in request.args:
-	# 		if str(makes_dict[make][param]) != request.args.get(param):
-	# 			flag = False
-	# 			break
-	# 	if flag:
-	# 		result.update({make: makes_dict[make]})
-	# return jsonify(**result)
 
 
 @app.route('/model_api', methods=['GET'])
@@ -216,18 +205,6 @@ def model_api():
 	for m in search:
 		result[m.id] = m.json
 	return jsonify(**result)
-	# if len(request.args) == 0:
-	# 	return jsonify(**models_dict)
-	# result = {}
-	# for model in models_dict:
-	# 	flag = True
-	# 	for param in request.args:
-	# 		if str(models_dict[model][param]) != request.args.get(param):
-	# 			flag = False
-	# 			break
-	# 	if flag:
-	# 		result.update({model: models_dict[model]})
-	# return jsonify(**result)
 
 
 @app.route('/engine_api', methods=['GET'])
@@ -240,18 +217,6 @@ def engine_api():
 	for m in search:
 		result[str(m.id)] = m.json
 	return jsonify(**result)
-	# if len(request.args) == 0:
-	# 	return jsonify(**engine_dict)
-	# result = {}
-	# for engine in engine_dict:
-	# 	flag = True
-	# 	for param in request.args:
-	# 		if str(engine_dict[engine][param]) != request.args.get(param):
-	# 			flag = False
-	# 			break
-	# 	if flag:
-	# 		result.update({engine: engine_dict[engine]})
-	# return jsonify(**result)
 			
 
 
@@ -265,15 +230,12 @@ def type_api():
 	for m in search:
 		result[str(m.id)] = m.json
 	return jsonify(**result)
-	# if len(request.args) == 0:
-	# 	return jsonify(**types_dict)
-	# result = {}
-	# for t in types_dict:
-	# 	flag = True
-	# 	for param in request.args:
-	# 		if str(types_dict[t][param]) != request.args.get(param):
-	# 			flag = False
-	# 			break
-	# 	if flag:
-	# 		result.update({t: types_dict[t]})
-	# return jsonify(**result)
+
+
+
+@app.route('/search', methods=['GET'])
+def type_api():
+	result = query(request.args.get("data"))
+	return jsonify(**result)
+
+
