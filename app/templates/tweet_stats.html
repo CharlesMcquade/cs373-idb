@@ -1,19 +1,47 @@
-{% extends "about.html" %}
-{% block title %}TweetCity Stats{% endblock %}
-{% block extra_head %}
-	<link href="{{ url_for('static', filename='stylesheets/tweetCharts.css') }}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<title>{%block title %}Tweet Stats{% endblock %}</title>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+     <link href="{{ url_for('static', filename='stylesheets/tweet_stats.css') }}" rel="stylesheet">
 	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
-
-
-	
-{% endblock %}
-
-
-{% block nav %}
-{% endblock %}
+</head>
 
 {% block content %}
+<!-- first row -->
 <div class="row">
+	<!-- description -->
+	<div class="col-sm-4">
+	<h3>TweetCity Stats</h3>
+	<p>This page exercizes <a href="http://www.tweetcity.me">TweetCity</a>'s API to show statistics on the tweets they store.
+	Their API can be found <a href="#">here</a>, on <a href="#">apiary</a>.
+	</p>
+	</div>
+
+	<!-- line graph -->
 	<div class="col-sm-8">
 		<div class="panel panel-success">
 		    <div class="panel-heading">
@@ -21,11 +49,13 @@
 
 		    </div>
 		    <div class="panel-body">
-		        <canvas id="myChart" width="600" height="400"></canvas>
+		        <canvas id="lineChart" width="600" height="400"></canvas>
 		    </div>
 		</div>
 	</div>
 </div>
+<!-- end first row -->
+
 {% endblock %}
 
 

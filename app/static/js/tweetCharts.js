@@ -29,7 +29,7 @@ var options = {
 }
 
 //Get the context of the canvas element we want to select
-var ctx = $("#myChart").get(0).getContext("2d");
+var ctx = $("#lineChart").get(0).getContext("2d");
 var myLineChart = new Chart(ctx).Line(data, options);
 
 
