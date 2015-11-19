@@ -1,5 +1,23 @@
-#lineChart {
+#tLineChart, #hDisChartName {
     margin: auto;
     width: 600px;
     padding-right: 20px;
+}
+
+
+
+
+#tDoChart {
+    margin: auto;
+    width: 600px;
+    padding-right: 20px;
+}
+
+.row {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.col-sm-6 {
+	padding-right: 7px;
+	padding-left: 7px;
 }

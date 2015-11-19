@@ -184,7 +184,7 @@ def tests() :
 # ------------------------------------
 # tweetstats
 # ------------------------------------
-@app.route('/tweetstats')
+@app.route('/tweetstats/')
 def tweet_stats() :
 	return render_template('tweet_stats.html')
 

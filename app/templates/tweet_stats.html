@@ -31,34 +31,79 @@
 </head>
 
 {% block content %}
-<!-- first row -->
+<!-- first row -> description-->
+<h1> TweetCity Stats </h1>
 <div class="row">
-	<!-- description -->
-	<div class="col-sm-4">
-	<h3>TweetCity Stats</h3>
-	<p>This page exercizes <a href="http://www.tweetcity.me">TweetCity</a>'s API to show statistics on the tweets they store.
+	<p>This exercizes <a href="http://www.tweetcity.me">TweetCity</a>'s API to show statistics on the tweets they store.
 	Their API can be found <a href="#">here</a>, on <a href="#">apiary</a>.
 	</p>
 	</div>
+</div>
+<!-- end first row -->
 
+<!-- second and third row -> tweet stats-->
+<h2> Tweet Statistics </h2>
+<div class="row">
+	<!-- MAP HERE -->
+</div>
+<div class="row">
 	<!-- line graph -->
-	<div class="col-sm-8">
+	<div class="col-sm-6">
 		<div class="panel panel-success">
 		    <div class="panel-heading">
-		         <h3 class="panel-title">Panel Title</h3>
+		         <h3 class="panel-title">Tweet Volume by Time</h3>
 
 		    </div>
 		    <div class="panel-body">
-		        <canvas id="lineChart" width="600" height="400"></canvas>
+		        <canvas id="tLineChart" width="600" height="400"></canvas>
 		    </div>
 		</div>
 	</div>
 </div>
-<!-- end first row -->
+<!-- end third row -->
+
+<!-- third and fourth row -> hashtag stats -->
+<h2> Hashtag Statistics </h2>
+<div class="row">
+<!-- bar chart name -->
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+	         <h3 class="panel-title">Hashtag Distribution</h3>
+	    </div>
+	    <div class="panel-body">
+	    <i>Only hashtags which are mentioned more than once are shown.</i>
+	        <canvas id="hDisChartName" width="600" height="200"></canvas>
+	    </div>
+	</div>
+</div>
+
+
+
 
 {% endblock %}
 
 
 {% block footer_outer %}
 <script src="{{ url_for('static', filename='js/tweetCharts.js') }}"></script>
+<script>
+var options = {
+    animation: false,
+    scaleoverride: true,
+    responsive: true,
+    maintainAspectRatio: true
+}
+$.getJSON("{{ url_for('static', filename='json/pie_hashtags.json') }}", function (json) {
+    
+    var hDisChartName = document.getElementById("hDisChartName").getContext("2d");
+    new Chart(hDisChartName).Bar(json, options);
+    
+});
+
+$.getJSON("{{ url_for('static', filename='json/tweet_times.json') }}", function (json) {
+    
+   var tLineChart = $("#tLineChart").get(0).getContext("2d");
+   var myTweetLineChart = new Chart(tLineChart).Line(json, options);
+    
+});
+</script>
 {% endblock %}
