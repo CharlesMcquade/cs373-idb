@@ -1,0 +1,122 @@
+{% extends "about.html" %}
+{% block title %}Search Results{% endblock %} 
+{% block head %}
+<head>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
+
+    <!-- Table CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/table.css') }}" rel="stylesheet">
+    <!-- <link href="{{ url_for('static', filename='stylesheets/dataTables.bootstrap.min.css') }}" rel="stylesheet"> -->
+   
+
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sortable.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <!-- jQuery -->
+    <!-- // <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
+    
+    <!-- Bootstrap Core JavaScript -->
+    <!-- // <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
+
+
+    <!-- Menu Toggle Script -->
+
+    <script>
+
+          $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+           });
+
+        $(document).ready(function(){
+            var rowsShown = 10;
+            $('#data').after('<div id="nav"></div>');
+            var rowsTotal = $('#data tbody tr').length;
+        
+            var numPages = rowsTotal/rowsShown;
+           
+            for(i = 0;i < numPages;i++) {
+                var pageNum = i + 1;
+                $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
+            }
+            $('#data tbody tr').hide();
+            $('#data tbody tr').slice(0, rowsShown).show();
+            $('#nav a:first').addClass('active');
+            $('#nav a').bind('click', function(){
+ 
+                $('#nav a').removeClass('active');
+                $(this).addClass('active');
+                var currPage = $(this).attr('rel');
+                var startItem = currPage * rowsShown;
+                var endItem = startItem + rowsShown;
+                $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+                        css('display','table-row').animate({opacity:1}, 300);
+            });
+        });
+    </script>
+
+
+
+</head>
+{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="intro-header">
+        <div class="container">
+        {% for model in ordering %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                    
+                        <!-- Description -->
+                        <h1 class="description">
+                          American Vehicle {{ model.title() }}
+                        </h1>
+                        
+                        <!-- Table demo -->
+                        <div class="box-table">
+                            <table class="sortable" id="data" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    {% for h in query_dict[model][HEADER_IDX] %}
+                                    <th>{{ h }}</th>
+                     				{% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for v in items[model] %}
+                                <tr>
+                                {% for k, f in z(query_dict[model][KEY_IDX], query_dict[model][FUNCTION_IDX]) %}
+                                {% set query_item = query_dict[model][DB_IDX].query.filter_by(id=v).first() %}
+                                {% set header_val, key_val = f(k, query_item) %}
+                                	<td>{{ key_val|safe }}</td>
+                                {% endfor %}
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table> 
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
