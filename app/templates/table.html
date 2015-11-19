@@ -1,5 +1,5 @@
 {% extends "about.html" %}
-{% block title %}Vehicle {{ path }}{% endblock %} 
+{% block title %}Vehicle {{ path }}{% endblock %}
 {% block head %}
 <head>
     <meta name="description" content="">
@@ -15,7 +15,9 @@
     <!-- Table CSS -->
     <link href="{{ url_for('static', filename='stylesheets/table.css') }}" rel="stylesheet">
     <!-- <link href="{{ url_for('static', filename='stylesheets/dataTables.bootstrap.min.css') }}" rel="stylesheet"> -->
-   
+
+    <!-- animsition.css -->
+    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -26,7 +28,7 @@
 
     <!-- jQuery -->
     <!-- // <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
-    
+
     <!-- Bootstrap Core JavaScript -->
     <!-- // <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
 
@@ -44,9 +46,9 @@
             var rowsShown = 10;
             $('#data').after('<div id="nav"></div>');
             var rowsTotal = $('#data tbody tr').length;
-        
+
             var numPages = rowsTotal/rowsShown;
-           
+
             for(i = 0;i < numPages;i++) {
                 var pageNum = i + 1;
                 $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
@@ -55,7 +57,7 @@
             $('#data tbody tr').slice(0, rowsShown).show();
             $('#nav a:first').addClass('active');
             $('#nav a').bind('click', function(){
- 
+
                 $('#nav a').removeClass('active');
                 $(this).addClass('active');
                 var currPage = $(this).attr('rel');
@@ -80,12 +82,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                    
+
                         <!-- Description -->
                         <h1 class="description">
                           American Vehicle {{ path.title() }}
                         </h1>
-                        
+
                         <!-- Table demo -->
                         <div class="box-table">
                             <table class="sortable" id="data" cellspacing="0" width="100%">
@@ -106,8 +108,8 @@
                                 </tr>
                                 {% endfor %}
                                 </tbody>
-                            </table> 
-                           
+                            </table>
+
                         </div>
 
                     </div>

@@ -22,6 +22,8 @@
 
     <!-- Animate CSS -->
     <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
+    <!-- animsition.css -->
+    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -33,8 +35,7 @@
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <!-- jQuery for background video -->
-    <script src="{{ url_for('static', filename='js/jquery.mb.YTPlayer.js') }}"></script>
+
 
      <!-- Menu Toggle Script -->
     <script>
@@ -62,7 +63,7 @@
 
 
 <body onLoad="javascript:init();">
-  <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
+  <div class="wrapper animsition"> <!-- BEGIN WRAPPER DIV -->
     <!-- BEGIN NAVIGATION -->
     <video loop muted autoplay class="fullscreen-bg__video">
         <source src="//www.dropbox.com/s/e4y6d1glujtas49/spedometer.mp4?raw=1" type="video/mp4">
@@ -88,12 +89,12 @@
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li style="margin-right:190px;font-size:40px;font-weight:bold"><a href="/index">MurikinMade</a></li>
-                    <li class="menu"><a href="/about">ABOUT</a></li>
-                    <li class="menu"><a href="/makes">MAKES</a></li>
-                    <li class="menu"><a href="/engines">ENGINES</a></li>
-                    <li class="menu"><a href="/models">MODELS</a></li>
-                    <li class="menu"><a href="/transmissions">TRANSMISSIONS</a></li>
-                    <li class="menu"><a href="/types">TYPES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/about">ABOUT</a></li>
+                    <li class="menu"><a class="animsition-link" href="/makes">MAKES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/engines">ENGINES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/models">MODELS</a></li>
+                    <li class="menu"><a class="animsition-link" href="/transmissions">TRANSMISSIONS</a></li>
+                    <li class="menu"><a class="animsition-link" href="/types">TYPES</a></li>
                     <li class="menu">
                         <!--search bar-->
                         <div id="tfheader">
@@ -124,13 +125,13 @@
                         <h3 class="subtitle animated fadeInUp"><font color="#7887ab">American-Made Cars</font></h3>
                         <ul class="list-inline intro-social-buttons animated fadeInUp">
                             <li>
-                                <a href="/makes" class="btn buttons" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
+                                <a href="/makes" class="btn buttons animsition-link" ><i class="fa fa-car fa-fw"></i>  <span class="network-name">Makes</span></a>
                             </li>
                             <li>
-                                <a href="/engines" class="btn buttons"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engines</span></a>
+                                <a href="/engines" class="btn buttons animsition-link"><i class="fa fa-cog fa-spin"></i> <span class="network-name">Engines</span></a>
                             </li>
                             <li>
-                                <a href="/models" class="btn buttons"><i class="fa fa-car fa-fw"></i> <span class="network-name">Models</span></a>
+                                <a href="/models" class="btn buttons animsition-link"><i class="fa fa-car fa-fw"></i> <span class="network-name">Models</span></a>
                             </li>
                         </ul>
                     </div>
@@ -140,11 +141,19 @@
     </div>
     <!-- END CONTENT -->
     {% endblock %}
-  </div> <!-- END WRAPPER DIV -->
 
-  <div class="footer">
+  </div> <!-- END WRAPPER DIV -->
+  <div class="footer animsition">
       <div class = "image"></div>
   </div>
+
+  <!-- animsition jQuery plugin -->
+  <script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
+  <script>
+  $(document).ready(function() {
+    $('.animsition').animsition();
+  });
+  </script>
 </body>
 
 </html>
