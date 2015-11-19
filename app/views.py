@@ -5,6 +5,8 @@ import json
 import subprocess
 from app import db
 from models import Make, Model, Engine, Type, Transmission
+import search
+import refine_search
 
 with open('app/static/json/coords.json') as i:
 	tweet_coords = json.load(i)
@@ -12,6 +14,7 @@ with open('app/static/json/coords.json') as i:
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
+def search_make_engine_name(q) : return '{}L V{} {}'.format(d['size'], d['cylinders'], d['fuel'])
 def make_tran_name(d) :
 	if d.num_speeds == "continuously variable" :
 		return "Variable Transmission"
@@ -79,6 +82,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: (h, d.ceo)),
 			  				 (lambda h, d: (h, d.established)),
 			  				 (lambda h, d: (h, make_anchor("/models/makes?id={}".format(d.id), "All Models of this Make")))])}
+
 
 # -------
 #  index
@@ -159,6 +163,22 @@ def single_item(path_val, obj_id):
 
 
 
+
+@app.route('/search', methods=['GET'])
+def search_func():
+	ordering, items = refine_search.optimized_search(request.args.get('q'))
+	return render_template('search.html', 
+									z=zip,
+									query_dict = query_dict,
+									ordering = ordering,
+									items = items,
+									DB_IDX=0,
+									KEY_IDX=2,
+									HEADER_IDX=1,
+									FUNCTION_IDX=3)
+
+
+
 # -------
 #  about
 # -------
@@ -182,10 +202,6 @@ def tests() :
 	except TemplateNotFound:
 		about(404)
 
-
-<<<<<<< HEAD
-=======
-
 # ------------------------------------
 # tweetstats
 # ------------------------------------
@@ -193,8 +209,6 @@ def tests() :
 def tweet_stats() :
 	return render_template('tweet_stats.html', t=tweet_coords)
 
-
->>>>>>> charles-dev
 # -----------
 #  API Calls
 # -----------
@@ -245,10 +259,3 @@ def type_api():
 	for m in search:
 		result[str(m.id)] = m.json
 	return jsonify(**result)
-
-
-
-# @app.route('/search', methods=['GET'])
-# def type_api():
-# 	result = query(request.args.get("data"))
-# 	return jsonify(**result)
