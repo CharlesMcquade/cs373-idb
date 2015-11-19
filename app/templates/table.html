@@ -34,6 +34,12 @@
     <!-- Menu Toggle Script -->
 
     <script>
+
+          $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+           });
+          
         $(document).ready(function(){
             var rowsShown = 10;
             $('#data').after('<div id="nav"></div>');

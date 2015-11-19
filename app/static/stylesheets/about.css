@@ -9,7 +9,8 @@ html {
     height: 100%;
 }
 body{
-    background: url(../img/black.png) no-repeat fixed;
+    /*background: url(../img/black.png) no-repeat fixed;*/
+    background: linear-gradient(red, blue) no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
