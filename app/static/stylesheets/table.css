@@ -183,11 +183,6 @@
   animation: table_loader 10s infinite ease;
 }
 
-@font-face {
-    font-family: 'transformer';
-    src: url(fonts/Transformers.ttf);
-}
-
 #nav {
   float: right;
   padding-top: 20px;
@@ -203,7 +198,7 @@
     cursor: pointer;
     background: white;
     color: #e67e22;
-    font-family: 'transformer';
+    font-family: 'Raleway';
     font-size: 25px;
 }
 
