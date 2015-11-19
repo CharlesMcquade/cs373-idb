@@ -6,6 +6,9 @@ import subprocess
 from app import db
 from models import Make, Model, Engine, Type, Transmission
 
+with open('app/static/json/coords.json') as i:
+	tweet_coords = json.load(i)
+
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
@@ -186,7 +189,7 @@ def tests() :
 # ------------------------------------
 @app.route('/tweetstats/')
 def tweet_stats() :
-	return render_template('tweet_stats.html')
+	return render_template('tweet_stats.html', t=tweet_coords)
 
 
 # -----------
