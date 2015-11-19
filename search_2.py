@@ -3,13 +3,8 @@ from app import db
 from fuzzywuzzy import fuzz
 from models import Make, Model, Engine, Type, Transmission
 
-# Take in input concat into single string
+# Global
 inputs = list()
-throw_away = ['and','or']
-for x in range(1, len(sys.argv)):
-  if sys.argv[x].lower() not in throw_away:
-    inputs.append(' '+sys.argv[x].lower())
-
 
 # Function to actually calculate similarity of strings and add to results list. 
 # May have to call in two rounds, one for AND and another for OR, where I would either
@@ -72,47 +67,56 @@ def print_results(results, model_type):
 
 
 # Iterate over everything in every model of Models.py
+def query(user_input):
+  # Take in input concat into single string
+  user_input = user_input.split()
+  throw_away = ['and','or']
+  for x in range(0, len(user_input)):
+    if user_input[x].lower() not in throw_away:
+      inputs.append(user_input[x].lower())
 
-make_and_results = list() 
-make_or_results = list()
-model_and_results = list() 
-model_or_results = list()
-engine_and_results = list() 
-engine_or_results = list()
-type_and_results = list() 
-type_or_results = list()
-transmission_and_results = list() 
-transmission_or_results = list()
+  make_and_results = list() 
+  make_or_results = list()
+  model_and_results = list() 
+  model_or_results = list()
+  engine_and_results = list() 
+  engine_or_results = list()
+  type_and_results = list() 
+  type_or_results = list()
+  transmission_and_results = list() 
+  transmission_or_results = list()
 
-for x in Make.query.all():
-  row = x.json
-  check_match(row, 'Make', make_and_results, make_or_results)
-make_results = finalize_results(make_and_results, make_or_results)
-print_results(make_results, 'Make')
+  for x in Make.query.all():
+    row = x.json
+    check_match(row, 'Make', make_and_results, make_or_results)
+  make_results = finalize_results(make_and_results, make_or_results)
+  #print_results(make_results, 'Make')
 
-for x in Model.query.all():
-  row = x.json
-  check_match(row, 'Model', model_and_results, model_or_results)
-model_results = finalize_results(model_and_results, model_or_results)
-print_results(model_results, 'Model')
+  for x in Model.query.all():
+    row = x.json
+    check_match(row, 'Model', model_and_results, model_or_results)
+  model_results = finalize_results(model_and_results, model_or_results)
+  #print_results(model_results, 'Model')
 
-for x in Engine.query.all():
-  row = x.json
-  check_match(row, 'Engine', engine_and_results, engine_or_results)
-engine_results = finalize_results(engine_and_results, engine_or_results)
-print_results(engine_results, 'Engine')
+  for x in Engine.query.all():
+    row = x.json
+    check_match(row, 'Engine', engine_and_results, engine_or_results)
+  engine_results = finalize_results(engine_and_results, engine_or_results)
+  #print_results(engine_results, 'Engine')
 
-for x in Type.query.all():
-  row = x.json
-  check_match(row, 'Type', type_and_results, type_or_results)
-type_results = finalize_results(type_and_results, type_or_results)
-print_results(type_results, 'Type')
+  for x in Type.query.all():
+    row = x.json
+    check_match(row, 'Type', type_and_results, type_or_results)
+  type_results = finalize_results(type_and_results, type_or_results)
+  #print_results(type_results, 'Type')
 
-for x in Transmission.query.all():
-  row = x.json
-  check_match(row, 'Transmission', transmission_and_results, transmission_or_results)
-transmission_results = finalize_results(transmission_and_results, transmission_or_results)
-print_results(transmission_results, 'Transmission')
+  for x in Transmission.query.all():
+    row = x.json
+    check_match(row, 'Transmission', transmission_and_results, transmission_or_results)
+  transmission_results = finalize_results(transmission_and_results, transmission_or_results)
+  #print_results(transmission_results, 'Transmission')
+
+  return {'Make':make_results, 'Model':model_results, 'Engine':engine_results, 'Type':type_results, 'Transmission':transmission_results}
 
 
   
