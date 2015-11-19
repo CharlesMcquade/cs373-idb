@@ -9,58 +9,58 @@ from models import Make, Model, Engine, Type, Transmission
 
 def make_anchor(a, t) : return '<a href="{}">{}</a>'.format(a, t)
 def make_engine_name(d) : return '{}L V{} {}'.format(d.size, d.cylinders, d.fuel)
-def make_tran_name(d) : 
-	if d.num_speeds == "continuously variable" : 
+def make_tran_name(d) :
+	if d.num_speeds == "continuously variable" :
 		return "Variable Transmission"
 	return "{}-Speed {}".format(d.num_speeds, d.transmission_type.lower())
-def make_tran_auto_type(s) : 
+def make_tran_auto_type(s) :
 	if str(s).lower() == 'false' : return "Not applicable"
 	else : return make_anchor("/transmissions?automatic_type={}".format(s), s)
 
-#dictionary for queries. 
-# key = path, 
+#dictionary for queries.
+# key = path,
 # value= tuple(Database, Proper Titles for Data values, Data index values, functions to apply to titles/values)
-query_dict = {'engines' : (Engine, 
+query_dict = {'engines' : (Engine,
 							["Name", "Size (Liters)", "Cylinders", "Horsepower", "Fuel Type", "Torque", "Models"],
-			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"], 
-			  				[(lambda h, d: 
+			  				["name", "size", "cylinders", "hp", "fuel", "torque", "models"],
+			  				[(lambda h, d:
 			  					(h, make_anchor("/engines/{}".format(d.id), make_engine_name(d)))),
-			  				 (lambda h, d: 
+			  				 (lambda h, d:
 			  					(h, make_anchor("/engines?size={}".format(d.size), d.size))),
-		  					 (lambda h, d: 
+		  					 (lambda h, d:
 			  					(h, make_anchor("/engines?cylinders={}".format(d.cylinders), d.cylinders))),
-		  					 (lambda h, d: 
+		  					 (lambda h, d:
 			  					(h, make_anchor("/engines?hp={}".format(d.hp), d.hp))),
-			  				 (lambda h, d: 
+			  				 (lambda h, d:
 			  					(h, make_anchor("/engines?fuel={}".format(d.fuel), d.fuel))),
-			  				 (lambda h, d: 
+			  				 (lambda h, d:
 			  					(h, make_anchor("/engines?torque={}".format(d.torque), d.torque))),
-			  				 (lambda h, d: 
+			  				 (lambda h, d:
 			  					(h, make_anchor("/models/engines?id={}".format(d.id), "All Models with this Engine")))]),
-			  'models' : (Model, 
+			  'models' : (Model,
 			  				["Name", "Make", "Year", "Price", "Engine", "Type", "Transmission"],
 			  				["name", "make", "year", "price", "engines", "types", "transmissions"],
-			  				[(lambda h, d: 
+			  				[(lambda h, d:
 			  					(h, make_anchor("/models/{}".format(d.id), d.name.title()))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, make_anchor("/makes/{}".format(d.make.id), d.make.name.title()))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, make_anchor("/models/?year={}".format(d.year), d.year))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, "${:.2f}".format(float(d.price)))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, make_anchor("/engines/{}".format(d.engines.first().id), make_engine_name(d.engines.first())))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, make_anchor("/types/{}".format(d.types.first().id), d.types.first().name))),
-			  				(lambda h, d: 
+			  				(lambda h, d:
 			  					(h, make_anchor("/transmissions/{}".format(d.transmissions.first().id), make_tran_name(d.transmissions.first()))))]),
-			  'types' : (Type, 
+			  'types' : (Type,
 			  				["Name", "Number of Doors", "Models"],
 			  				["name", "doors", "models"],
 			  				[(lambda h, d: (h, make_anchor("/types/{}".format(d.id), d.name.title()))),
 			  				 (lambda h, d: (h, make_anchor("/types?doors={}".format(d.doors), d.doors))),
 			  				 (lambda h, d: (h, make_anchor("/models/types?id={}".format(d.id), "All Models of this Type")))]),
-			  'transmissions' : (Transmission, 
+			  'transmissions' : (Transmission,
 			  				["Name", "Transmission Type", "Automatic Type", "Number of Speeds", "Models"],
 			  				["name", "transmission_type", "automatic_type", "num_speeds", "models"],
 			  				[(lambda h, d: (h, make_anchor("/transmissions/{}".format(d.id), make_tran_name(d)))),
@@ -68,7 +68,7 @@ query_dict = {'engines' : (Engine,
 			  				 (lambda h, d: (h, make_tran_auto_type(d.automatic_type))),
 			  				 (lambda h, d: (h, make_anchor("/transmissions?num_speeds={}".format(d.num_speeds), d.num_speeds))),
 			  				 (lambda h, d: (h, make_anchor("/models/transmissions?id={}".format(d.id), "All Models with this Transmission")))]),
-			  'makes' : (Make, 
+			  'makes' : (Make,
 			  				["Name", "Headquarters Location", "CEO", "Date Established", "Models"],
 			  				["name", "hqlocation", "ceo", "established", "models"],
 			  				[(lambda h, d: (h, make_anchor("/makes/{}".format(d.id), d.name.title()))),
@@ -92,7 +92,7 @@ def index():
 @app.route('/<path:path_val>', methods=['GET'])
 @app.route('/<path:path_val>/', methods=['GET'])
 def tables(path_val):
-	try: 
+	try:
 		db, headers, keys, functions = query_dict[path_val]
 
 		queries = dict()
@@ -101,12 +101,12 @@ def tables(path_val):
 
 		t = db.query.filter_by(**queries)
 
-		return render_template('table.html', 
-									z=zip, 
-									keys=keys, 
-									functions=functions, 
-									path=path_val, 
-									headers=headers, 
+		return render_template('table.html',
+									z=zip,
+									keys=keys,
+									functions=functions,
+									path=path_val,
+									headers=headers,
 									t=t)
 	except TemplateNotFound:
 		abort(404)
@@ -122,13 +122,13 @@ def single_item(path_val, obj_id):
 		queries = dict()
 		for arg in request.args:
 			queries[arg] = request.args.get(arg)
-		
-		if len(queries) < 1 : 
+
+		if len(queries) < 1 :
 			db, headers, keys, functions = query_dict[path_val]
 			obj = db.query.filter_by(id = obj_id).first()
 			if obj == None: raise KeyError
-			return render_template('single_item.html', 
-			                        z=zip, 
+			return render_template('single_item.html',
+			                        z=zip,
 			                        headers=headers,
 			                        keys=keys,
 			                        functions=functions,
@@ -142,12 +142,12 @@ def single_item(path_val, obj_id):
 		t = t.first().models.all()
 
 		db, headers, keys, functions = query_dict[path_val]
-		return render_template('table.html', 
-									z=zip, 
-									keys=keys, 
-									functions=functions, 
-									path=path_val, 
-									headers=headers, 
+		return render_template('table.html',
+									z=zip,
+									keys=keys,
+									functions=functions,
+									path=path_val,
+									headers=headers,
 									t=t)
 	except TemplateNotFound:
 		abort(404)
@@ -217,7 +217,7 @@ def engine_api():
 	for m in search:
 		result[str(m.id)] = m.json
 	return jsonify(**result)
-			
+
 
 
 @app.route('/type_api', methods=['GET'])
@@ -233,9 +233,7 @@ def type_api():
 
 
 
-@app.route('/search', methods=['GET'])
-def type_api():
-	result = query(request.args.get("data"))
-	return jsonify(**result)
-
-
+# @app.route('/search', methods=['GET'])
+# def type_api():
+# 	result = query(request.args.get("data"))
+# 	return jsonify(**result)
