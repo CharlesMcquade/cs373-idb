@@ -1,77 +1,31 @@
 {% extends 'base.html' %}
 <title>{%block title %}Murkin Made Cars{% endblock %}</title>
 
-<!-- BEGIN HEAD -->
-{% block head %}
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-
-    
-    <!-- jQuery -->
-    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-    <!-- Bootstrap 3.0 CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap 3.3.5 Javasript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/landing-page.css') }}" rel="stylesheet">
-
-    <!-- Animate CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
-
-    <!-- animsition.css -->
-    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
-
-     <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
-    {% block extra_head %}
-
-    {% endblock %}
-
-</head>
-
+<!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
+{% block extra_head %}
+<!-- Custom CSS -->
+<link href="{{ url_for('static', filename='stylesheets/landing-page.css') }}" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 {% endblock %}
-<!-- END HEAD -->
 
-{% block content %}
 
-  <div class="wrapper animsition"> <!-- BEGIN WRAPPER DIV -->
-    <!-- BEGIN NAVIGATION -->
+
+{% block body %}
+    
+  <!-- Wrapper stuff -->
+  <div class="wrapper animsition">
+    
+    <!-- Video background -->
     <video loop muted autoplay class="fullscreen-bg__video">
         <source src="//www.dropbox.com/s/e4y6d1glujtas49/spedometer.mp4?raw=1" type="video/mp4">
     </video>
 
-    <!-- BEGIN CONTENT -->
-    {%block content %}
-
+    {% include 'navbar.html' %}
+    
+    <!-- Menu -->
     <div class="intro-header">
         <div class="container">
             <div class="row">
@@ -95,24 +49,7 @@
             </div>
         </div>
     </div>
+</div> 
+<!-- End Wrapper Stuff -->
 
-    <!-- END CONTENT -->
-    {% endblock %}
-
-  </div> <!-- END WRAPPER DIV -->
-
-  <div class="footer animsition">
-      <div class = "image"></div>
-  </div>
-
-  <!-- animsition jQuery plugin -->
-  <script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
-  <script>
-      $(document).ready(function() {
-        $('.animsition').animsition();
-      });
-  </script>
-  
-</body>
-
-</html>
+{% endblock %}
