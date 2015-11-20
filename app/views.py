@@ -163,7 +163,7 @@ def single_item(path_val, obj_id):
 
 
 
-
+@app.route('/search/', methods=['GET'])
 @app.route('/search', methods=['GET'])
 def search_func():
 	ordering, items = refine_search.optimized_search(request.args.get('q'))
