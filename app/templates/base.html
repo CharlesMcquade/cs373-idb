@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<title>{%block title %}Murkin Made Cars{% endblock %}</title>
-
+	{% block head %}
 	<head>
 	    <!-- Metadata -->
 	    <meta charset="utf-8">
@@ -21,8 +21,49 @@
 	{% block extra_head %}
 	{% endblock %}
 	</head>
+	{% endblock %}
 	<body>
 	{% block content %}
+	{% block navbar %}
+	<nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
+        <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-right:190px;font-size:40px;font-weight:bold"><a href="/">MurikinMade</a></li>
+                    <li class="menu"><a href="/about">ABOUT</a></li>
+                    <li class="menu"><a class="animsition-link" href="/makes">MAKES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/engines">ENGINES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/models">MODELS</a></li>
+                    <li class="menu"><a class="animsition-link" href="/transmissions">TRANSMISSIONS</a></li>
+                    <li class="menu"><a class="animsition-link" href="/types">TYPES</a></li>
+                    <li class="menu"><a class="animsition-link" href="/tweetstats">Tweet Statistics</a></li>
+                    <li class="menu">
+                        <!--search bar-->
+                        <div id="tfheader">
+                            <form action="/search" id="tfsearch" method="get">
+                                <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
+                                <input type="submit" value="SEARCH" class="tfbutton">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+	{% endblock %}
 	{% endblock %}
 	</body>
 	<footer>

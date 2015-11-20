@@ -34,17 +34,12 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-    <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
-    {% block extra_head %}
 
     <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
     <!-- Owl Carousel Assets -->
     <link href="{{ url_for('static', filename='stylesheets/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='stylesheets/owl.theme.css') }}" rel="stylesheet">
-
-    {% block extra_head %}
-    {% endblock %}
 
 </head>
 
