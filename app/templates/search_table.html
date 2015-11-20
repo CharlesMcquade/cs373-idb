@@ -1,0 +1,24 @@
+ <h1 class="description tableDescription">American Vehicle {{ model.title() }}</h1>
+<!-- Table demo -->
+<div>
+    <table id="dataTable{{ model.title() }}" class="table table-striped table-bordered" width="100%">
+        <thead >
+        <tr>
+            {% for h in query_dict[model][HEADER_IDX] %}
+            <th>{{ h }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in items[model] %}
+        <tr>
+        {% for k, f in z(query_dict[model][KEY_IDX], query_dict[model][FUNCTION_IDX]) %}
+        {% set query_item = query_dict[model][DB_IDX].query.filter_by(id=v).first() %}
+        {% set header_val, key_val = f(k, query_item) %}
+            <td>{{ key_val|safe }}</td>
+        {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+</div>

@@ -1,3 +1,18 @@
 .table {
 	background-color: white;
 }
+
+.tableDescription {
+	color: #e7fef3;
+	text-align: center;
+}
+
+.dataTables_info, .dataTables_length {
+	color: #e7fef3;
+	font-style: italic;
+}
+
+.dataTables_filter {
+	color: #e7fef3;
+}
+
