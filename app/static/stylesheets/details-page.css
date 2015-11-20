@@ -26,18 +26,18 @@ h6 {
 
 .topnav {
     font-size: 14px;
-    background-image: none; 
-    background-color: #012e34;
+    background-image: none;
+    background-color: transparent;
 }
 
-/*body{
+body{
     background: url(../img/black.jpg) no-repeat center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-     background-size: 100%;         
-}*/
+     background-size: 100%;
+}
 
 .lead {
     font-size: 18px;
@@ -56,7 +56,7 @@ img {
     padding-bottom: 30px;
     text-align: center;
     color: #f8f8f8;
-    
+
 }
 
 .intro-message {
@@ -187,7 +187,7 @@ img {
 .wrapper {
     /*background-color: #012e34;*/
     width: auto;
-    height: auto; 
+    height: auto;
     min-height: 100%;
     margin-bottom: -40px;
 }
@@ -199,10 +199,10 @@ img {
     width: 100%;
 }
 
-.footer{    
+.footer{
     height: 40px;
     width: 100%;
-    background-color: #012e34;
+    background-color: transparent;
 }
 
 
@@ -214,7 +214,7 @@ img {
     bottom: 5px;
     top: 0px;
     margin-left: auto;
-    margin-right: 0px;   
+    margin-right: 0px;
 }
 
 @font-face {
