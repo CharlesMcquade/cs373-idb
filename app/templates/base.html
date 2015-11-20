@@ -14,7 +14,7 @@
 	    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 	    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 		<!-- jQuery -->
-	    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <!-- Bootstrap 3.0 CSS -->
 	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	    <!-- Bootstrap 3.3.5 Javasript -->
@@ -48,8 +48,6 @@
 	</body>
 	<!-- END BODY -->
 
-	<!-- FOOTER -->
-	<footer>
 	<!-- animsition jQuery plugin -->
 	<script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
     <script>
@@ -65,8 +63,6 @@
     </script>
 	{% block extra_footer %}
 	{% endblock %}
-	</footer>
-	<!-- EMD FOOTER -->
 </html>
 
 

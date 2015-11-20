@@ -1,106 +1,34 @@
+{% extends 'base.html' %}
 <title>{% block title %}About Us{% endblock %}</title>
 
-{% block head %}
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
-
+{% block extra_head %}
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='stylesheets/landing-page.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 
-    <!-- Animate CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
-
-    <!-- animsition.css -->
-    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
-
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
-
-    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
+    <!--HAVE TO FIX THIS OR NOT? THAT'S THE QUESTION -->
+     <!-- <meta name="description" content="jQuery Responsive Carousel - Owl Carusel">
+     <meta name="author" content="Bartosz Wojciechowski"> -->
 
     <!-- Owl Carousel Assets -->
     <link href="{{ url_for('static', filename='stylesheets/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='stylesheets/owl.theme.css') }}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-</head>
-
+    <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
 {% endblock %}
-
-
-<body>
-
-  <!-- Menu Toggle Script -->
-  <script>
-      $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-      });
-  </script>
-
-  <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
-
-    <!-- BEGIN NAVIGATION -->
-    {% block nav %}
-
-    <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li style="margin-right:190px;font-size:40px;font-weight:bold"><a href="/index">MurikinMade</a></li>
-                    <li class="menu"><a href="/about">ABOUT</a></li>
-                    <li class="menu"><a href="/makes">MAKES</a></li>
-                    <li class="menu"><a href="/engines">ENGINES</a></li>
-                    <li class="menu"><a href="/models">MODELS</a></li>
-                    <li class="menu"><a href="/transmissions">TRANSMISSIONS</a></li>
-                    <li class="menu"><a href="/types">TYPES</a></li>
-                    <li class="menu">
-                        <!--search bar-->
-                        <div id="tfheader">
-                            <form action="/search" id="tfsearch" method="get">
-                                <input type="text" class="tftextinput" name="q" size="21" maxlength="120">
-                                <input type="submit" value="SEARCH" class="tfbutton">
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!-- END NAVIGATION -->
-
-    {% endblock %}
 
 
 {% block content %}
@@ -210,7 +138,7 @@
       });
 
     });
-    </script>
+</script>
 <div class="row">
   <div class="col-lg-12 stats">
     <h1 class="s_header"> Stats </h1>
@@ -241,21 +169,11 @@
 
 {% endblock %}
 
-</div>
+{% block extra_footer %}
 
-    {% block footer %}
-
-    <div class="footer animsition">
-        <div class="image"></div>
-  	</div>
-    <!-- animsition jQuery plugin -->
-    <script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-          $('.animsition').animsition();
-        });
-    </script>
-
-    {% endblock %}
-
-</body>
+<script>
+    $(document).ready(function() {
+      $('.animsition').animsition();
+    });
+</script>
+{% endblock %}
