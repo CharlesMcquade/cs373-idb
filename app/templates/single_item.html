@@ -1,9 +1,8 @@
-{% extends "about.html" %}
-
+{% extends "base.html" %}
 {% block title %}{{ obj.name.title() }} - Murikin Made{% endblock %}
 {% block extra_head %}
 <link href="{{ url_for('static', filename='stylesheets/details-page.css') }}" rel="stylesheet">
- <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 

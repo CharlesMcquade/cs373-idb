@@ -51,5 +51,5 @@ test: tests.py
 	coverage3 report -m --include="./*" >> tests.tmp
 	cat tests.tmp
 
-idb1.log:
-	git log > IDB2.log
+idb3.log:
+	git log > IDB3.log
