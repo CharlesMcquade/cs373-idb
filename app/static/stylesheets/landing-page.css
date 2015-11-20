@@ -1,13 +1,13 @@
-        /*!
- * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+/*!
+* Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
+* Code licensed under the Apache License v2.0.
+* For details, see http://www.apache.org/licenses/LICENSE-2.0.
+*/
 
 body,
 html {
-    width: 100%;
-    height: 100%;
+width: 100%;
+height: 100%;
 }
 
 body,
@@ -17,195 +17,220 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+font-family: "Raleway","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+font-weight: 700;
 }
 
 body{
-    background: url(../img/bg.jpg) no-repeat center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    /* background-size: 100%; */        
+
+background: url(../img/black_bg.jpg) no-repeat center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+/* background-size: 100%; */
+-webkit-font-smoothing:antialiased;
+-webkit-text-size-adjust:100%
+
 }
 
 
 .topnav {
+background-color : transparent;
+border:none;
+}
+
+.menu{
+    font-family: 'Raleway';
     font-size: 14px;
-    background-image: none; 
-    background-color: #012e34;
 }
 
 .lead {
-    font-size: 18px;
-    font-weight: 400;
+font-size: 18px;
+font-weight: 400;
 }
 
 .intro-header {
-    padding-top: 0px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 30px;
-    text-align: center;
-    color: transparent;
-    /*background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
-    background-size: 100% 110%;*/
+padding-top: 0; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+padding-bottom: 0;
+text-align: center;
+color: #012e34;
+/*background: url(../img/dark_cars_concept_art_vehicles_Seat_2560x1600.jpg) no-repeat ;
+background-size: 100% 110%;*/
 }
 
 .intro-message {
-    position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+position: relative;
+padding-top: 14%;
+padding-bottom: 13%;
 }
 
 .intro-message > h1 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+margin: 0;
+text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+font-size: 5em;
 }
 
 .intro-divider {
-    width: 400px;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+width: 400px;
+border-top: 1px solid #f8f8f8;
+border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
-/*@media(max-width:767px) {*/
-    .intro-message {
-        padding-bottom: 7.1%;
-    }
+/*SHOULD I KEEP THIS OR IS IT PLAIN EVIL??????? ???*/
 
-    .intro-message > h1 {
-        font-size: 3em;
-    }
+/*@media(max-width:767px) {
+.intro-message {
+padding-bottom: 7.1%;
+}
 
-    ul.intro-social-buttons > li {
-        display: inline-block;
-        margin-bottom: 20px;
-        padding: 7px;
-    }
+.intro-message > h1 {
+font-size: 3em;
+}
 
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
+ul.intro-social-buttons > li {
+display: inline-block;
+margin-bottom: 20px;
+padding: 7px;
+}
 
-    .intro-divider {
-        width: 50%;
-    }
-/*}*/
+ul.intro-social-buttons > li:last-child {
+margin-bottom: 0;
+}
+
+.intro-divider {
+width: 50%;
+}
+}*/
 
 .network-name {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.content-section-a {
-    padding: 50px 0;
-    background-color: #000000;
-}
-
-.content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
-}
-
-.banner {
-    padding: 100px 0;
-    color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
-    background-size: cover;
-}
-
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-}
-
-.banner ul {
-    margin-bottom: 0;
-}
-
-.banner-social-buttons {
-    float: right;
-    margin-top: 0;
-}
-
-
-
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
-    }
-
-    ul.banner-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
+text-transform: uppercase;
+font-size: 14px;
+font-weight: 400;
+letter-spacing: 1px;
 }
 
 .wrapper {
-    width: auto;
-    height: auto; 
-    min-height: 100%;
-    margin-bottom: -40px;
+width: auto;
+height: auto;
+min-height: 100%;
+margin-bottom: -40px;
 }
 
 .wrapper:after{
-    content:"";
-    display:block;
-    height: 40px;
-    width: 100%;
+content:"";
+display:block;
+height: 40px;
+width: 100%;
 }
 
-.footer{    
-    height: 40px;
-    width: 100%;
-    background-color: #012e34;
+.footer{
+height: 40px;
+width: 100%;
+/*background-color : #012e34;*/
+background-color: transparent
 }
-
 
 .image{
-    display: block;
-    background: url(../img/300_horizontal_red.png) center;
-    width:300px;
-    height:40px;
-    bottom: 5px;
-    top: 0px;
-    margin-left: auto;
-    margin-right: 0px;   
+display: block;
+background: url(../img/300_horizontal_red.png) center;
+width:300px;
+height:40px;
+bottom: 5px;
+top: 0px;
+margin-left: auto;
+margin-right: 0px;
 }
 
-p.copyright {
-    margin: 15px 0 0;
+.buttons:link, .buttons:visited {
+color: white;
+border-radius: 7px;
+padding: 13px 20px;
+/*background-color: #337ab7;*/
+background-color: black,
+transition: background-color .3s ease-in    ;
+}
+
+.buttons:hover {
+/*color: #337ab7;*/
+color: black;
+background-color: white;
+transition: background-color .3s ease-in;
+}
+
+#tfheader {
+padding-top: 10px;
+position: relative;
+padding-right: 6px;
+}
+
+.tftextinput {
+height: 27px
+}
+
+.tfbutton {
+margin: 0;
+padding: 4px 14px;
+font-family: 'Raleway';
+font-size:13px;
+outline: none;
+cursor: default;
+text-align: center;
+text-decoration: none;
+color: #ffffff;
+border: solid 1px #0076a3; border-right:0px;
+background: #0095cd;
+background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+border-top-right-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+}
+
+.homepage > a:link, a:visited{
+position: absolute;
+color: #ffffff;
+padding-top: 5px;
+text-align: center;
+line-height: 40px;
+font-family: 'Raleway';
+font-size: 40px;
+width: 100px;
+padding-left: 30px;
+}
+
+.homepage > a:hover {
+text-decoration: none;
+color:white;
+}
+
+.atitle {
+    font-family: 'Raleway';
+    font-size: 70px;
+    margin-left: -15px;
+    margin-bottom: -20px;
+}
+
+.subtitle {
+    font-family: 'Raleway';
+    font-size: 40px;
+    margin-left: -20px;
+    margin-bottom: 40px;
+}
+
+.fullscreen-bg__video {
+    opacity: 0.5;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }

@@ -8,6 +8,8 @@ body,
 html {
     width: 100%;
     height: 100%;
+    background:  url(../img/black.png) no-repeat center fixed;
+    background-size: cover;
 }
 
 body,
@@ -17,37 +19,44 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #FFFFFF;
 }
 
 .topnav {
     font-size: 14px;
-    background-image: none; 
-    background-color: #012e34;
+    background-image: none;
+    background-color: transparent;
 }
 
-/*body{
+body{
     background: url(../img/black.jpg) no-repeat center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-     background-size: 100%;         
-}*/
+     background-size: 100%;
+}
 
 .lead {
     font-size: 18px;
     font-weight: 400;
 }
 
+img {
+    max-height: 640px;
+    max-width: 480px;
+
+}
+
+
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 30px;
     text-align: center;
     color: #f8f8f8;
-    
+
 }
 
 .intro-message {
@@ -105,7 +114,9 @@ h6 {
 
 .content-section-a {
     padding: 50px 0;
-    background-color: #000000;
+    /*background-color: #000000;*/
+    background: transparent;
+    font-family: 'Raleway';
 }
 
 .content-section-b {
@@ -176,7 +187,7 @@ h6 {
 .wrapper {
     /*background-color: #012e34;*/
     width: auto;
-    height: auto; 
+    height: auto;
     min-height: 100%;
     margin-bottom: -40px;
 }
@@ -188,10 +199,10 @@ h6 {
     width: 100%;
 }
 
-.footer{    
+.footer{
     height: 40px;
     width: 100%;
-    background-color: #012e34;
+    background-color: transparent;
 }
 
 
@@ -203,9 +214,20 @@ h6 {
     bottom: 5px;
     top: 0px;
     margin-left: auto;
-    margin-right: 0px;   
+    margin-right: 0px;
 }
 
-p.copyright {
-    margin: 15px 0 0;
+@font-face {
+    font-family: 'transformer';
+    src: url(fonts/Transformers.ttf);
+}
+
+.list-unstyled {
+    font-family: 'Raleway';
+
+}
+
+.list-unstyled > li {
+    padding-left: 180px;
+    text-align: left;
 }

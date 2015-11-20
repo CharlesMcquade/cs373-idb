@@ -1,0 +1,3 @@
+[run]
+omit = ./py3env/*
+source = ./tests.py, ./models.py

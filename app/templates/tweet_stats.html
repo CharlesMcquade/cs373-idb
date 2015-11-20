@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>{%block title %}Tweet Stats{% endblock %}</title>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+
+    <!-- MAP STUFF -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+     <link href="{{ url_for('static', filename='stylesheets/tweet_stats.css') }}" rel="stylesheet">
+	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+</head>
+<body onLoad="javascript:init();">
+
+<nav class="navbar navbar-inverse navbar-static-top custom-navbar" role="navigation">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-header">
+      <a class="navbar-brand" rel="home" href="#" title="TweetCity Stats">TweetCity Stats</a>
+    </div>
+    <!-- Non-collapsing right-side icons -->
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="#" class="fa fa-cog"></a>
+      </li>
+      <li>
+        <a href="#" class="fa fa-home"></a>
+      </li>
+    </ul>
+    <!-- the collapsing menu -->
+    <div class="collapse navbar-collapse navbar-left" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Statistics</a></li>
+        <li><a href="/index">Back to MurikinMade</a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+  <!--/.container -->
+</nav>
+{% block content %}
+<!-- first row -> description-->
+<h1> TweetCity Stats </h1>
+<div class="row">
+	<p>This page exercizes <a href="http://www.tweetcity.me">TweetCity</a>'s API to show statistics on the tweets they store.
+	Their API can be found <a href="http://docs.tweetcity.apiary.io/#">here</a>, on <a href="https://apiary.io/">Apiary</a>.
+	</p>
+	<p>There are three main ways in which the API is used to gather and meaningfully display the data. All of these are in a visual 
+	manner and are explained with the visualization.</p>
+	<h3>Desirables</h3>
+	<p>The visualizations of the data API shown could be very useful for statistical analysis of twitter posts during a timeframe and between specifically chosen locations if the tweets were randomly chosen.
+	However, the data was composed of only one location, Austin, and thus the possibilities for different visualizations for TweetCity's data was heavily limited. It would have been exciting to further this route 
+	with their data had it only been more complete, with multiple locations as their models entail, and randomly chosen tweets (in the range of 1000 for each location).</p>
+	</div>
+</div>
+<!-- end first row -->
+
+<!-- second and third row -> tweet stats-->
+<h2> Tweet Statistics </h2>
+<div class="row">
+	<div class="panel panel-success">
+		    <div class="panel-heading">
+		         <h3 class="panel-title">Tweet Map</h3>
+		    </div>
+		    <div class="panel-body">
+		        <div id="map"></div>
+		    </div>
+		</div>
+</div>
+<div class="row">
+ <p>The first utilization is the map shown above. The map shows all tweets in TweetCity's database according to the latitude and longitude 
+	returned in the API request for the Tweet ID. The map is fully interactive, and is implemented using the excellent <a href="http://leafletjs.com/">Leaflet.js</a>.
+	 Upon clicking any tooltip on the map, you can see the Twitter handle, the original text of the tweet, the post date, as well as links to go to the twitter user's 
+	 main page and to that specific tweet. Try it out!</p>
+</div>
+<div class="row">
+	<!-- line graph -->
+	<div class="col-sm-8">
+		<div class="panel panel-success">
+		    <div class="panel-heading">
+		         <h3 class="panel-title">Tweet Volume by Time</h3>
+
+		    </div>
+		    <div id="outermap" class="panel-body">
+		        <canvas id="tLineChart" width="600" height="400"></canvas>
+		    </div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+	<p>Here we have a line chart displaying density of tweets for each day which the dataset has data for. The data is limited only by the API. This is useful for trends in 
+	 data, as we can see the most tweets were around Halloween in the Austin area, and this makes sense considering how crowded it is during that time! Originally, we had thought that TweetCity had gathered tweets from multiple
+	 locations across America (namely New York, San Francisco, as well as the already included Austin) and this density chart was to be used to compare densities at different times.</p>
+	</div>
+</div>
+<!-- end third row -->
+
+<!-- third and fourth row -> hashtag stats -->
+<h2> Hashtag Statistics </h2>
+<div class="row">
+<!-- bar chart name -->
+	<div class="panel panel-success">
+	    <div class="panel-heading">
+	         <h3 class="panel-title">Hashtag Distribution</h3>
+	    </div>
+	    <div class="panel-body">
+	    <i>Only hashtags which are mentioned more than once are shown.</i>
+	        <canvas id="hDisChartName" width="600" height="200"></canvas>
+	    </div>
+	</div>
+</div>
+<div class="row">
+ <p>Finally, we have a distribution of hashtags, for all hashtag that is used more than once. Again, this was going to be used to create a comparative histogram with a set of three bars for 
+	 every hash tag- with each bar representing a location- in order to see how each location uses them in contrast or similarly. However, it is still interesting to note the common trends among the data.</p>
+</div>
+
+
+
+
+{% endblock %}
+</body>
+
+{% block footer_outer %}
+<script src="{{ url_for('static', filename='js/tweetCharts.js') }}"></script>
+<script>
+function init() {
+	var options = {
+	    animation: false,
+	    scaleoverride: true,
+	    responsive: true,
+	    maintainAspectRatio: true
+	}
+	$.getJSON("{{ url_for('static', filename='json/pie_hashtags.json') }}", function (json) {
+	    
+	    var hDisChartName = document.getElementById("hDisChartName").getContext("2d");
+	    new Chart(hDisChartName).Bar(json, options);
+	    
+	});
+
+	$.getJSON("{{ url_for('static', filename='json/tweet_times.json') }}", function (json) {
+	    
+	   var tLineChart = $("#tLineChart").get(0).getContext("2d");
+	   var myTweetLineChart = new Chart(tLineChart).Line(json, options);
+	    
+	});
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+	//30.25, -97.75
+	 var map = L.map('map', {zoomControl: false, scrollWheelZoom: false}).setView([{{ t['center_lat'] }}, {{ t['center_lon'] }}], 11);
+         map.addControl(L.control.zoom({position:'bottomleft'}))
+         {% for tweet in t['tweets'] %}
+         var marker = L.marker([{{ tweet['latitude'] }}, {{ tweet['longitude'] }} ]).addTo(map);
+         marker.bindPopup("<b>Twitter handle:</b><a target='_blank' href='http://www.twitter.com/{{ tweet['user'] }}'>{{ '@'+tweet['user'] }}</a></br>"+
+         	"<b>Tweet:</b> {{ tweet['text'] }}</br>"+
+         	"<b><a target='_blank' href='http://www.twitter.com/{{ tweet['user'] }}/statuses/{{ tweet['twitter_tweet_id'] }}'>View Original Tweet</a></b></br>"+
+         	"Post date: {{ tweet['date_time'] }}")
+         {% endfor %}
+         var mqLayer = L.tileLayer("http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+            subdomains: "1234",
+            attribution: "&copy; <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. Tiles Courtesy of <a href='http://www.mapquest.com/'>MapQuest</a> <img src='http://developer.mapquest.com/content/osm/mq_logo.png'>"
+         })
+         
+         mqLayer.addTo(map);
+         map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
+}
+</script>
+{% endblock %}

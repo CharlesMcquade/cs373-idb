@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>{%block title %}Murkin Made Cars{% endblock %}</title>
+	<!-- HEADER -->
+	{% block head %}
+	<head>
+	    <!-- Metadata -->
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <!-- Favicon-->
+	    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+	    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+		<!-- jQuery -->
+	    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	    <!-- Bootstrap 3.0 CSS -->
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Bootstrap 3.3.5 Javasript -->
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+	    <!-- Animate CSS -->
+	    <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
+	    <!-- animsition.css -->
+	    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
+	{% block extra_head %}
+	{% endblock %}
+	</head>
+	{% endblock %}
+	<!-- END HEADER -->
+	
+
+
+	<!-- BODY -->
+	<body>
+	{% block body %}
+		{% block navbar %}
+		{% include 'navbar.html' %}
+		{% endblock %}
+	    {% block content %}
+		{% endblock %}
+	{% endblock %}
+	<div class="footer animsition">
+      <div class = "image"></div>
+  	</div>
+	</body>
+	<!-- END BODY -->
+
+	<!-- FOOTER -->
+	<footer>
+	<!-- animsition jQuery plugin -->
+	<script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
+    <script>
+        //<!-- Menu Toggle Script -->
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+      	$(document).ready(function() {
+        	$('.animsition').animsition();
+      	});
+    </script>
+	{% block extra_footer %}
+	{% endblock %}
+	</footer>
+	<!-- EMD FOOTER -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

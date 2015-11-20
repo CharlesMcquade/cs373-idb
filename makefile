@@ -2,7 +2,7 @@ FILES :=	         \
     .gitignore        \
     makefile          \
     apiary.apid       \
-    IDB1.log          \
+    IDB2.log          \
     model.html        \
     models.py         \
     tests.py          \
@@ -31,6 +31,7 @@ clean:
 	rm -f .coverage
 	rm -f *.pyc
 	rm -rf __pycache__
+	rm -f tests.tmp
 
 config:
 	git config -l
@@ -45,10 +46,10 @@ status:
 	git remote -v
 	git status
 
-test: test.py
-	coverage3 run	--branch test.py > test.tmp 2>&1
-	coverage3 report -m --include="./*" >> test.tmp
-	cat TestNetflix.tmp
+test: tests.py
+	coverage3 run	--branch tests.py > tests.tmp 2>&1
+	coverage3 report -m --include="./*" >> tests.tmp
+	cat tests.tmp
 
 idb1.log:
-	git log > idb1.log
+	git log > IDB2.log
