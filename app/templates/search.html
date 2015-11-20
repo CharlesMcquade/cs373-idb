@@ -12,11 +12,13 @@
 
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
-
-    <!-- Table CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/table.css') }}" rel="stylesheet">
-    <!-- <link href="{{ url_for('static', filename='stylesheets/dataTables.bootstrap.min.css') }}" rel="stylesheet"> -->
    
+    <!-- Table CSS -->
+    <link href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- Table JS -->
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <!-- Table JS - Bootstrap specific -->
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -53,6 +55,12 @@
                         css('display','table-row').animate({opacity:1}, 300);
             });
         });
+
+         {% for i in range(0, len(ordering)) %}
+             $(document).ready(function() {
+                $('#dataTable{{ordering[i].title() }}').DataTable();
+              });
+         {% endfor %}
     </script>
 
 
@@ -83,7 +91,7 @@
             
             <!-- Table demo -->
             <div class="box-table">
-                <table class="sortable" id="data" cellspacing="0" width="100%">
+                <table id="#dataTable{{ ordering[0].title() }}" class="table table-striped table-bordered" width="100%">
                     <thead>
                     <tr>
                         {% for h in query_dict[model][HEADER_IDX] %}
@@ -113,10 +121,9 @@
             <h1 class="description">
               American Vehicle {{ model.title() }}
             </h1>
-            
             <!-- Table demo -->
             <div class="box-table">
-                <table class="sortable" id="data" cellspacing="0" width="100%">
+                <table id="#dataTable{{ ordering[i].title() }}" class="table table-striped table-bordered" width="100%">
                     <thead>
                     <tr>
                         {% for h in query_dict[model][HEADER_IDX] %}
