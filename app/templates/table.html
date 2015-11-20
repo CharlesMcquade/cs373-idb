@@ -7,19 +7,17 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <!-- jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
-
-    <!-- Table CSS -->
-    <link href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap 3.0 CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 3.3.5 Javasript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Table JS -->
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <!-- Table JS - Bootstrap specific -->
     <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
     <!-- Menu Toggle Script -->
     <script>
@@ -34,7 +32,9 @@
           });
     </script>
 
-
+    <!-- Table CSS -->
+    <link href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='stylesheets/search_results.css') }}" rel="stylesheet">
 
 </head>
 {% endblock %}
