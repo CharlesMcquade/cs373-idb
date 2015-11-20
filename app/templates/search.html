@@ -11,7 +11,9 @@
     <script>
          $(document).ready(function() {
             {% for i in range(0, len(ordering)) %}
-                $('#dataTable{{ordering[i].title() }}').DataTable();
+                $('#dataTable{{ordering[i].title() }}').DataTable( {
+                    "pageLength": 10
+                });
             {% endfor %}
           });    
     </script>
@@ -22,7 +24,7 @@
 
 {% block content %}
 <div class="container">
-  <h2>Search Results</h2>
+  <h2 style="color:#e7fef3;">Search Results</h2>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#{{ ordering[0] }}">{{ ordering[0] }}</a></li>
     {% for i in range(1, len(ordering)) %}
