@@ -9,6 +9,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
@@ -22,24 +23,11 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/sortable.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-    <!-- jQuery -->
-    <!-- // <script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
     
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-
-    <!-- Menu Toggle Script -->
-
     <script>
-
-          $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-           });
-
         $(document).ready(function(){
             var rowsShown = 10;
             $('#data').after('<div id="nav"></div>');
@@ -70,10 +58,11 @@
 
 
 </head>
+
 {% endblock %}
 
+
 {% block content %}
-    
 
 <div class="container">
   <h2>Search Results</h2>
@@ -152,14 +141,6 @@
     {% endfor %}
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 
     <!-- Header -->

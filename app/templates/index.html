@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>{%block title %}Murkin Made Cars{% endblock %}</title>
-<!-- BEGIN HEAD -->
 
+<!-- BEGIN HEAD -->
 {% block head %}
+
 <head>
 
     <meta charset="utf-8">
@@ -22,6 +23,7 @@
 
     <!-- Animate CSS -->
     <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
+
     <!-- animsition.css -->
     <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
 
@@ -30,19 +32,18 @@
     <link href="http://fonts.googleapis.com/css?family=Atomic Age:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 
-
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-
      <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,21 +55,25 @@
 
     <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
     {% block extra_head %}
+
     {% endblock %}
 
 </head>
-{% endblock %}
 
+{% endblock %}
 <!-- END HEAD -->
 
 
 <body onLoad="javascript:init();">
+
   <div class="wrapper animsition"> <!-- BEGIN WRAPPER DIV -->
     <!-- BEGIN NAVIGATION -->
     <video loop muted autoplay class="fullscreen-bg__video">
         <source src="//www.dropbox.com/s/e4y6d1glujtas49/spedometer.mp4?raw=1" type="video/mp4">
     </video>
+
     {% block nav %}
+
     <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -80,12 +85,8 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
-
-            <!-- <div class="homepage">
-                <a href="/index">MurikinMade</a>
-            </div> -->
-
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li style="margin-right:190px;font-size:40px;font-weight:bold"><a href="/index">MurikinMade</a></li>
@@ -111,11 +112,13 @@
         <!-- /.container -->
     </nav>
     <!-- END NAVIGATION -->
+
     {% endblock %}
 
 
     <!-- BEGIN CONTENT -->
     {%block content %}
+
     <div class="intro-header">
         <div class="container">
             <div class="row">
@@ -139,10 +142,12 @@
             </div>
         </div>
     </div>
+
     <!-- END CONTENT -->
     {% endblock %}
 
   </div> <!-- END WRAPPER DIV -->
+
   <div class="footer animsition">
       <div class = "image"></div>
   </div>
@@ -150,10 +155,11 @@
   <!-- animsition jQuery plugin -->
   <script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
   <script>
-  $(document).ready(function() {
-    $('.animsition').animsition();
-  });
+      $(document).ready(function() {
+        $('.animsition').animsition();
+      });
   </script>
+  
 </body>
 
 </html>

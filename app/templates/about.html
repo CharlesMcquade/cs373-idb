@@ -1,5 +1,7 @@
 <title>{% block title %}About Us{% endblock %}</title>
+
 {% block head %}
+
 <head>
 
     <meta charset="utf-8">
@@ -18,53 +20,51 @@
 
     <!-- Custom Fonts -->
     <link href="{{url_for('static', filename='stylesheets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,300' rel='stylesheet' type='text/css'>
 
-     <!-- Animate CSS -->
-     <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
-     <!-- animsition.css -->
-     <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{{ url_for('static', filename='stylesheets/animate.css') }}" rel="stylesheet">
+
+    <!-- animsition.css -->
+    <link href="{{ url_for('static', filename='stylesheets/animsition/animsition.css') }}"rel="stylesheet">
 
     <!-- jQuery -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-     <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
     <!-- USED TO ADD EXTRA ELEMENTS TO HEADER -->
     {% block extra_head %}
+
     <link href="{{ url_for('static', filename='stylesheets/about.css') }}" rel="stylesheet">
 
-    <!--HAVE TO FIX THIS OR NOT? THAT'S THE QUESTION -->
-     <!-- <meta name="description" content="jQuery Responsive Carousel - Owl Carusel">
-     <meta name="author" content="Bartosz Wojciechowski"> -->
-
-        <!-- Owl Carousel Assets -->
+    <!-- Owl Carousel Assets -->
     <link href="{{ url_for('static', filename='stylesheets/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='stylesheets/owl.theme.css') }}" rel="stylesheet">
+
     {% endblock %}
 
 </head>
+
 {% endblock %}
 
 
 <body>
-  <div class="wrapper animsition"> <!-- BEGIN WRAPPER DIV -->
+
+  <!-- Menu Toggle Script -->
+  <script>
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+  </script>
+
+  <div class="wrapper"> <!-- BEGIN WRAPPER DIV -->
+
     <!-- BEGIN NAVIGATION -->
     {% block nav %}
+
     <nav class="navbar navbar-inverse navbar-static-top topnav" role="navigation">
         <div class="container-fluid">       <!--DEFAULT WAS CONTAINER TOPNAV -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,14 +76,10 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
-
-            <!-- <div class="homepage">
-                <a href="/index">MurikinMade</a>
-            </div> -->
-
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right animsition">
+                <ul class="nav navbar-nav navbar-right">
                     <li style="margin-right:190px;font-size:40px;font-weight:bold"><a href="/index">MurikinMade</a></li>
                     <li class="menu"><a href="/about">ABOUT</a></li>
                     <li class="menu"><a href="/makes">MAKES</a></li>
@@ -107,9 +103,12 @@
         <!-- /.container -->
     </nav>
     <!-- END NAVIGATION -->
+
     {% endblock %}
 
+
 {% block content %}
+
 <!-- Header -->
 <!--The actual team -->
 <!-- Team Section -->
@@ -243,18 +242,24 @@
 
   </div>
  </div>
+
 {% endblock %}
+
 </div>
+
     {% block footer %}
+
     <div class="footer animsition">
-      <div class="image"></div>
+        <div class="image"></div>
   	</div>
     <!-- animsition jQuery plugin -->
     <script src="{{ url_for('static', filename='js/animsition.js') }}"></script>
     <script>
-    $(document).ready(function() {
-      $('.animsition').animsition();
-    });
+        $(document).ready(function() {
+          $('.animsition').animsition();
+        });
     </script>
+
     {% endblock %}
+
 </body>
