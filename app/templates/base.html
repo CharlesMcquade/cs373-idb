@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>{%block title %}Murkin Made Cars{% endblock %}</title>
+
+	<head>
+	    <!-- Metadata -->
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <!-- Favicon-->
+	    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+	    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+		<!-- jQuery -->
+	    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	    <!-- Bootstrap 3.0 CSS -->
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Bootstrap 3.3.5 Javasript -->
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	{% block extra_head %}
+	{% endblock %}
+	</head>
+	<body>
+	{% block content %}
+	{% endblock %}
+	</body>
+	<footer>
+	{% block extra_footer %}
+	{% endblock %}
+	</footer>
+
+</html>
