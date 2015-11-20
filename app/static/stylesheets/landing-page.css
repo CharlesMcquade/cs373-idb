@@ -23,7 +23,7 @@ font-weight: 700;
 
 body{
 
-background: url(../img/black_bg.jpg) no-repeat center fixed;
+background: black;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -137,7 +137,7 @@ background-color: transparent
 
 .image{
 display: block;
-background: url(../img/300_horizontal_red.png) center;
+background: black;
 width:300px;
 height:40px;
 bottom: 5px;
